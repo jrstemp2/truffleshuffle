@@ -6,34 +6,34 @@ using TruffleShuffle.Models;
 
 namespace TruffleShuffle.Services
 {
-    public class UserDataDB : IUserData
+    public class WeightDataDB : IWeightData
     {
-        public User AddUser(User user)
+        public WeightRecord AddWeightRecord(WeightRecord weightRecord)
         {
             throw new NotImplementedException();
         }
 
-        public int DeleteUserByID(int id)
+        public int DeleteWeightRecordByID(int weightRecordID)
         {
             throw new NotImplementedException();
         }
 
-        public User GetUserByID(int id)
+        public WeightRecord GetNewestWeightRecord()
         {
             throw new NotImplementedException();
         }
 
-        public User GetUserByUserName(string username)
+        public WeightRecord GetOldestWeightRecord()
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateDisplayName(int UserID, string displayName)
+        public IEnumerable<WeightRecord> GetWeightRecordsByUserID(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public int UpdateWeightLossGoal(int UserID, int weightLossGoal)
+        public WeightRecord UpdateWeightRecord(WeightRecord weightRecord)
         {
             throw new NotImplementedException();
         }
