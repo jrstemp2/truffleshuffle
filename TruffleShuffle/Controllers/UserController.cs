@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using TruffleShuffle.Services;
 
 namespace TruffleShuffle.Controllers
 {
@@ -11,6 +13,16 @@ namespace TruffleShuffle.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+
+        private readonly IUserData userData;
+
+        public UserController(IUserData userData)
+        {
+            this.userData = userData;
+        }
+
+
+
         // GET: api/User
         [HttpGet]
         public IEnumerable<string> Get()

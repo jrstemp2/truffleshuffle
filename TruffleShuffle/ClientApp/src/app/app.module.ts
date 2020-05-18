@@ -11,13 +11,16 @@ import { UserComponent } from './user/user.component';
 import { WeightRecordComponent } from './weight-record/weight-record.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
     UserComponent,
-    WeightRecordComponent
+    WeightRecordComponent,
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

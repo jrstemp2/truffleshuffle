@@ -1,4 +1,7 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { WeightRecord } from '../interfaces/weight-record';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
     selector: 'app-weight-record',
