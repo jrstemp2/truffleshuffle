@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,14 @@ namespace TruffleShuffle.Services
 {
     public class UserDataDB : IUserData
     {
+
+        private readonly string connString;
+
+        UserDataDB(IConfiguration config)
+        {
+            connString = config.GetConnectionString("default");
+        }
+
         public User AddUser(User user)
         {
             throw new NotImplementedException();
