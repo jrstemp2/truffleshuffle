@@ -8,7 +8,7 @@ using TruffleShuffle.Models;
 
 namespace TruffleShuffle.Services
 {
-    interface IUserData
+    public interface IUserData
     {
         // create
         public User AddUser(User user);

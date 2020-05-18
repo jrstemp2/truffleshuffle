@@ -6,7 +6,7 @@ using TruffleShuffle.Models;
 
 namespace TruffleShuffle.Services
 {
-    interface IWeightData
+    public interface IWeightData
     {
         // Create
         public WeightRecord AddWeightRecord(WeightRecord weightRecord);
