@@ -11,9 +11,9 @@ namespace TruffleShuffle.Services
         // Create
         public WeightRecord AddWeightRecord(WeightRecord weightRecord);
         // Read
-        public IEnumerable<WeightRecord> GetWeightRecordsByUserID(int weightRecordID);
-        public WeightRecord GetOldestWeightRecord();
-        public WeightRecord GetNewestWeightRecord();
+        public IEnumerable<WeightRecord> GetWeightRecordsByUserID(int UserID);
+        public WeightRecord GetOldestWeightRecord(int UserID);
+        public WeightRecord GetNewestWeightRecord(int UserID);
         // Update
         public WeightRecord UpdateWeightRecord(WeightRecord weightRecord);
 
