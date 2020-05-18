@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TruffleShuffle.Services;
 
 namespace TruffleShuffle
 {
@@ -26,6 +27,8 @@ namespace TruffleShuffle
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddTransient<IUserData, UserDataDB>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TruffleShuffle.Models
 {
-    public class Weights
+    public class WeightRecord
     {
 
         public int ID { get; set; }
