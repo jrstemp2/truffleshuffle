@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using TruffleShuffle.Models;
 using TruffleShuffle.Services;
 
 namespace TruffleShuffle.Controllers
@@ -24,35 +25,30 @@ namespace TruffleShuffle.Controllers
 
 
         // GET: api/User
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("{id}")]
+        public User GetUserByID(int id)
         {
-            return new string[] { "value1", "value2" };
+            return userData.GetUserByID(id);
         }
 
-        // GET: api/User/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("username/{userName}")]
+        public User GetUserByUserName(string userName)
         {
-            return "value";
+            return userData.GetUserByUserName(userName);
         }
 
-        // POST: api/User
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/User/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
+        //Delete
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public int DeleteUserByID(int id)
         {
+            return userData.DeleteUserByID(id);
         }
+
+        [HttpPost]
+        public int AddUser(User u)
+        {
+            return userData.AddUser(u);
+        }
+
     }
 }

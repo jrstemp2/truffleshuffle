@@ -12,27 +12,25 @@ namespace TruffleShuffle.Services
     public class UserDataDB : IUserData
     {
         private readonly string connstring;
+
         public UserDataDB(IConfiguration config)
         {
             connstring = config.GetConnectionString("default");
         }
 
-        public User AddUser(User user)
+        public int AddUser(User user)
         {
-            string queryString = "INSERT INTO Users(UserID, UserPassWord,DisplayName,WeightLossGoal) " +
-                "OUTPUT Inserted.UserID, Inserted.UserPassword, Inserted.DisplayName,Inserted.WeightLossGoal " +
-                "VAlUES(@UserID,@UserPassword,@Displayname,@WeightLossGoal) ";
-
-
-            User result = null;
-           
-            using(var conn = new SqlConnection(connstring))
+            int result = 0;
+            using (var conn = new SqlConnection(connstring))
             {
-                result = conn.QueryFirstOrDefault<User>(queryString, user);
-            }
+                string queryString = "INSERT INTO Users(UserName, UserPassword, DisplayName, WeightLossGoal) ";
+                queryString += "VAlUES(@UserName, @UserPassword, @Displayname, @WeightLossGoal)";
 
+                result = conn.Execute(queryString, user);
+            }
             return result;
         }
+
 
         public int DeleteUserByID(int id)
         {
