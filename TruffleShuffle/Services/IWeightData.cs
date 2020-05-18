@@ -8,6 +8,16 @@ namespace TruffleShuffle.Services
 {
     interface IWeightData
     {
-        public IEnumerable<WeightRecord> GetWeightRecordsByUserID(int ID);
+        // Create
+        public WeightRecord AddWeightRecord(WeightRecord weightRecord);
+        // Read
+        public IEnumerable<WeightRecord> GetWeightRecordsByUserID(int weightRecordID);
+        public WeightRecord GetOldestWeightRecord();
+        public WeightRecord GetNewestWeightRecord();
+        // Update
+        public WeightRecord UpdateWeightRecord(WeightRecord weightRecord);
+
+        // Delete
+        public int DeleteWeightRecordByID(int weightRecordID);
     }
 }
