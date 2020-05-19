@@ -1,5 +1,5 @@
-<h1>Welcome, {{ user.displayName }}</h1>
-<div>Your goal weight is: {{ user.weightLossGoal }} </div>
+<h1>Welcome, {{ user?.displayName }}</h1>
+<div>Your goal weight is: {{ user?.weightLossGoal }} </div>
 <div>As of your last weigh in, you are {{ getWeightToGoal() }}lbs away from your goal weight</div>
 
 <div>

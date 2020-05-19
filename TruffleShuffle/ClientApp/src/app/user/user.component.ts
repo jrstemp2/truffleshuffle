@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { User } from '../interfaces/user';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../services/user.service';
-
+import { WeightService } from '../services/weight.service';
+import { WeightRecord } from '../interfaces/weight-record';
 
 @Component({
     selector: 'app-user',
@@ -12,7 +13,7 @@ import { UserService } from '../services/user.service';
 /** user component*/
 export class UserComponent {
     /** user ctor */
-  constructor(private userData: UserService) { }
+  constructor(private userData: UserService, private weightData:WeightService) { }
 
   user: User;
   currentWeight: number;
@@ -25,9 +26,12 @@ export class UserComponent {
       error => console.error(error)
     );
 
-    // TODO: add service to pull last weight
-    // Mock Data
-    this.currentWeight = 240; 
+    this.weightData.getNewestWeightOfUserByID(1).subscribe(
+      (data: WeightRecord) => {
+        this.currentWeight = data.currentWeight;
+    },
+      error => console.error(error)
+    );
   }
 
   getWeightToGoal() {

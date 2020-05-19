@@ -6,7 +6,11 @@ import { WeightRecord } from '../interfaces/weight-record';
 export class WeightService {
   constructor(private http: HttpClient) { }
 
-  getWeightsOfSingleUserByID(id: number) {
+  getWeightsOfUserByID(id: number) {
     return this.http.get<WeightRecord[]>(`/api/weightrecord/${id}`);
+  }
+
+  getNewestWeightOfUserByID(id: number) {
+    return this.http.get<WeightRecord>(`api/weightrecord/newest/${id}`);
   }
 }
