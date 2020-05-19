@@ -1,4 +1,8 @@
 <h1>Welcome, {{ user.displayName }}</h1>
-<app-new-weight></app-new-weight>
-<!--app-weight-records-list></app-weight-records-list-->
+<div>Your goal weight is: {{ user.weightLossGoal }} </div>
+<div>As of your last weigh in, you are {{ getWeightToGoal() }}lbs away from your goal weight</div>
 
+<div>
+  <app-new-weight></app-new-weight>
+</div>
+<app-weight-records-list></app-weight-records-list>

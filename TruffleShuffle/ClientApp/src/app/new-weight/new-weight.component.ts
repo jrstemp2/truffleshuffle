@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { WeightRecord } from '../interfaces/weight-record';
 
 @Component({
@@ -21,6 +21,7 @@ export class NewWeightComponent {
   }
 
   submitWeight() {
+
     console.log(this.newRecord); //TODO: send to weightDataService
   }
 }
