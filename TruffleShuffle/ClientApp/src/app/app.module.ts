@@ -9,6 +9,9 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { WeightRecordComponent } from './weight-record/weight-record.component';
+import { UserService } from './user.service';
+import { WeightService } from './weight.service';
+
 
 
 
@@ -21,16 +24,18 @@ import { WeightRecordComponent } from './weight-record/weight-record.component';
     UserComponent,
     WeightRecordComponent,
 
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' }
+      { path: '', component: UserComponent, pathMatch: 'full' }
+      
     ])
   ],
-  providers: [],
+  providers: [UserService, WeightService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
