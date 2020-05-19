@@ -25,4 +25,12 @@ export class WeightRecordsListComponent {
 
   }
 
+  displayDate(record: WeightRecord): string {
+    let output: string = '';
+
+    output += record.weightInDate.toString();
+
+    return output;
+  }
+
 }
