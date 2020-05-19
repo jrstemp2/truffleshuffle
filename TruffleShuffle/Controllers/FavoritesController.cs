@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TruffleShuffle.Models;
+using TruffleShuffle.Services;
 
 namespace TruffleShuffle.Controllers
 {
@@ -11,5 +13,29 @@ namespace TruffleShuffle.Controllers
     [ApiController]
     public class FavoritesController : ControllerBase
     {
+        private readonly IFavoriteData favoriteData;
+
+        public FavoritesController(IFavoriteData favoriteData)
+        {
+            this.favoriteData = favoriteData;
+        }
+
+        [HttpGet("{id}")]
+        public IEnumerable<JoinedRF> ShowFavoritesById(int id)
+        {
+            return favoriteData.ShowFavoritesById(id);
+        }
+
+        [HttpPost]
+        public int AddToFavorites(RecipeFavorite recipeFavorite)
+        {
+            return favoriteData.AddToFavorites(recipeFavorite);
+        }
+
+        [HttpDelete("{id}")]
+        public int DeleteFavorite(int id)
+        {
+            return favoriteData.DeleteFavorite(id);
+        }
     }
 }

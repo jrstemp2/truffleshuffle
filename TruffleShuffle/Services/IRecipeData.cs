@@ -27,6 +27,7 @@ namespace TruffleShuffle.Services
         //Delete Recipe
         public int DeleteRecipeByID(int id);
 
+        public int UpdateRecipe(Recipe recipe);
 
 
         //-----------------STRETCH--------------------

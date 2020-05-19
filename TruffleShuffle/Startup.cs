@@ -31,6 +31,7 @@ namespace TruffleShuffle
             services.AddTransient<IUserData, UserDataDB>();
             services.AddTransient<IWeightData, WeightDataDB>();
             services.AddTransient<IRecipeData, RecipeDataDB>();
+            services.AddTransient<IFavoriteData, FavoriteDataDB>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

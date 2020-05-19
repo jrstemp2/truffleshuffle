@@ -50,5 +50,20 @@ namespace TruffleShuffle.Controllers
         {
             return recipeData.DeleteRecipeByID(id);
         }
+
+        [HttpPut]
+        public object UpdateRecipe(Recipe recipe)
+        {
+            int result = recipeData.UpdateRecipe(recipe);
+
+            if (result == 1)
+            {
+                return new { Success = true, Message = "Recipe updated" };
+            }
+            else
+            {
+                return new { Success = false, Message = "Something went wrong, recipe did not update" };
+            }
+        }
     }
 }
