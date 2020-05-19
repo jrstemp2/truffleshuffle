@@ -1,6 +1,6 @@
 export interface WeightRecord {
   id: number;
   userId: number;
-  weighInDate: Date;
+  weightInDate: Date;
   currentWeight: number;
 }

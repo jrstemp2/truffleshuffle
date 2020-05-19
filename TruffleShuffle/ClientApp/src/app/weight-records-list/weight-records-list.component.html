@@ -1,6 +1,6 @@
 <div class="container">
   <div *ngFor="let record of weightRecords">
-    {{ record.weighInDate.toLocaleDateString("en-US") }} | {{ record.currentWeight }}
+    {{ record.weightInDate }} | {{ record.currentWeight }}
     <hr />
   </div>
 </div>

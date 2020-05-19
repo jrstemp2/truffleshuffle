@@ -32,12 +32,12 @@ namespace TruffleShuffle.Controllers
             return weightData.GetWeightRecordsByUserID(id);
         }
 
-        [HttpGet("/oldest/{id}")]
+        [HttpGet("oldest/{id}")]
         public WeightRecord GetOldestWeightRecord(int id)
         {
             return weightData.GetOldestWeightRecord(id);
         }
-        [HttpGet("/newest/{id}")]
+        [HttpGet("newest/{id}")]
         public WeightRecord GetNewestWeightRecord(int id)
         {
             return weightData.GetNewestWeightRecord(id);
