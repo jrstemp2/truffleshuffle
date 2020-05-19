@@ -10,5 +10,8 @@ export class UserService {
     return this.http.get<User[]>('/api/User');
   }
 
+  getUserByID(id: number) {
+    return this.http.get<User>(`/api/User/${id}`);
+  }
 
 }
