@@ -15,7 +15,7 @@ export class NewWeightComponent {
     this.newRecord = {
       id: 0,
       userId: 1,
-      weighInDate: new Date(),
+      weightInDate: new Date(),
       currentWeight: 0,
     }
   }
