@@ -51,9 +51,9 @@ namespace TruffleShuffle.Services
 
         public WeightRecord GetNewestWeightRecord(int UserID)
         {
-            string command = "select top (1) from Weights ";
+            string command = "select top(1) * from Weights ";
             command += "where UserID = @UserID ";
-            command += "order by DateTime DESC";
+            command += "order by WeightInDate DESC";
 
             WeightRecord result = null;
             using (var conn = new SqlConnection(connString))
@@ -66,9 +66,9 @@ namespace TruffleShuffle.Services
 
         public WeightRecord GetOldestWeightRecord(int UserID)
         {
-            string command = "select top (1) from Weights ";
+            string command = "select top (1) * from Weights ";
             command += "where UserID = @UserID ";
-            command += "order by DateTime ASC";
+            command += "order by WeightInDate ASC";
 
             WeightRecord result = null;
             using (var conn = new SqlConnection(connString))
