@@ -15,7 +15,7 @@ namespace TruffleShuffle.Services
         public WeightRecord GetOldestWeightRecord(int UserID);
         public WeightRecord GetNewestWeightRecord(int UserID);
         // Update
-        public WeightRecord UpdateWeightRecord(WeightRecord weightRecord);
+        public int UpdateWeightRecord(WeightRecord weightRecord);
 
         // Delete
         public int DeleteWeightRecordByID(int weightRecordID);

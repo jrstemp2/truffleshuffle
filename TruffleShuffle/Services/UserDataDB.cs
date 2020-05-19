@@ -74,34 +74,18 @@ namespace TruffleShuffle.Services
             return result;
         }
 
-        public int UpdateDisplayName(int userID, string displayName)
+        public int UpdateUser(User u)
         {
+
             string queryString = "UPDATE Users " +
-                "SET DisplayName = @DisplayName " +
+                "SET UserName = @UserName, UserPassword = @UserPassword, DisplayName = @DisplayName, WeightLossGoal = @WeightLossGoal " +
                 "Where ID=@id";
 
             int result = 0;
 
             using (var conn = new SqlConnection(connstring))
             {
-                result = conn.Execute(queryString, new { id = userID, displayName = displayName });
-            }
-
-            return result;
-        }
-
-        public int UpdateWeightLossGoal(int userID, int weightLossGoal)
-        {
-
-            string queryString = "UPDATE Users " +
-                "SET WeightLossGoal = @WeightLossGoal " +
-                "Where ID=@id";
-
-            int result = 0;
-
-            using (var conn = new SqlConnection(connstring))
-            {
-                result = conn.Execute(queryString, new { id = userID, weightLossGoal = weightLossGoal });
+                result = conn.Execute(queryString, u);
             }
 
             return result;

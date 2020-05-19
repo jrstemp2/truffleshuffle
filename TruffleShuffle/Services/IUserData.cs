@@ -13,8 +13,7 @@ namespace TruffleShuffle.Services
         // create
         public int AddUser(User user);
         // update
-        public int UpdateWeightLossGoal(int UserID, int weightLossGoal);
-        public int UpdateDisplayName(int UserID, string displayName);
+        public int UpdateUser(User u);
         // read
         public User GetUserByID(int id);
         public User GetUserByUserName(string username);

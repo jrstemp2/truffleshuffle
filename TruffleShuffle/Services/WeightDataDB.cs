@@ -24,8 +24,8 @@ namespace TruffleShuffle.Services
         public WeightRecord AddWeightRecord(WeightRecord weightRecord)
         {
             string command = "Insert Into Weights (UserID, WeightInDate, CurrentWeight) ";
-            command += "Output Inserted.ID, Inserted.UserID, Inserted.WeighInDate, Inserted.CurrentWeight ";
-            command += "values (@UserID, @WeighInDate, @CurrentWeight) ";
+            command += "Output Inserted.ID, Inserted.UserID, Inserted.WeightInDate, Inserted.CurrentWeight ";
+            command += "values (@UserID, @WeightInDate, @CurrentWeight) ";
 
             WeightRecord result = null;
             using (var conn = new SqlConnection(connString))
@@ -94,18 +94,17 @@ namespace TruffleShuffle.Services
             return result;
         }
 
-        public WeightRecord UpdateWeightRecord(WeightRecord weightRecord)
+        public int UpdateWeightRecord(WeightRecord weightRecord)
         {
             string command = "Update Weights ";
             command += "set ";
-            command += "WeightInDate = @WeighInDate";
-            command += "CurrentWeight = @CurrentWeight";
-            command += "order by DateTime ASC";
+            command += "WeightInDate = @WeightInDate, ";
+            command += "CurrentWeight = @CurrentWeight ";
 
-            WeightRecord result = null;
+            int result;
             using (var conn = new SqlConnection(connString))
             {
-                result = conn.QueryFirstOrDefault<WeightRecord>(command, weightRecord);
+                result = conn.Execute(command, weightRecord);
             }
 
             return result;

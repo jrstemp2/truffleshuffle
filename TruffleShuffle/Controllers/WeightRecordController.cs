@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TruffleShuffle.Models;
+using TruffleShuffle.Services;
 
 namespace TruffleShuffle.Controllers
 {
@@ -11,36 +13,60 @@ namespace TruffleShuffle.Controllers
     [ApiController]
     public class WeightRecordController : ControllerBase
     {
-        // GET: api/WeightRecord
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IWeightData weightData;
+
+        public WeightRecordController(IWeightData weightData)
         {
-            return new string[] { "value1", "value2" };
+            this.weightData = weightData;
         }
 
-        // GET: api/WeightRecord/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/WeightRecord
         [HttpPost]
-        public void Post([FromBody] string value)
+        public WeightRecord AddWeightRecord(WeightRecord weightRec)
         {
+            return weightData.AddWeightRecord(weightRec);
         }
 
-        // PUT: api/WeightRecord/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpGet("{id}")]
+        public IEnumerable<WeightRecord> GetWeightRecordsByUserID(int id)
         {
+            return weightData.GetWeightRecordsByUserID(id);
         }
 
-        // DELETE: api/ApiWithActions/5
+        [HttpGet("/oldest/{id}")]
+        public WeightRecord GetOldestWeightRecord(int id)
+        {
+            return weightData.GetOldestWeightRecord(id);
+        }
+        [HttpGet("/newest/{id}")]
+        public WeightRecord GetNewestWeightRecord(int id)
+        {
+            return weightData.GetNewestWeightRecord(id);
+        }
+
+        [HttpPut("updaterecord/{id}")]
+        public object UpdateWeightRecord(WeightRecord weightRecord)
+        {
+            int result = weightData.UpdateWeightRecord(weightRecord);
+
+            if (result == 1)
+            {
+                return new { Success = true, Message = "User updated" };
+            }
+            else
+            {
+                return new { Success = false, Message = "Something went wrong, user did not update" };
+            }
+        }
+
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public int DeleteWeightRecordByID(int id)
         {
+            return weightData.DeleteWeightRecordByID(id);
         }
+
+
+
+
+
     }
 }

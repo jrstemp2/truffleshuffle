@@ -10,7 +10,7 @@ namespace TruffleShuffle.Models
 
         public int ID { get; set; }
         public int UserID { get; set; }
-        public DateTime WeighInDate { get; set; }
+        public DateTime WeightInDate { get; set; }
         public int CurrentWeight { get; set; }
     }
 }
