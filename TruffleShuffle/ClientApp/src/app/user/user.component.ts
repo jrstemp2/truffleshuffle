@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../interfaces/user';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -12,19 +12,18 @@ import { UserService } from '../user.service';
 /** user component*/
 export class UserComponent {
     /** user ctor */
-  constructor(private UserData: UserService) { }
+  constructor(private userData: UserService) { }
 
   user: User;
   currentWeight: number;
 
   ngOnInit() {
-    // Mock Data
-    this.user = { //TODO: need to change to use API
-      id: 1,
-      userName: 'Goonies4Life',
-      displayName: 'Chunk',
-      weightLossGoal: 200,
-    }
+    this.userData.getUserByID(1).subscribe(
+      (data: User) => {
+        this.user = { ...data };
+      },
+      error => console.error(error)
+    );
 
     // TODO: add service to pull last weight
     // Mock Data

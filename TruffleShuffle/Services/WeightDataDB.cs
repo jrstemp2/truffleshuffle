@@ -83,7 +83,7 @@ namespace TruffleShuffle.Services
         {
             string command = "Select * from Weights ";
             command += "where UserID = @UserID ";
-            command += "order by DateTime DESC";
+            command += "order by WeightInDate DESC";
 
             IEnumerable<WeightRecord> result = null;
             using (var conn = new SqlConnection(connString))
