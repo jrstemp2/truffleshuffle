@@ -50,5 +50,24 @@ namespace TruffleShuffle.Controllers
             return userData.AddUser(u);
         }
 
+
+
+        [HttpPut("updateuser/{id}")]
+        public object UpdateWeightLossGoal(User u)
+        {
+            int result = userData.UpdateUser(u);
+
+            if (result == 1)
+            {
+                return new { Success = true, Message = "User updated" };
+            }
+            else
+            {
+                return new { Success = false, Message = "Something went wrong, user did not update" };
+            }
+        }
+
+
+
     }
 }
