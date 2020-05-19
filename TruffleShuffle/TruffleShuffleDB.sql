@@ -34,3 +34,25 @@ VALUES
 ('1','4/1/2020','230'),
 ('1','5/1/2020','210');
 GO
+CREATE TABLE Recipes(
+    ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+    Title nvarchar(45) NOT NULL,
+    Ingredients nvarchar(300) NOT NULL,
+    CookingInstructions nvarchar(350) NOT NULL,
+    TotalCalories int NOT NULL,
+    Category nvarchar(45) NOT NULL,
+    FoodImage nvarchar(100)
+);
+GO
+INSERT INTO Recipes (Title, Ingredients, CookingInstructions, TotalCalories, Category)
+VALUES('Scrambled Eggs', 'Eggs, Salt, Pepper', 'Scrable the eggs and add sal and pepper to taste', 90, 'Breakfast');
+GO
+CREATE TABLE RecipeFavorites (
+    ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+    UserID int Foreign KEY REFERENCES Users(ID),
+    RecipeID int Foreign KEY REFERENCES Recipes(ID),
+    
+);
+GO
+INSERT INTO RecipeFavorites (UserID, RecipeID)
+VALUES(1, 1)
