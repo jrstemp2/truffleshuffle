@@ -14,19 +14,16 @@ export class UserComponent {
     /** user ctor */
   constructor(private UserData: UserService) { }
 
-  users: User[];
-
-  loadPage() {
-    this.UserData.getUsers().subscribe(
-      (data: User[]) => {
-        this.users = data;
-      },
-      error => console.error(error)
-    );
-  }
+  user: User;
 
   ngOnInit() {
-    this.loadPage();
+    // Mock Data
+    this.user = { //TODO: need to change to use API
+      id: 1,
+      userName: 'Goonies4Life',
+      displayName: 'Chunk',
+      weightLossGoal: 200,
+    }
   }
 
 
