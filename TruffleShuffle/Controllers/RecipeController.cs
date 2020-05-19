@@ -33,5 +33,22 @@ namespace TruffleShuffle.Controllers
         {
             return recipeData.GetAllRecipes();
         }
+
+        [HttpGet("Category/{cat}")]
+        public IEnumerable<Recipe> GetAllRecipesByCategory(string cat)
+        {
+            return recipeData.GetAllRecipesByCategory(cat);
+        }
+        [HttpGet("{id}")]
+        public Recipe GetAllRecipeByID(int id)
+        {
+            return recipeData.GetRecipeByID(id);
+        }
+
+        [HttpDelete("{id}")]
+        public int DeleteRecipe(int id)
+        {
+            return recipeData.DeleteRecipeByID(id);
+        }
     }
 }

@@ -14,7 +14,6 @@ namespace TruffleShuffle.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-
         private readonly IUserData userData;
 
         public UserController(IUserData userData)
