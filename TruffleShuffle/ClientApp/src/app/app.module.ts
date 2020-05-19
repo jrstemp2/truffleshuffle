@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { WeightRecordComponent } from './weight-record/weight-record.component';
 import { NewWeightComponent } from './new-weight/new-weight.component';
+import { WeightRecordsListComponent } from './weight-records-list/weight-records-list.component';
 
 import { UserService } from './user.service';
 import { WeightService } from './weight.service';
@@ -23,6 +24,7 @@ import { WeightService } from './weight.service';
     UserComponent,
     WeightRecordComponent,
     NewWeightComponent,
+    WeightRecordsListComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

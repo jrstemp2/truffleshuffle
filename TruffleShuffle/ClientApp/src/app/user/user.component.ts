@@ -15,6 +15,7 @@ export class UserComponent {
   constructor(private UserData: UserService) { }
 
   user: User;
+  currentWeight: number;
 
   ngOnInit() {
     // Mock Data
@@ -23,6 +24,18 @@ export class UserComponent {
       userName: 'Goonies4Life',
       displayName: 'Chunk',
       weightLossGoal: 200,
+    }
+
+    // TODO: add service to pull last weight
+    // Mock Data
+    this.currentWeight = 240; 
+  }
+
+  getWeightToGoal() {
+    if (this.currentWeight < this.user.weightLossGoal) {
+      return 0;
+    } else {
+      return this.currentWeight - this.user.weightLossGoal;
     }
   }
 
