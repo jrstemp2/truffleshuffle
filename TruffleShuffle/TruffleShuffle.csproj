@@ -26,6 +26,18 @@
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\interfaces\joinedRF.ts" />
+    <None Remove="ClientApp\src\app\interfaces\recipe.ts" />
+    <None Remove="ClientApp\src\app\interfaces\recipeFavorite.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\joinedRF.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\recipeFavorite.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\recipe.ts" />
+  </ItemGroup>
+
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
