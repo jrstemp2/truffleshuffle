@@ -17,6 +17,9 @@ export class UserComponent {
 
   user: User;
   currentWeight: number;
+  startWeight: number;
+  percent: number;
+  goalProgress: number;
 
   ngOnInit() {
     this.userData.getUserByID(1).subscribe(
@@ -32,6 +35,14 @@ export class UserComponent {
     },
       error => console.error(error)
     );
+
+    this.weightData.GetOldestWeightRecord(1).subscribe(
+      (data: WeightRecord) => {
+        this.startWeight = data.currentWeight;
+      },
+      error => console.error(error)
+    );
+    this.percent = this.getWeightPercentCSS();
   }
 
   getWeightToGoal() {
@@ -41,6 +52,23 @@ export class UserComponent {
       return this.currentWeight - this.user.weightLossGoal;
     }
   }
+
+  getCurrentWeight() {
+    return this.currentWeight;
+  }
+  getGoalProgress() {
+    return this.currentWeight - this.user.weightLossGoal;
+  }
+  startingGoal() {
+    return this.startWeight - this.user.weightLossGoal;
+  }
+
+  getWeightPercent() {
+    return Math.round((this.getGoalProgress() / this.startingGoal()*100));
+  }
+  getWeightPercentCSS() {
+    return (360 * this.getWeightPercent()) / 100;
+}
 
 
 }

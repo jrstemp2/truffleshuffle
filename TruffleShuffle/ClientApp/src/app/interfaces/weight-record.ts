@@ -3,4 +3,6 @@ export interface WeightRecord {
   userId: number;
   weightInDate: Date;
   currentWeight: number;
+  startWeight: number;
+  percent: number;
 }

@@ -13,4 +13,7 @@ export class WeightService {
   getNewestWeightOfUserByID(id: number) {
     return this.http.get<WeightRecord>(`api/weightrecord/newest/${id}`);
   }
+  GetOldestWeightRecord(id: number) {
+    return this.http.get<WeightRecord>(`api/weightrecord/oldest/${id}`);
+  }
 }
