@@ -6,6 +6,10 @@ import { WeightRecord } from '../interfaces/weight-record';
 export class WeightService {
   constructor(private http: HttpClient) { }
 
+  addWeightToDB(weightData: WeightRecord) {
+    return this.http.post<WeightRecord>('/api/weightrecord', weightData);
+  }
+
   getWeightsOfUserByID(id: number) {
     return this.http.get<WeightRecord[]>(`/api/weightrecord/${id}`);
   }

@@ -1,5 +1,6 @@
 import { Component, Output } from '@angular/core';
 import { WeightRecord } from '../interfaces/weight-record';
+import { WeightService } from '../services/weight.service';
 
 @Component({
     selector: 'app-new-weight',
@@ -8,8 +9,11 @@ import { WeightRecord } from '../interfaces/weight-record';
 })
 /** new-weight component*/
 export class NewWeightComponent {
-  newRecord: WeightRecord;
+  userID: number;
+  weightInDate: Date;
+  currentWeight: number;
 
+<<<<<<< HEAD
     /** new-weight ctor */
   constructor() {
     //this.newRecord = {
@@ -21,7 +25,21 @@ export class NewWeightComponent {
   }
 
   submitWeight() {
+=======
+  constructor(private weightData: WeightService) {}
+  //id: number;
+  //userId: number;
+  //weightInDate: Date;
+  //currentWeight: number;
+  submitWeight() {
+    this.weightData.addWeightToDB({
+      id:0,
+      userId: 1,
+      weightInDate: new Date(),
+      currentWeight: this.currentWeight
+>>>>>>> a5f414bf83d48bea137d3e997031e00a959876da
 
-    console.log(this.newRecord); //TODO: send to weightDataService
+    }).subscribe(
+      (data: object) => console.log(data), error => console.error(error));
   }
 }
