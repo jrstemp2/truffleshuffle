@@ -11,10 +11,16 @@ import { UserComponent } from './user/user.component';
 import { WeightRecordComponent } from './weight-record/weight-record.component';
 import { NewWeightComponent } from './new-weight/new-weight.component';
 import { WeightRecordsListComponent } from './weight-records-list/weight-records-list.component';
+import { RecipeComponent } from './recipe/recipe.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { RecipeFavoriteComponent } from './recipe-favorite/recipe-favorite.component';
 
 
 import { UserService } from './services/user.service';
 import { WeightService } from './services/weight.service';
+import { RecipeService } from './services/recipe.service';
+import { RecipeFavoriteService } from './services/recipe-favorite.service';
+
 
 
 @NgModule({
@@ -26,6 +32,9 @@ import { WeightService } from './services/weight.service';
     WeightRecordComponent,
     NewWeightComponent,
     WeightRecordsListComponent,
+    RecipeComponent,
+    RecipeDetailsComponent,
+    RecipeFavoriteComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,10 +42,13 @@ import { WeightService } from './services/weight.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: UserComponent, pathMatch: 'full' },
+      { path: 'recipe', component: RecipeComponent },
+      { path: 'recipe/:id', component: RecipeDetailsComponent },
+      { path: 'recipefavorite/:id', component: RecipeFavoriteComponent },
       
     ])
   ],
-  providers: [UserService, WeightService],
+  providers: [UserService, WeightService, RecipeService, RecipeFavoriteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
