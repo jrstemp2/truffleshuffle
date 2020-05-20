@@ -9,9 +9,9 @@
   <p>{{recipe.cookingInstructions}}</p>
 </div>
 <div>
-  <button>Add To Favorites</button>
+  <button (click)="addToFavorite(recipe.id)">Add To Favorites</button>
 </div>
 <br />
 <div>
-  <button>Back To Recipes</button>
+  <button [routerLink] ="['/recipe']">Back To Recipes</button>
 </div>

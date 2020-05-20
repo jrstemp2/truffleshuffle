@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
+import { RecipeFavorite } from '../interfaces/recipefavorite';
+import { RecipeFavoriteService } from '../services/recipe-favorite.service';
 
 import { Recipe } from '../interfaces/recipe';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 /** recipeDetails component*/
 export class RecipeDetailsComponent {
     /** recipeDetails ctor */
-  constructor(private recipeData: RecipeService, private route: ActivatedRoute) { }
+  constructor(private recipeData: RecipeService, private recipeFavoriteData: RecipeFavoriteService, private route: ActivatedRoute) { }
   @Input() ref: string;
   recipe: Recipe;
   id: number;
@@ -34,6 +36,13 @@ export class RecipeDetailsComponent {
 
   ngOnInit() {
     this.loadPage();
+  }
+
+  addToFavorite(id:number) {
+    this.recipeFavoriteData.addToFavorite(id).subscribe(
+      (data: any) => console.log('success! ' + id), //TODO: change the button
+      error => console.error(error)
+    )
   }
 
   

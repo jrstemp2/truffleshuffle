@@ -12,12 +12,12 @@ export class NewWeightComponent {
 
     /** new-weight ctor */
   constructor() {
-    this.newRecord = {
-      id: 0,
-      userId: 1,
-      weightInDate: new Date(),
-      currentWeight: 0,
-    }
+    //this.newRecord = {
+    //  id: 0,
+    //  userId: 1,
+    //  weightInDate: new Date(),
+    //  currentWeight: 0,
+    //}
   }
 
   submitWeight() {

@@ -1,6 +1,50 @@
 <h1>Recipes</h1>
 
+<button class="addButton" (click)="showAddRecipeForm()">Add a Recipe</button>
+<div [hidden]="!showAddRecipeButton">
+  <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle"/>
+  <br />
+  <label>Category: </label><br />
+  <select [(ngModel)]="newCategory">
+    <option>
+      Breakfast
+    </option>
+    <option>
+      Lunch
+    </option>
+    <option>
+      Dinner
+    </option>
+    <option>
+      Desert
+    </option>
+    <option>
+      Beverage
+    </option>
+    <option>
+      Snack
+    </option>
+  </select>
+  <br />
+  <label>Ingredients: </label><br /><textarea [(ngModel)]="newIngredients"></textarea>
+  <br />
+  <label>Cooking Instructions: </label><br /><textarea [(ngModel)]="newCookingInstructions"></textarea>
+  <br />
+  <label>URL to Photo</label><br />
 
+  <select [(ngModel)]="showFoodImage">
+    <option>No</option>
+    <option>Yes</option>
+  </select>
+  <br />
+
+  <div *ngIf="newFoodImage === 'Yes'">
+    <label>URL: </label><br /><input type="text" [(ngModel)]="newFoodImage" />
+  </div>
+
+  <br />
+  <button (click)="addNewRecipe()">Add Recipe</button>
+</div>
 <table>
   <tr *ngFor="let recipe of recipes">
     <td>
@@ -10,7 +54,7 @@
       {{recipe.category}}
     </td>
     <td>
-      <button>View Recipe</button>
+      <button [routerLink]="['/recipe', recipe.id]">View Recipe</button>
     </td>
   </tr>
 </table>

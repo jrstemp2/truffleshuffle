@@ -13,4 +13,14 @@ export class RecipeFavoriteService {
   getFavoritesByUserID(id:number) {
     return this.http.get<JoinedRF[]>(`/api/favorites/${id}`);
   }
+
+  addToFavorite(recipeID: number) {
+
+    let favRecipe: RecipeFavorite = {
+      id: 0,
+      userID: 1,
+      recipeID: recipeID
+    };
+    return this.http.post<RecipeFavorite>('/api/favorites', favRecipe);
+  }
 }
