@@ -39,6 +39,16 @@ export class RecipeFavoriteComponent {
     this.loadPage();
   }
 
+  deleteFavorite(id: number) {
+    //replace with name of delete cart item from service
+    this.recipeFavoriteData.deleteRecipe(id).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.loadPage();
+      },
+      error => console.error(error)
+    );
+  }
 
   
 }

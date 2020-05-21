@@ -23,4 +23,8 @@ export class RecipeFavoriteService {
     };
     return this.http.post<RecipeFavorite>('/api/favorites', favRecipe);
   }
+
+  deleteRecipe(id: number) {
+    return this.http.delete(`/api/favorites/${id}`);
+  }
 }
