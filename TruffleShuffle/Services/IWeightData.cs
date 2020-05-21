@@ -12,6 +12,7 @@ namespace TruffleShuffle.Services
         public WeightRecord AddWeightRecord(WeightRecord weightRecord);
         // Read
         public IEnumerable<WeightRecord> GetWeightRecordsByUserID(int UserID);
+        bool WeightRecordExistsforDate(WeightRecord weightRec);
         public WeightRecord GetOldestWeightRecord(int UserID);
         public WeightRecord GetNewestWeightRecord(int UserID);
         // Update
@@ -19,5 +20,6 @@ namespace TruffleShuffle.Services
 
         // Delete
         public int DeleteWeightRecordByID(int weightRecordID);
+        
     }
 }

@@ -1,1 +1,79 @@
-﻿
+
+img {
+  height: 300px;
+  width: 300px;
+  
+  transition: box-shadow 0.3s ease;
+  border: 3px solid #190198;
+  background: #f6f5ff;
+}
+
+tr td {
+  /*height:300px;
+    width:300px;*/
+  
+  padding: 10px 10px 10px 10px;
+  border-bottom:1px solid black;
+}
+
+
+
+.info {
+  font-size: 38px;
+  font-weight: bold;
+  color: #0017bd;
+}
+
+.buttonInfo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #0017bd;
+}
+
+.view {
+  height: 300px;
+  width: 300px;
+  transition: box-shadow 0.3s ease;
+  border: 3px solid #190198;
+  background: #f6f5ff;
+  
+}
+.view:hover {
+  box-shadow: 5px 5px 5px 5px;
+  
+}
+img:hover {
+  box-shadow: 5px 5px 5px 5px;
+}
+
+.view {
+  height: 300px;
+  width: 300px;
+  transition: box-shadow 0.3s ease;
+  border: 3px solid #190198;
+  background: #f6f5ff;
+}
+
+.view:hover {
+  box-shadow: 5px 5px 5px 5px;
+}
+
+.calories {
+  
+  height: 300px;
+  width: 300px;
+  transition: box-shadow 0.3s ease;
+  border: 3px solid #190198;
+  background: #f6f5ff;
+  text-align: center;
+  vertical-align:middle;
+
+  
+
+}
+
+
+
+.calories:hover {
+    box-shadow: 5px 5px 5px 5px;
+}

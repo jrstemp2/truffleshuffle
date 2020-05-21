@@ -49,6 +49,22 @@ namespace TruffleShuffle.Services
             return result;
         }
 
+        public bool WeightRecordExistsforDate(WeightRecord weightRec)
+        {
+            string command = "select top(1) * from Weights ";
+            command += "where UserID = @UserID and WeightInDate = @WeightInDate";
+
+
+            WeightRecord result = null;
+
+            using (var conn = new SqlConnection(connString))
+            {
+                result = conn.QueryFirstOrDefault<WeightRecord>(command, weightRec);
+            }
+
+            return result != null;
+        }
+
         public WeightRecord GetNewestWeightRecord(int UserID)
         {
             string command = "select top(1) * from Weights ";

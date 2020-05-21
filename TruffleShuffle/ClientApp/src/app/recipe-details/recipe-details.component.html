@@ -1,32 +1,35 @@
-<img src="{{recipe.image}}" /> IMAGE GOES HERE
-<h1>{{recipe.title}} : {{recipe.category}}</h1>
-<h3>{{recipe.totalCalories}} Calories</h3>
-<div>
-  <h3>Ingredients:</h3>
-  <p>{{recipe.ingredients}}</p>
-</div>
-<div>
-  <h3>CookingInstructions:</h3>
-  <p>{{recipe.cookingInstructions}}</p>
-</div>
-<div>
-  <button (click)="addToFavorite(recipe.id)">Add To Favorites</button>
+<div [hidden]="showUpdateForm">
+  <img src="{{recipe.image}}" /> IMAGE GOES HERE
+  <h1>{{recipe.title}} : {{recipe.category}}</h1>
+  <h3>{{recipe.totalCalories}} Calories</h3>
+  <div>
+    <h3>Ingredients:</h3>
+    <p>{{recipe.ingredients}}</p>
   </div>
-<br />
-<div>
-  <button [routerLink] ="['/recipe']">Back To Recipes</button>
+  <div>
+    <h3>CookingInstructions:</h3>
+    <p>{{recipe.cookingInstructions}}</p>
+  </div>
+  <div>
+    <button (click)="addToFavorite(recipe.id)">Add To Favorites</button>
+  </div>
+  <br />
+  <div>
+    <button [routerLink]="['/recipe']">Back To Recipes</button>
+  </div>
+  <div>
+    <button (click)="updateForm()">Edit Recipe</button>
+  </div>
 </div>
-<div>
-  <button (click)="updateForm()">Edit Recipe</button>
-</div>
+
 
 
 <div [hidden]="!showUpdateForm">
-  <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" value="{{recipe.title}}" />
+  <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="recipe.title"  />
   <br />
   <label>Category: </label><br />
 
-  <select [(ngModel)]="newCategory" value="{{recipe.category}}">
+  <select [(ngModel)]="recipe.category">
     <option>
       Breakfast
     </option>
@@ -48,11 +51,11 @@
   </select>
 
   <br />
-  <label>Ingredients: </label><br /><textarea  value="{{recipe.ingredients}}" [(ngModel)]="newIngredients"></textarea>
+  <label>Ingredients: </label><br /><textarea [(ngModel)]="recipe.ingredients"></textarea>
   <br />
-  <label>Cooking Instructions: </label><br /><textarea  value="{{recipe.cookingInstructions}}" [(ngModel)]="newCookingInstructions"></textarea>
+  <label>Cooking Instructions: </label><br /><textarea   [(ngModel)]="recipe.cookingInstructions"></textarea>
   <br />
-  <label>Total Calories</label><br /><input type="number" value="{{recipe.totalCalories}}" [(ngModel)]="newTotalCalories"/>
+  <label>Total Calories</label><br /><input type="number" [(ngModel)]="recipe.totalCalories" />
   <br />
 
   <label>Do You Have a URL to a Photo</label><br />
@@ -63,9 +66,11 @@
   <br />
 
   <div *ngIf="showFoodImage === 'Yes'">
-    <label>URL to Photo: </label><br /><input type="text" value="{{recipe.foodImage}}" [(ngModel)]="newFoodImage"/>
+    <label>URL to Photo: </label><br /><input type="text" [(ngModel)]="recipe.foodImage"/>
   </div>
 
   <br />
-  <button (click)="updateRecipeByID(recipe.id)">Update Recipe</button>
+  <button (click)="updateRecipeByID()">Update Recipe</button>
 </div>
+
+
