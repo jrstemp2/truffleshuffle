@@ -2,7 +2,7 @@
 
 <button class="addButton" (click)="showAddRecipeForm()">Add a Recipe</button>
 <div [hidden]="!showAddRecipeButton">
-  <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle"/>
+  <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" />
   <br />
   <label>Category: </label><br />
   <select [(ngModel)]="newCategory">
@@ -30,16 +30,18 @@
   <br />
   <label>Cooking Instructions: </label><br /><textarea [(ngModel)]="newCookingInstructions"></textarea>
   <br />
-  <label>URL to Photo</label><br />
+  <label>Total Calories</label><br /><input type="number" [(ngModel)]="newTotalCalories" />
+  <br />
 
+  <label>Do You Have a URL to a Photo</label><br />
   <select [(ngModel)]="showFoodImage">
     <option>No</option>
     <option>Yes</option>
   </select>
   <br />
 
-  <div *ngIf="newFoodImage === 'Yes'">
-    <label>URL: </label><br /><input type="text" [(ngModel)]="newFoodImage" />
+  <div *ngIf="showFoodImage === 'Yes'">
+    <label>URL to Photo: </label><br /><input type="text" [(ngModel)]="newFoodImage" />
   </div>
 
   <br />
@@ -56,6 +58,16 @@
     <td>
       <button [routerLink]="['/recipe', recipe.id]">View Recipe</button>
     </td>
+    <!--<td>   -- to use this please see noites in recipe.services. 
+      <button (click)="deleteRecipeByID(recipe.id)">Delete Recipe</button>
+    </td>-->
   </tr>
 </table>
+
+
+
+
+
+
+
 

@@ -1,5 +1,6 @@
 <img src="{{recipe.image}}" /> IMAGE GOES HERE
 <h1>{{recipe.title}} : {{recipe.category}}</h1>
+<h3>{{recipe.totalCalories}} Calories</h3>
 <div>
   <h3>Ingredients:</h3>
   <p>{{recipe.ingredients}}</p>
@@ -14,4 +15,57 @@
 <br />
 <div>
   <button [routerLink] ="['/recipe']">Back To Recipes</button>
+</div>
+<div>
+  <button (click)="updateForm()">Edit Recipe</button>
+</div>
+
+
+<div [hidden]="!showUpdateForm">
+  <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" value="{{recipe.title}}" />
+  <br />
+  <label>Category: </label><br />
+
+  <select [(ngModel)]="newCategory" value="{{recipe.category}}">
+    <option>
+      Breakfast
+    </option>
+    <option>
+      Lunch
+    </option>
+    <option>
+      Dinner
+    </option>
+    <option>
+      Desert
+    </option>
+    <option>
+      Beverage
+    </option>
+    <option>
+      Snack
+    </option>
+  </select>
+
+  <br />
+  <label>Ingredients: </label><br /><textarea  value="{{recipe.ingredients}}" [(ngModel)]="newIngredients"></textarea>
+  <br />
+  <label>Cooking Instructions: </label><br /><textarea  value="{{recipe.cookingInstructions}}" [(ngModel)]="newCookingInstructions"></textarea>
+  <br />
+  <label>Total Calories</label><br /><input type="number" value="{{recipe.totalCalories}}" [(ngModel)]="newTotalCalories"/>
+  <br />
+
+  <label>Do You Have a URL to a Photo</label><br />
+  <select [(ngModel)]="showFoodImage">
+    <option>No</option>
+    <option>Yes</option>
+  </select>
+  <br />
+
+  <div *ngIf="showFoodImage === 'Yes'">
+    <label>URL to Photo: </label><br /><input type="text" value="{{recipe.foodImage}}" [(ngModel)]="newFoodImage"/>
+  </div>
+
+  <br />
+  <button (click)="updateRecipeByID(recipe.id)">Update Recipe</button>
 </div>
