@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { WeightRecord } from '../interfaces/weight-record';
 import { WeightService } from '../services/weight.service';
+import { UserService } from '../services/user.service';
+import { User } from '../interfaces/user';
 
 @Component({
     selector: 'app-weight-records-list',
@@ -11,9 +13,10 @@ import { WeightService } from '../services/weight.service';
 export class WeightRecordsListComponent {
 
   weightRecords: WeightRecord[];
+  user: User;
 
     /** weight-records-list ctor */
-  constructor(private weightData: WeightService) { }
+  constructor(private weightData: WeightService, private userData: UserService) { }
 
   ngOnInit() {
     this.weightData.getWeightsOfUserByID(1).subscribe(
@@ -22,12 +25,17 @@ export class WeightRecordsListComponent {
       },
       error => console.error(error)
     );
+    this.userData.getUserByID(1).subscribe(
+      (data: User) => {
+        this.user = { ...data };
+      },
+      error => console.error(error)
+    );
 
   }
 
   displayDate(record: WeightRecord): string {
     let output: string = '';
-    //console.log(record);
     output += new Date(record.weightInDate).getMonth() + 1;
     output += '/';
     output += new Date(record.weightInDate).getDate() + 1;
@@ -36,5 +44,10 @@ export class WeightRecordsListComponent {
 
     return output;
   }
+
+  displayWeightLossGoal() {
+    return this.user.weightLossGoal;
+  }
+
 
 }

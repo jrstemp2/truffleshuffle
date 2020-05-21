@@ -55,11 +55,24 @@
     </td>
 
     <td>
-      <button class="view" [routerLink]="['/recipe', recipe.id]">View {{recipe.title}} Recipe</button>
+      <button class="view" [routerLink]="['/recipe', recipe.id]">
+        <div class="buttonInfo">
+          {{recipe.title}}
+        </div><br />
+        <i class="fas fa-book-open"></i><br />
+        <div class="buttonInfo">View Recipe</div>
+      </button>
+      
     </td>
 
     <td>
-      <div class="calories">{{recipe.totalCalories}}<br />Total Calories</div>
+      <div class="calories">
+       
+        <br /><h2 class="info">Total Calories</h2>
+        <br />
+        <i class="fas fa-utensils"></i>
+        <br /><h2 class="info">{{recipe.totalCalories}}</h2>
+      </div>
       
     </td>
   </tr>

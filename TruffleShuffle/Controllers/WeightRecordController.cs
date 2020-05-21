@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using TruffleShuffle.Models;
 using TruffleShuffle.Services;
 
@@ -21,9 +23,46 @@ namespace TruffleShuffle.Controllers
         }
 
         [HttpPost]
-        public WeightRecord AddWeightRecord(WeightRecord weightRec)
+        public object AddWeightRecord(WeightRecord weightRec)
         {
-            return weightData.AddWeightRecord(weightRec);
+            bool successfullyAdded = false;
+            string errorMessage = string.Empty;
+
+
+            if (weightRec.WeightInDate <= DateTime.Now && weightRec.WeightInDate > DateTime.UnixEpoch) // valid date
+            {
+                if (weightRec.CurrentWeight > 0) // valid weight
+                {
+                    weightRec.WeightInDate = weightRec.WeightInDate.Date; // trim off time part of date time
+                    if (!weightData.WeightRecordExistsforDate(weightRec))
+                    {
+                        try
+                        {
+                            weightData.AddWeightRecord(weightRec);
+                            successfullyAdded = true;
+                        }
+                        catch (Exception e)
+                        {
+                            errorMessage = e.Message;
+                        }
+                    }
+                    else
+                    {
+                        errorMessage = "Weight Exists for date";
+                    }
+
+                }
+                else
+                {
+                    errorMessage = "Weight must be a postive number";
+                }
+            } 
+            else
+            {
+                errorMessage = "Outside of valid date range. Must be between today and Jan 1 1970";
+            }
+
+            return new { success = successfullyAdded, errorMessage, data = weightRec };
         }
 
         [HttpGet("{id}")]

@@ -1,6 +1,7 @@
 import { Component, Output } from '@angular/core';
 import { WeightRecord } from '../interfaces/weight-record';
 import { WeightService } from '../services/weight.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-new-weight',
@@ -13,7 +14,7 @@ export class NewWeightComponent {
   weightInDate: Date;
   currentWeight: number;
 
-  constructor(private weightData: WeightService) {}
+  constructor(private weightData: WeightService, private route: ActivatedRoute, private router: Router) {}
   //id: number;
   //userId: number;
   //weightInDate: Date;
@@ -27,5 +28,6 @@ export class NewWeightComponent {
 
     }).subscribe(
       (data: object) => console.log(data), error => console.error(error));
+    this.router.navigate(['/']);
   }
 }
