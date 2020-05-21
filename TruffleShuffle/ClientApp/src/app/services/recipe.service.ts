@@ -19,6 +19,9 @@ export class RecipeService {
   }
 
   //update Recipe
+  deleteRecipe(id: number) {
+    return this.http.delete(`/api/recipe/${id}`);
+  }
 
   
 }

@@ -3,4 +3,5 @@
 <div *ngFor="let fav of favRecipes">
   <p>{{fav.title}}</p>
   <p>{{fav.id}}</p>
+  <button (click)="deleteFavorite(fav.id)">Delete Favorite</button>
 </div>
