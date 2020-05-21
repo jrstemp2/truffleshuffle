@@ -47,22 +47,26 @@
   <br />
   <button (click)="addNewRecipe()">Add Recipe</button>
 </div>
+
 <table>
   <tr *ngFor="let recipe of recipes">
     <td>
-      {{recipe.title}} :
+      <img src="{{recipe.foodImage}}" />
     </td>
+
     <td>
-      {{recipe.category}}
+      <button class="view" [routerLink]="['/recipe', recipe.id]">View {{recipe.title}} Recipe</button>
     </td>
+
     <td>
-      <button [routerLink]="['/recipe', recipe.id]">View Recipe</button>
+      <div class="calories">{{recipe.totalCalories}}<br />Total Calories</div>
+      
     </td>
-    <!--<td>   -- to use this please see noites in recipe.services. 
-      <button (click)="deleteRecipeByID(recipe.id)">Delete Recipe</button>
-    </td>-->
   </tr>
 </table>
+
+
+
 
 
 
