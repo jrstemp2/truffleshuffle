@@ -20,7 +20,7 @@ export class RecipeService {
     return this.http.get<Recipe>(`/api/recipe/${id}`);
   }
 
-<<<<<<< HEAD
+
   //update
   editRecipe(recipe: Recipe) {
     return this.http.put<Recipe>('/api/recipe', recipe);
@@ -31,13 +31,11 @@ export class RecipeService {
   //  return this.http.delete(`/api/recipe/${id}`);
   //}
 
-  
-=======
+
   //update Recipe
   deleteRecipe(id: number) {
     return this.http.delete(`/api/recipe/${id}`);
   }
->>>>>>> ba7542178ebc2713fc5c2fa55ca45fd435866422
 
   
 }
