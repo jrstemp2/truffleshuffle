@@ -5,6 +5,23 @@
     <h1>Welcome, {{ user.displayName }}</h1>
     <hr />
 
+    <div class="row">
+      <div class="col-md-8">
+        <app-weight-records-list></app-weight-records-list>
+      </div>
+      <div class="col-md-4">
+        <div class="widget-container center">
+          <h3 class="user-weight-head">LBS To Lose</h3>
+          <i class="fas fa-running"></i>
+          <h4>{{ getGoalProgress() }} LBS</h4>
+        </div>
+
+      </div>
+    </div>
+
+    <app-new-weight></app-new-weight>
+
+
     <div class="row widget-row">
       <div class="col-md-4">
         <div class="widget-container center">
@@ -36,14 +53,11 @@
       </div>
     </div>
     <hr />
-    test {{ getWeightPercentCSS() }}<br />
+    <!--test {{ getWeightPercentCSS() }}<br />-->
 
 
-    <div>
-      <app-new-weight></app-new-weight>
-    </div>
-    <app-weight-records-list></app-weight-records-list>
-    <app-recipe-details></app-recipe-details>
+
+
   </div>
 
 
