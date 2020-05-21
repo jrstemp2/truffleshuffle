@@ -9,6 +9,9 @@
       <li>Daily tips to keep you on track </li>
     </ul>
   </div>
+
+  <button class="addButton" (click)="showLoginForm()">Sign up</button>
+  <div [hidden]="!showAddRecipeButton"></div>
   <div class="logIn">
     <input type="text" [(ngModel)]="email" />
     <input type="text" [(ngModel)]="password" />

@@ -33,4 +33,13 @@ export class HomeComponent {
 
   }
 
+  showLoginForm() {
+    if (this.showAddRecipeButton === false) {
+      this.showAddRecipeButton = true;
+    }
+    else {
+      this.showAddRecipeButton = false;
+    }
+  }
+
 }
