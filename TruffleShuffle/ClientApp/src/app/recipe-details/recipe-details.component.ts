@@ -45,6 +45,7 @@ export class RecipeDetailsComponent {
     )
   }
 
+<<<<<<< HEAD
   //----------------------EDIT-------------------------------------
   newRecipe: Recipe;
   newTitle: string = "";
@@ -101,4 +102,6 @@ export class RecipeDetailsComponent {
     
 
 
+=======
+>>>>>>> ba7542178ebc2713fc5c2fa55ca45fd435866422
 }
