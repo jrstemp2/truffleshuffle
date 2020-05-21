@@ -42,6 +42,7 @@ import { RecipeFavoriteService } from './services/recipe-favorite.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: UserComponent, pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
       { path: 'recipe', component: RecipeComponent },
       { path: 'recipe/:id', component: RecipeDetailsComponent },
       { path: 'recipefavorite/:id', component: RecipeFavoriteComponent },
