@@ -49,5 +49,11 @@ i.fas {
   background: #f6f5ff;
   box-shadow: 8px 6px 10px #000;
 }
-
+h1.user-title {
+  background: #0017bd;
+  color: #fff;
+  padding: 15px 15px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
 

@@ -1,13 +1,16 @@
 <div *ngIf="user">
 
   <div class="container">
-
-    <h1>Welcome, {{ user.displayName }}</h1>
+    <div class="user-container">
+    <h1 class="user-title">Welcome, {{ user.displayName }}</h1>
     <hr />
 
     <div class="row">
       <div class="col-md-8">
-        <app-weight-records-list></app-weight-records-list>
+        
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
       </div>
       <div class="col-md-4">
         <div class="widget-container center">
@@ -18,9 +21,10 @@
 
       </div>
     </div>
+    <hr />
 
     <app-new-weight></app-new-weight>
-
+    <app-weight-records-list></app-weight-records-list>
 
     <div class="row widget-row">
       <div class="col-md-4">
@@ -60,7 +64,7 @@
 
   </div>
 
-
+    </div>
 
 
 </div>
