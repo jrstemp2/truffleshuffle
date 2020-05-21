@@ -1,7 +1,45 @@
 <div class="container">
-  <h2>Weight History</h2>
-  <div *ngFor="let record of weightRecords">
-    {{ displayDate(record) }} | {{ record.currentWeight }}
-    <hr />
+  <h2 class="table-title">Recent Weight History</h2>
+
+  <div class="user-table">
+    <div class="table-head">
+      <div class="table-col row">
+        <div class="col-md-3">
+          <div class="head-cols">Weigh In Date</div>
+          </div>
+        <div class="col-md-3">
+          <div class="head-cols">Weight</div>
+          </div>
+        <div class="col-md-3">
+          <div class="head-cols">Weight Goal</div>
+          </div>
+        <div class="col-md-3">
+          <div class="head-cols">LBS To Goal</div>
+          </div>
+      </div>
+    </div>
+
+    <div *ngFor="let record of ( weightRecords | slice:weightRecords.length - 5);">
+
+      <div class="table-col row">
+        <div class="col-md-3">
+          <div class="table-item">{{ displayDate(record) }}</div>
+        </div>
+        <div class="col-md-3">
+          <div class="table-item">{{ record.currentWeight }}</div>
+        </div>
+        <div class="col-md-3">
+          <div class="table-item">{{ displayWeightLossGoal() }} </div>
+        </div>
+        <div class="col-md-3">
+          <div class="table-item">{{ record.currentWeight - displayWeightLossGoal() }}</div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
   </div>
 </div>

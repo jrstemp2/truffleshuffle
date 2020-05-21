@@ -1,4 +1,8 @@
-<div class="add-weight-form">
-  <input type="number" [(ngModel)]="currentWeight" />
-  <input type="button" value="Submit new weight" (click)="submitWeight()" />
+<div class="widget-container center">
+  <div class="add-weight-form">
+    <h3 class="user-weight-head">Update Weight</h3>
+    <i class="fas fa-edit"></i>
+    <input type="number" [(ngModel)]="currentWeight" />
+    <input type="button" value="UPDATE" (click)="submitWeight()" class="button" />
+  </div>
 </div>
