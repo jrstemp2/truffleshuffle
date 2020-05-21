@@ -46,13 +46,13 @@ export class RecipeDetailsComponent {
   }
 
   //----------------------EDIT-------------------------------------
-  newRecipe: Recipe;
-  newTitle: string = "";
-  newIngredients: string = "";
-  newCookingInstructions: string = "";
-  newTotalCalories: number = 0;
-  newCategory: string = "";
-  newFoodImage: string = "";
+  //newRecipe: Recipe;
+  //newTitle: string = "";
+  //newIngredients: string = "";
+  //newCookingInstructions: string = "";
+  //newTotalCalories: number = 0;
+  //newCategory: string = "";
+  //newFoodImage: string = "";
   showFoodImage: string = "";
 
   showUpdateForm: boolean = false;
@@ -68,35 +68,16 @@ export class RecipeDetailsComponent {
     
   }
 
-  updateRecipeByID(id:number) {
-    this.recipeData.editRecipe({
-      id: id,
-      title: this.newTitle,
-      ingredients: this.newIngredients,
-      cookingInstructions: this.newCookingInstructions,
-      totalCalories: this.newTotalCalories,
-      category: this.newCategory,
-      foodImage: this.newFoodImage
-    } as Recipe).subscribe(
-      data => this.loadPage(),
+  updateRecipeByID() {
+    this.recipeData.editRecipe(this.recipe).subscribe(
+      data => { this.loadPage(); console.log(data)},
       error => console.error(error)
     );
     this.showUpdateForm = false;
-    
-
-    
-  
 
   }
 
-  clearForm() {
-    this.newTitle = "";
-    this.newIngredients = "";
-    this.newCookingInstructions = "";
-    this.newTotalCalories = 0;
-    this.newCategory = "";
-    this.newFoodImage = "";
-  }
+
  
     
 
