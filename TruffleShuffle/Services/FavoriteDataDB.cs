@@ -23,8 +23,8 @@ namespace TruffleShuffle.Services
             int result = 0;
             using (var conn = new SqlConnection(connstring))
             {
-                string command = "INSERT INTO RecipeFavorites ( UserId, RecipeId) ";
-                command += "VALUES ((SELECT ID from users wHERE user.Id = @UserId), (SELECT ID from Recipes WHERE recipes.ID = @RecipeId, ))";
+                string command = "INSERT INTO RecipeFavorites (UserId, RecipeId) ";
+                command += "VALUES (@UserId, @RecipeId)";
 
                 result = conn.Execute(command, recipeFavorite);
             }

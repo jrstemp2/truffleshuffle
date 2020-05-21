@@ -26,7 +26,7 @@ namespace TruffleShuffle.Controllers
             return favoriteData.ShowFavoritesById(id);
         }
 
-        [HttpPost("{id}")]
+        [HttpPost]
         public int AddToFavorites(RecipeFavorite recipeFavorite)
         {
             return favoriteData.AddToFavorites(recipeFavorite);
