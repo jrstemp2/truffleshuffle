@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { WeightService } from '../services/weight.service';
 import { WeightRecord } from '../interfaces/weight-record';
-//import { Chart } from 'chart.js';
+import { Chart } from 'chart.js';
 
 @Component({
     selector: 'app-user',
