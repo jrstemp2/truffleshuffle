@@ -1,0 +1,16 @@
+<div class="row">
+  <div *ngFor="let fav of ( favRecipes| slice:favRecipes.length - 3);" class="col-md-4">
+
+      <div class="user-fav-container">
+        <div class="fav-image-container">
+          <img src="{{fav.foodImage}}" alt="favorite food" />
+        </div>
+        <h3>{{fav.title}}</h3>
+        <p>Calories: {{fav.totalCalories}}</p>
+        <a href="/favorite-recipe/{{fav.id}}" class="dark-button">View Recipe</a> 
+      </div>
+
+
+  </div>
+
+</div>

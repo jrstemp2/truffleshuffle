@@ -20,6 +20,7 @@ import { UserService } from './services/user.service';
 import { WeightService } from './services/weight.service';
 import { RecipeService } from './services/recipe.service';
 import { RecipeFavoriteService } from './services/recipe-favorite.service';
+import { UserFavoriteComponent } from './user-favorite/user-favorite.component';
 
 
 
@@ -36,6 +37,7 @@ import { RecipeFavoriteService } from './services/recipe-favorite.service';
     RecipeComponent,
     RecipeDetailsComponent,
     RecipeFavoriteComponent,
+    UserFavoriteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,6 +45,7 @@ import { RecipeFavoriteService } from './services/recipe-favorite.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: UserComponent, pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
       { path: 'recipe', component: RecipeComponent },
       { path: 'recipe/:id', component: RecipeDetailsComponent },
       { path: 'recipefavorite/:id', component: RecipeFavoriteComponent },
