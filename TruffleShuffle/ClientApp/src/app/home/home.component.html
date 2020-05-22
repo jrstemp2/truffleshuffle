@@ -10,14 +10,27 @@
     </ul>
   </div>
 
-  <button class="addButton" (click)="showLoginForm()">Sign up</button>
-  <div [hidden]="!showAddRecipeButton"></div>
-  <div class="logIn">
-    <input type="text" [(ngModel)]="email" />
-    <input type="text" [(ngModel)]="password" />
-    <input type="button" value="Log In" (click)="login()" />
-  </div>
+
   <div>
+    <button class="addButton" (click)="showLoginForm()">Sign up</button>
+    <!--username,userpassword,displayname,weightlossgoal-->
+    <div [hidden]="!showSignIn">
+      <input type="text" [(ngModel)]="newUserEmail" value="Input email"/>
+      <input type="text" [(ngModel)]="newUserPassword" value="Input password"/>
+      <input type="text" [(ngModel)]="displayName" value=""/>
+      <input type="text" [(ngModel)]="weightLossGoal" value=""/>
+
+      <input type="button" value="Sign Up" (click)="signup()" />
+    </div>
+
+    <div class="logIn">
+      <input type="text" [(ngModel)]="email" />
+      <input type="text" [(ngModel)]="password" />
+      <input type="button" value="Log In" (click)="login()" />
+    </div>
+  </div>
+
+    <div>
     <h2>Hottest Recipes</h2>
     <hr />
     <ul *ngFor="let r of recipes" style="list-style: none;">

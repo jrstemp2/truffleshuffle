@@ -32,13 +32,18 @@ export class HomeComponent {
     userPassword: this.user.userName
 
   }
+  signup() {
+
+  }
+
+  showSignIn: boolean = false;
 
   showLoginForm() {
-    if (this.showAddRecipeButton === false) {
-      this.showAddRecipeButton = true;
+    if (this.showSignIn === false) {
+      this.showSignIn = true;
     }
     else {
-      this.showAddRecipeButton = false;
+      this.showSignIn = false;
     }
   }
 
