@@ -1,26 +1,87 @@
-<div [hidden]="showUpdateForm">
-  <img src="{{recipe.image}}" /> IMAGE GOES HERE
-  <h1>{{recipe.title}} : {{recipe.category}}</h1>
-  <h3>{{recipe.totalCalories}} Calories</h3>
-  <div>
-    <h3>Ingredients:</h3>
-    <p>{{recipe.ingredients}}</p>
+
+  <div [hidden]="showUpdateForm" class="all" >
+
+    <div class="container">
+      <div class="user-container">
+        <h1 class="user-title">{{recipe.title}} : {{recipe.category}}</h1>
+        <hr />
+      </div>
+    </div>
+
+    <div class="ingredientsandcooking">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="container">
+            <img src="{{recipe.foodImage}}">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="container">
+            <div class="user-container">
+              <h3 class="user-title">The More You Know!</h3>
+              <hr />
+              <p>Prep Time: </p>
+              <p>{{recipe.totalCalories}}</p>
+            </div>
+            <hr />
+            <div class="user-container">
+              <h3 class="user-title">Let's Take Action!</h3>
+              <hr />
+              <table>
+                <tr>
+                  <td>
+                    <button [routerLink]="['/recipe']">Back To Recipes</button>
+                  </td>
+                  <td>
+                    <button (click)="addToFavorite(recipe.id)">Add To Favorites</button>
+                  </td>
+                  <td>
+                    <button (click)="updateForm()">Edit Recipe</button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <hr />
+    <div class="ingredientsandcooking">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="container">
+            <div class="user-container">
+              <h3 class="user-title">What You Need</h3>
+              <hr />
+              <p>{{recipe.ingredients}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="container">
+            <div class="user-container">
+              <h3 class="user-title">How To Make It</h3>
+              <hr />
+              <p>{{recipe.ingredients}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <h3>CookingInstructions:</h3>
-    <p>{{recipe.cookingInstructions}}</p>
-  </div>
-  <div>
-    <button (click)="addToFavorite(recipe.id)">Add To Favorites</button>
-  </div>
-  <br />
-  <div>
-    <button [routerLink]="['/recipe']">Back To Recipes</button>
-  </div>
-  <div>
-    <button (click)="updateForm()">Edit Recipe</button>
-  </div>
-</div>
+<hr />
+
+
+
+
+
+
+
+  
+
 
 
 

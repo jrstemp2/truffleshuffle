@@ -1,103 +1,98 @@
-<h1>Recipes</h1>
-
-<button class="addButton" (click)="showAddRecipeForm()">Add a Recipe</button>
-<div [hidden]="!showAddRecipeButton">
-  <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" />
-  <br />
-  <label>Category: </label><br />
-  <select [(ngModel)]="newCategory">
-    <option>
-      Breakfast
-    </option>
-    <option>
-      Lunch
-    </option>
-    <option>
-      Dinner
-    </option>
-    <option>
-      Desert
-    </option>
-    <option>
-      Beverage
-    </option>
-    <option>
-      Snack
-    </option>
-  </select>
-  <br />
-  <label>Ingredients: </label><br /><textarea [(ngModel)]="newIngredients"></textarea>
-  <br />
-  <label>Cooking Instructions: </label><br /><textarea [(ngModel)]="newCookingInstructions"></textarea>
-  <br />
-  <label>Total Calories</label><br /><input type="number" [(ngModel)]="newTotalCalories" />
-  <br />
-
-  <label>Do You Have a URL to a Photo</label><br />
-  <select [(ngModel)]="showFoodImage">
-    <option>No</option>
-    <option>Yes</option>
-  </select>
-  <br />
-
-  <div *ngIf="showFoodImage === 'Yes'">
-    <label>URL to Photo: </label><br /><input type="text" [(ngModel)]="newFoodImage" />
+<div class="container">
+  <div class="user-container">
+    <h1 class="user-title">Recipes</h1>
+    <hr />
   </div>
-
-  <br />
-  <button (click)="addNewRecipe()">Add Recipe</button>
 </div>
 
-<!--<table>
-  <tr *ngFor="let recipe of recipes">
-    <td>
-      <img src="{{recipe.foodImage}}" />
-    </td>
-    <td>
-      <button class="view" [routerLink]="['/recipe', recipe.id]">
-        <div class="buttonInfo">
-          {{recipe.title}}
-        </div><br />
-        <i class="fas fa-book-open"></i><br />
-        <div class="buttonInfo">View Recipe</div>
-      </button>
-      
-    </td>
-    <td>
-      <div class="calories">
-       
-        <br /><h2 class="info">Total Calories</h2>
-        <br />
-        <i class="fas fa-utensils"></i>
-        <br /><h2 class="info">{{recipe.totalCalories}}</h2>
+  <div class="stay">
+    <button class="favButton" (click)="showAddRecipeForm()">Go To Favorites</button>
+  </div>
+
+  <div class="stay">
+    <button class="addButton" (click)="showAddRecipeForm()">Add a Recipe</button>
+    <br />
+    <br />
+    <div [hidden]="!showAddRecipeButton" class="form">
+      <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" />
+      <br />
+      <label>Category: </label><br />
+      <select [(ngModel)]="newCategory">
+        <option>
+          Breakfast
+        </option>
+        <option>
+          Lunch
+        </option>
+        <option>
+          Dinner
+        </option>
+        <option>
+          Desert
+        </option>
+        <option>
+          Beverage
+        </option>
+        <option>
+          Snack
+        </option>
+      </select>
+      <br />
+      <label>Ingredients: </label><br /><textarea [(ngModel)]="newIngredients"></textarea>
+      <br />
+      <label>Cooking Instructions: </label><br /><textarea [(ngModel)]="newCookingInstructions"></textarea>
+      <br />
+      <label>Total Calories</label><br /><input type="number" [(ngModel)]="newTotalCalories" />
+      <br />
+
+      <label>Do You Have a URL to a Photo</label><br />
+      <select [(ngModel)]="showFoodImage">
+        <option>No</option>
+        <option>Yes</option>
+      </select>
+      <br />
+
+      <div *ngIf="showFoodImage === 'Yes'">
+        <label>URL to Photo: </label><br /><input type="text" [(ngModel)]="newFoodImage" />
       </div>
-    </td>
-  </tr>
-</table>
+
+      <br />
+      <button (click)="addNewRecipe()">Add Recipe</button>
+    </div>
+
+  </div>
 
 
-<p>
-  --------------------------------------------------------------------</p>-->
+  <table>
+    <tr *ngFor="let recipe of recipes">
+      <td>
+        <div class="reccontainer">
+          <img src="{{recipe.foodImage}}" alt="Avatar" class="image">
+          <div class="overlay">
+            <div class="text">{{recipe.title}}<br /><i class="fas fa-book-open"></i><br />{{recipe.totalCalories}} Total Calories</div>
+          </div>
 
-
-<table>
-  <tr *ngFor="let recipe of recipes">
-    <td>
-      
-      <div class="container">
-        <img src="{{recipe.foodImage}}" alt="Avatar" class="image">
-
-        <div class="overlay">
-          <div class="text">{{recipe.title}}</div>
         </div>
+      </td>
+      <td>
+        <button class="view" [routerLink]="['/recipe', recipe.id]">
+          <div class="buttonInfo">
+            {{recipe.title}}
+          </div><br />
+          <i class="fas fa-book-open"></i><br />
+          <div class="buttonInfo">View Recipe</div>
+        </button>
+      </td>
+      <!--<td>
+        <div class="calories">
 
-      </div>
-
-    </td>
-  </tr>
-</table>
-
-
-
+          <br /><h2 class="info">Total Calories</h2>
+          <br />
+          <i class="fas fa-utensils"></i>
+          <br /><h2 class="info">{{recipe.totalCalories}}</h2>
+        </div>
+      </td>-->
+    </tr>
+  </table>
 
 
