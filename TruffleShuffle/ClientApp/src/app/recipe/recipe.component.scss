@@ -8,9 +8,32 @@ img {
   background: #f6f5ff;
 }
 
+/*img:hover {
+  box-shadow: 5px 5px 5px 5px;
+  
+}*/
+
+.form{
+    float:left;
+}
+
+.stay {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+ 
+}
+
+
+table{
+    margin-left:auto;
+    margin-right:auto;
+    
+}
+
 tr td {
-  /*height:300px;
-    width:300px;*/
+  height:300px;
+  width:300px;
   
   padding: 10px 10px 10px 10px;
   border-bottom:1px solid black;
@@ -24,6 +47,8 @@ tr td {
   color: #0017bd;
 }
 
+
+//----------------------ViewRecipe Widget Button---------------------
 .buttonInfo {
   font-size: 30px;
   font-weight: bold;
@@ -42,24 +67,36 @@ tr td {
   box-shadow: 5px 5px 5px 5px;
   
 }
-img:hover {
-  box-shadow: 5px 5px 5px 5px;
-  opacity: 1;
-}
 
-.view {
-  height: 300px;
-  width: 300px;
-  transition: box-shadow 0.3s ease;
+//---------------------Add Button------------------------
+.addButton {
+  color: #0017bd;
+  float: left;
+  background-color: #f6f5ff;
   border: 3px solid #190198;
-  background: #f6f5ff;
+  position:absolute;
+  margin-left:15px;
+  
+  display: inline-block;
+  vertical-align:middle;
 }
 
-.view:hover {
-  box-shadow: 5px 5px 5px 5px;
+.favButton {
+  color: #0017bd;
+  float: right;
+  background-color: #f6f5ff;
+  border: 3px solid #190198;
+  //position: absolute;
+  margin-right: 15px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.calories {
+.addButton:hover {
+  box-shadow: black 2px 2px 2px 2px;
+}
+
+/*.calories {
   
   height: 300px;
   width: 300px;
@@ -68,47 +105,53 @@ img:hover {
   background: #f6f5ff;
   text-align: center;
   vertical-align:middle;
-
-  
-
 }
-
-
-
 .calories:hover {
-    box-shadow: 5px 5px 5px 5px;
-}
+  box-shadow: 5px 5px 5px 5px;
+}*/
 
-.container {
+
+
+
+//--------------------IMAGE TO TEXT TRANSITION-------------------------------------------
+
+.reccontainer {
   position: relative;
   width: 50%;
 }
 
 .image {
   display: block;
-  width: 100%;
+  height: 300px !important;
+  width: 300px;
   height: auto;
 }
 
 .overlay {
   position: absolute;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #008CBA;
-  overflow: hidden;
-  width: 0;
-  height: 100%;
+  height: 300px;
+  width: 300px;
+  opacity: 0;
   transition: .5s ease;
+  background-color: #f6f5ff;
+  border: 3px solid #190198;
+  box-shadow: 5px 5px 5px 5px;
 }
 
-.container:hover .overlay {
-  width: 100%;
+.reccontainer:hover .overlay {
+  opacity: 1;
 }
+
+
 
 .text {
-  color: white;
-  font-size: 20px;
+  color: #0017bd;
+  font-size: 30px;
+  font-weight: bold;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -116,4 +159,5 @@ img:hover {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   white-space: nowrap;
+  text-align:center;
 }
