@@ -14,8 +14,9 @@ export class HomeComponent {
 
   userName: string;
   displayName: string;
+  userPassword: string;
   weightLossGoal: number;
-  
+
 
   constructor(private recipeData: RecipeService,
     private userData: UserService) { }
@@ -23,7 +24,7 @@ export class HomeComponent {
   ngOnInit() {
     this.getAllRecipes();
   }
-    
+
   getAllRecipes() {
     this.recipeData.getAllRecipes().subscribe(
       (data: Recipe[]) => {
@@ -43,11 +44,12 @@ export class HomeComponent {
       id: 0,
       userName: this.userName,
       displayName: this.displayName,
+      userPassword:this.userPassword,
       weightLossGoal: this.weightLossGoal
     }).subscribe(
-      (data: object) => console.log(data), error => console.error(error));
-    
+      (data: User) => console.log(data), error => console.error(error));
   }
+
 
   showSignIn: boolean = false;
   showLognIn: boolean = false;
