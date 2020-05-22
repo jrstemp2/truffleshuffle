@@ -14,12 +14,20 @@ export class UserService {
     return this.http.post<User>('/api/User', user);
   }
 
+  
   signupNewUser(user: User) {
     return this.http.post<User>('/api/User/signup', user);
   }
 
+  // todo: implment this
   loginUser(user: User) {
-    this.http.post<User>('/api/User/login', user).subscribe(();
+    this.http.post<User>('/api/User/login', user).subscribe();
+    return false;
+  }
+
+  // todo: implment this
+  getCurrentUserID() {
+    return 1;
   }
 
 }
