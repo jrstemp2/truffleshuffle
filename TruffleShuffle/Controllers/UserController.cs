@@ -21,7 +21,12 @@ namespace TruffleShuffle.Controllers
             this.userData = userData;
         }
 
-
+        [HttpGet]
+        public IEnumerable<User> GetAllUsers()
+        {
+            IEnumerable<User> result = userData.GetAllUsers();
+            return result;
+        }
 
         // GET: api/User
         [HttpGet("{id}")]
