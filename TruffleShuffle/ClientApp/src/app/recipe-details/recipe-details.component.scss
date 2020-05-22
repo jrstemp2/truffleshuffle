@@ -2,7 +2,6 @@ img{
     height:300px;
     width:300px;
     text-align:center;
-    //margin-left:15px;
 }
 
 .info {
@@ -10,10 +9,6 @@ img{
   font-weight: bold;
   color: #0017bd;
 }
-
-/*table {
-  margin-left: 15px;
-}*/
 
 .calories {
   
@@ -29,22 +24,76 @@ img{
   box-shadow: 5px 5px 5px 5px;
 }
 
-div.row{
-    margin-left:15px;
-}
-
-
-
-
-.column {
-  float: left;
-  width: 50%;
-  
-}
 .row:after {
   content: "";
   display: table;
   clear: both;
   
+}
+
+.all {
+  
+  justify-content:center;
+  
+}
+.row{
+    justify-content:center;
+    margin:0 auto;
+}
+
+.button {
+  border-radius: 5px;
+  background: #0017bd;
+  color: #fff;
+  border: solid 3px #001082;
+}
+
+.button:hover {
+  background: #001082;
+  border: solid 3px #0017bd;
+  text-decoration: none;
+}
+
+
+
+.menuButton {
+  border-radius: 5px;
+  background: #f6f5ff;
+  color: #0017bd;
+  border: solid 3px #001082;
+  font-weight: bold;
+}
+
+.menuButton:hover {
+  background: #0017bd;
+  color: #f6f5ff;
+  border: solid 3px #0017bd;
+  text-decoration: none;
+}
+
+.menuButton2 {
+  border-radius: 5px;
+  background: #0017bd;
+  color: #f6f5ff;
+  border: solid 3px #001082;
+  font-weight: bold;
+}
+
+.menuButton2:hover {
+  background: #f6f5ff;
+  color: #0017bd;
+  border: solid 3px #0017bd;
+  text-decoration: none;
+}
+
+.update {
+  margin-left: 35%;
+  margin-right: 35%;
+  //width: 50%;
+}
+
+label {
+  color: #0017bd;
+  font-weight: bold;
 }
 

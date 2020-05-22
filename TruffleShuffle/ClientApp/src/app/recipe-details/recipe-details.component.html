@@ -1,6 +1,5 @@
 
-  <div [hidden]="showUpdateForm" class="all" >
-
+  <div [hidden]="showUpdateForm">
     <div class="container">
       <div class="user-container">
         <h1 class="user-title">{{recipe.title}} : {{recipe.category}}</h1>
@@ -8,71 +7,75 @@
       </div>
     </div>
 
-    <div class="ingredientsandcooking">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="container">
-            <img src="{{recipe.foodImage}}">
+    <div class="all">
+      <div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="container">
+              <img src="{{recipe.foodImage}}">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="container">
+              <div class="user-container">
+                <h4 class="user-title">The More You Know!</h4>
+                <hr />
+                <p><strong>Prep Time: </strong></p>
+                <p><strong>{{recipe.totalCalories}} Total Calories</strong></p>
+              </div>
+              <hr />
+              <div class="user-container">
+                <h4 class="user-title">Let's Take Action!</h4>
+                <hr />
+                <table>
+                  <tr>
+                    <td>
+                      <button [routerLink]="['/recipe']" class="menuButton">Back To Recipes</button>
+                    </td>
+                    <td>
+                      <button (click)="addToFavorite(recipe.id)" class="menuButton">Add To Favorites</button>
+                    </td>
+                    <td>
+                      <button (click)="updateForm()" class="menuButton">Edit Recipe</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="container">
-            <div class="user-container">
-              <h3 class="user-title">The More You Know!</h3>
-              <hr />
-              <p>Prep Time: </p>
-              <p>{{recipe.totalCalories}}</p>
+      </div>
+
+      <br />
+
+      <hr />
+      <div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="container">
+              <div class="user-container">
+                <h4 class="user-title">What You Need</h4>
+                <hr />
+                <p>{{recipe.ingredients}}</p>
+              </div>
             </div>
-            <hr />
-            <div class="user-container">
-              <h3 class="user-title">Let's Take Action!</h3>
-              <hr />
-              <table>
-                <tr>
-                  <td>
-                    <button [routerLink]="['/recipe']">Back To Recipes</button>
-                  </td>
-                  <td>
-                    <button (click)="addToFavorite(recipe.id)">Add To Favorites</button>
-                  </td>
-                  <td>
-                    <button (click)="updateForm()">Edit Recipe</button>
-                  </td>
-                </tr>
-              </table>
+          </div>
+          <div class="col-md-4">
+            <div class="container">
+              <div class="user-container">
+                <h4 class="user-title">How To Make It</h4>
+                <hr />
+                <p>{{recipe.ingredients}}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <br />
-
     <hr />
-    <div class="ingredientsandcooking">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="container">
-            <div class="user-container">
-              <h3 class="user-title">What You Need</h3>
-              <hr />
-              <p>{{recipe.ingredients}}</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="container">
-            <div class="user-container">
-              <h3 class="user-title">How To Make It</h3>
-              <hr />
-              <p>{{recipe.ingredients}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
-<hr />
+
+    
 
 
 
@@ -85,53 +88,62 @@
 
 
 
-<div [hidden]="!showUpdateForm">
-  <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="recipe.title"  />
-  <br />
-  <label>Category: </label><br />
+  <div [hidden]="!showUpdateForm" class="all">
+    <div class="container">
+      <div class="user-container">
+        <h1 class="user-title">Recipe Update Form</h1>
+        <hr />
+      </div>
+    </div>
 
-  <select [(ngModel)]="recipe.category">
-    <option>
-      Breakfast
-    </option>
-    <option>
-      Lunch
-    </option>
-    <option>
-      Dinner
-    </option>
-    <option>
-      Desert
-    </option>
-    <option>
-      Beverage
-    </option>
-    <option>
-      Snack
-    </option>
-  </select>
+    <div class="update">
+      <div class="updateForm">
+        <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="recipe.title" />
+        <br />
+        <label>Category: </label><br />
+        <select [(ngModel)]="recipe.category">
+          <option>
+            Breakfast
+          </option>
+          <option>
+            Lunch
+          </option>
+          <option>
+            Dinner
+          </option>
+          <option>
+            Desert
+          </option>
+          <option>
+            Beverage
+          </option>
+          <option>
+            Snack
+          </option>
+        </select>
+        <br />
+        <label>Ingredients: </label><br /><textarea [(ngModel)]="recipe.ingredients"></textarea>
+        <br />
+        <label>Cooking Instructions: </label><br /><textarea [(ngModel)]="recipe.cookingInstructions"></textarea>
+        <br />
+        <label>Total Calories</label><br /><input type="number" [(ngModel)]="recipe.totalCalories" />
+        <br />
+        <label>Do You Have a URL to a Photo</label><br />
+        <select [(ngModel)]="showFoodImage">
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+        <br />
+        <div *ngIf="showFoodImage === 'Yes'">
+          <label>URL to Photo: </label><br /><input type="text" [(ngModel)]="recipe.foodImage" />
+        </div>
+        <br />
+        <button (click)="updateRecipeByID()" class="menuButton2">Update Recipe</button> &nbsp; <button (click)="updateForm()" class="menuButton2">Cancel</button>
+      </div>
+      
 
-  <br />
-  <label>Ingredients: </label><br /><textarea [(ngModel)]="recipe.ingredients"></textarea>
-  <br />
-  <label>Cooking Instructions: </label><br /><textarea   [(ngModel)]="recipe.cookingInstructions"></textarea>
-  <br />
-  <label>Total Calories</label><br /><input type="number" [(ngModel)]="recipe.totalCalories" />
-  <br />
-
-  <label>Do You Have a URL to a Photo</label><br />
-  <select [(ngModel)]="showFoodImage">
-    <option>No</option>
-    <option>Yes</option>
-  </select>
-  <br />
-
-  <div *ngIf="showFoodImage === 'Yes'">
-    <label>URL to Photo: </label><br /><input type="text" [(ngModel)]="recipe.foodImage"/>
+    </div>
   </div>
-
-  <br />
-  <button (click)="updateRecipeByID()">Update Recipe</button>
-</div>
+    
 
 
