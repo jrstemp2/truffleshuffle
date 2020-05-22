@@ -29,7 +29,7 @@ namespace TruffleShuffle.Controllers
             string errorMessage = string.Empty;
 
 
-            if (weightRec.WeightInDate <= DateTime.Now && weightRec.WeightInDate > DateTime.UnixEpoch) // valid date
+            if (weightRec.WeightInDate > DateTime.UnixEpoch) // valid date
             {
                 if (weightRec.CurrentWeight > 0) // valid weight
                 {
@@ -38,7 +38,7 @@ namespace TruffleShuffle.Controllers
                     {
                         try
                         {
-                            weightData.AddWeightRecord(weightRec);
+                            weightRec = weightData.AddWeightRecord(weightRec);
                             successfullyAdded = true;
                         }
                         catch (Exception e)
@@ -48,9 +48,22 @@ namespace TruffleShuffle.Controllers
                     }
                     else
                     {
-                        errorMessage = "Weight Exists for date";
+                        try
+                        {
+                            int rows = weightData.UpdateWeightRecord(weightRec);
+                            if (rows == 1) {
+                                successfullyAdded = true;
+                            } else
+                            {
+                                errorMessage = $"Not updated, number of rows returned is {rows}";
+                            }
+                            
+                        }
+                        catch (Exception e)
+                        {
+                            errorMessage = e.Message;
+                        }
                     }
-
                 }
                 else
                 {
