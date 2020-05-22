@@ -14,6 +14,12 @@ export class UserService {
     return this.http.post<User>('/api/User', user);
   }
 
-  
-  
+  signupNewUser(user: User) {
+    return this.http.post<User>('/api/User/signup', user);
+  }
+
+  loginUser(user: User) {
+    this.http.post<User>('/api/User/login', user).subscribe(();
+  }
+
 }
