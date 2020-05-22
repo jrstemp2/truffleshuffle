@@ -19,7 +19,10 @@ namespace TruffleShuffle.Services
         public User GetUserByUserName(string username);
         // delete
         public int DeleteUserByID(int id);
-        
+
+        //get all users
+        public IEnumerable<User> GetAllUsers();
+
 
 
     }
