@@ -30,16 +30,16 @@ namespace TruffleShuffle.Controllers
             return recipeData.GetAllRecipes();
         }
 
-        [HttpPost]
-        public Object AddUser(User u)
-        {
-            int result = userData.AddUser(u);
+        //[HttpPost]
+        //public Object AddUser(User u)
+        //{
+        //    int result = userData.AddUser(u);
 
-            return new
-            {
-                result = result,
-                success = result == 1 ? true : false
-            };
-        }
+        //    return new
+        //    {
+        //        result = result,
+        //        success = result == 1 ? true : false
+        //    };
+        //}
     }
 }

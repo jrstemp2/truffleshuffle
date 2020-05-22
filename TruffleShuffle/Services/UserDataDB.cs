@@ -45,6 +45,19 @@ namespace TruffleShuffle.Services
 
             return result;
         }
+        public IEnumerable<User> GetAllUsers()
+        {
+
+            string queryString = "SELECT * FROM Users";
+
+            IEnumerable<User> result;
+            using (var conn = new SqlConnection(connstring))
+            {
+                result = conn.Query<User>(queryString);
+            }
+
+            return result;
+        }
 
         public User GetUserByID(int id)
         {

@@ -1,0 +1,21 @@
+<div>
+   
+    <p>
+      Username:
+      <input type="text" [(ngModel)]="userName" />
+    </p>
+    <p>
+      Password:
+      <input type="text" [(ngModel)]="userPassword" />
+    </p>
+    <p>
+      Display Name: <input type="text" [(ngModel)]="displayName" />
+    </p>
+    <p>
+      Pounds to lose: <input type="text" [(ngModel)]="weightLossGoal" />
+    </p>
+
+    <input type="button" value="Submit" (click)="signUp()" />
+  
+</div>
+  

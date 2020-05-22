@@ -1,50 +1,53 @@
-<a class="welcomeBanner" href="https://imgur.com/8GKWu8u"><img src="https://i.imgur.com/8GKWu8u.png" title="source: imgur.com" /></a>
-<div class="container">
-  <div>
-    <h1>All the recipes you need!</h1>
-    <p>Welcome to your new go to for:</p>
-    <ul>
-      <li>Healthy recipes</li>
-      <li>Supportive community for your weight-loss journey</li>
-      <li>Daily tips to keep you on track </li>
-    </ul>
+<img class="container" src="https://i.imgur.com/KP5actw.png" title="source: imgur.com" height="300" with="1400" />
+
+<div class="row" style="justify-content:space-evenly">
+  <div class="homeButtons">
+    <div class="signIn">
+      <button class="btn btn-primary buttonSpace row" (click)="showSignUpForm()">Sign up</button>
+      <div [hidden]="!showSignIn">
+        <app-add-user></app-add-user>
+      </div>
+    </div>
   </div>
 
   <div class="homeButtons">
-    <div>
-      <button class="addButton" (click)="showSignUpForm()">Sign up</button>
-       
-      <div [hidden]="!showSignIn">
-        <p>
-          Username:
-          <input type="text" [(ngModel)]="userName" />
-        </p>
-        <p>Password:
-  <input type="text" [(ngModel)]="userPassword" /></p>
-        <p>Display Name: <input type="text" [(ngModel)]="displayName" /></p>
-        <p>Pounds to lose: <input type="text" [(ngModel)]="weightLossGoal" /></p>
-
-        <input type="button" value="Submit" (click)="signup()" />
-      </div>
-    </div>
-
-
     <div class="logIn">
-      <button class="addButton" (click)="showLoginForm()">Log In</button>
+      <button class="btn btn-primary buttonSpace row" (click)="showLoginForm()">Log In</button>
       <div [hidden]="!showLognIn">
-        <p>Username: <input type="text" [(ngModel)]="email" />
-        </p>
-        <p>Password: <input type="text" [(ngModel)]="password"  /></p>
-        <input type="button" value="Submit" (click)="login()" />
+        <app-login></app-login>
       </div>
     </div>
   </div>
-  <div>
-    <h2>Hottest Recipes</h2>
-    <hr />
-    <ul *ngFor="let r of recipes" style="list-style: none;">
-      <li>{{r.title}} <br /><img src="{{r.foodImage}}" height="300" width="300" /></li>
+</div>
 
-    </ul>
+<div class="card card-body">
+  <div class="welcomeMessage ">
+    <div class="col" width="500">
+      <h1>All the recipes you need!</h1>
+      <p>Welcome to your new go to for:</p>
+      <ul>
+        <li>Healthy recipes</li>
+        <li>Supportive community</li>
+        <li>Daily tips to keep you on track </li>
+        <li>A deep dive into your weight loss journey</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+  <h2>Hottest Recipes</h2>
+  <hr />
+  <div class="recipeBox row">
+    <div *ngFor="let r of recipes">
+
+      <marquee behavior="scroll" direction="left">
+        <img src="{{r.foodImage}}" height="300" width="300" alt="{{r.title}}" />
+      </marquee>
+
+    </div>
   </div>
 </div>

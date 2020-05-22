@@ -12,12 +12,6 @@ export class HomeComponent {
   recipes: Recipe[];
   user: User;
 
-  userName: string;
-  displayName: string;
-  userPassword: string;
-  weightLossGoal: number;
-
-
   constructor(private recipeData: RecipeService,
     private userData: UserService) { }
 
@@ -33,23 +27,6 @@ export class HomeComponent {
       error => console.error(error)
     );
   }
-
-  login() {
-    userName: this.user.userName;
-    userPassword: this.user.userName
-
-  }
-  signup() {
-    this.userData.addNewUser({
-      id: 0,
-      userName: this.userName,
-      displayName: this.displayName,
-      userPassword:this.userPassword,
-      weightLossGoal: this.weightLossGoal
-    }).subscribe(
-      (data: User) => console.log(data), error => console.error(error));
-  }
-
 
   showSignIn: boolean = false;
   showLognIn: boolean = false;
