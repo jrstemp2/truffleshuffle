@@ -2,77 +2,78 @@
 
   <div class="container">
     <div class="user-container">
-    <h1 class="user-title">Welcome, {{ user.displayName }}</h1>
-    <hr />
+      <h1 class="user-title">Welcome, {{ user.displayName }}</h1>
+      <hr />
 
-    <div class="row">
-      <div class="col-md-8">
-        
-        <div>
-          <canvas id="myChart"></canvas>
+      <div class="row">
+        <div class="col-md-8">
+
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="widget-container center">
+            <h3 class="user-weight-head">LBS To Lose</h3>
+            <i class="fas fa-running"></i>
+            <h4>{{ getGoalProgress() }} LBS</h4>
+          </div>
+
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="widget-container center">
-          <h3 class="user-weight-head">LBS To Lose</h3>
-          <i class="fas fa-running"></i>
-          <h4>{{ getGoalProgress() }} LBS</h4>
+      <hr />
+
+      <div class="row">
+        <div class="col-md-8">
+          <app-weight-records-list></app-weight-records-list>
         </div>
-
+        <div class="col-md-4">
+          <app-new-weight></app-new-weight>
+        </div>
       </div>
-    </div>
-    <hr />
-
-    <div class="row">
-      <div class="col-md-8">
-        <app-weight-records-list></app-weight-records-list>
-      </div>
-      <div class="col-md-4">
-        <app-new-weight></app-new-weight>
-      </div>
-    </div>
 
       <hr />
 
       <h2 class="sep-heading">Current Stats</h2>
 
-    <div class="row widget-row">
-      <div class="col-md-4">
-        <div class="widget-container center">
-          <h3 class="user-weight-head">Weight Goal</h3>
-          <i class="fas fa-dumbbell"></i>
-          <h4>{{ user.weightLossGoal }} LBS</h4>
+      <div class="row widget-row">
+        <div class="col-md-4">
+          <div class="widget-container center">
+            <h3 class="user-weight-head">Weight Goal</h3>
+            <i class="fas fa-dumbbell"></i>
+            <h4>{{ user.weightLossGoal }} LBS</h4>
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="widget-container center">
-          <h3 class="user-weight-head">Current Weight</h3>
-          <i class="fas fa-weight"></i>
-          <h4>{{ getCurrentWeight() }} LBS</h4>
+        <div class="col-md-4">
+          <div class="widget-container center">
+            <h3 class="user-weight-head">Current Weight</h3>
+            <i class="fas fa-weight"></i>
+            <h4>{{ getCurrentWeight() }} LBS</h4>
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="widget-container center">
-          <h3 class="user-weight-head">% To Goal</h3>
-          <div class="pie-container">
-            <div class="pieWrapper">
-              <div class="pie rightPie"></div>
-              <div class="pie leftPie" style="transform:rotate(219deg);"></div>
-              <div class="percentOverlay">{{ getWeightPercent() }}%</div>
+        <div class="col-md-4">
+          <div class="widget-container center">
+            <h3 class="user-weight-head">% To Goal</h3>
+            <div class="pie-container">
+              <div class="pieWrapper">
+                <div class="pie rightPie"></div>
+                <div class="pie leftPie" style="transform:rotate(219deg);"></div>
+                <div class="percentOverlay">{{ getWeightPercent() }}%</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <hr />
+
+      <h2 class="sep-heading">Favorite Recipes</h2>
+      <app-user-favorite></app-user-favorite>
+
+
+
     </div>
-    <hr />
-    <!--test {{ getWeightPercentCSS() }}<br />-->
-
-
-
-
-  </div>
 
     </div>
 
