@@ -1,1 +1,50 @@
-﻿
+img{
+    height:300px;
+    width:300px;
+    text-align:center;
+    //margin-left:15px;
+}
+
+.info {
+  font-size: 38px;
+  font-weight: bold;
+  color: #0017bd;
+}
+
+/*table {
+  margin-left: 15px;
+}*/
+
+.calories {
+  
+  height: 300px;
+  width: 300px;
+  transition: box-shadow 0.3s ease;
+  border: 3px solid #190198;
+  background: #f6f5ff;
+  text-align: center;
+  vertical-align:middle;
+}
+.calories:hover {
+  box-shadow: 5px 5px 5px 5px;
+}
+
+div.row{
+    margin-left:15px;
+}
+
+
+
+
+.column {
+  float: left;
+  width: 50%;
+  
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  
+}
+
