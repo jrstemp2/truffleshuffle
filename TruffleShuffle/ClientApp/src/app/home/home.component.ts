@@ -28,11 +28,6 @@ export class HomeComponent {
     );
   }
 
-  login() {
-    userName: this.user.userName;
-    userPassword: this.user.userName
-  }
-
   showSignIn: boolean = false;
   showLognIn: boolean = false;
 

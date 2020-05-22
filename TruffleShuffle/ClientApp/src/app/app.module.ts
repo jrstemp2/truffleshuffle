@@ -15,6 +15,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RecipeFavoriteComponent } from './recipe-favorite/recipe-favorite.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { LoginComponent } from './login/login.component';
 
 
 import { UserService } from './services/user.service';
@@ -39,7 +40,8 @@ import { UserFavoriteComponent } from './user-favorite/user-favorite.component';
     RecipeDetailsComponent,
     RecipeFavoriteComponent,
     AddUserComponent,
-    UserFavoriteComponent
+    UserFavoriteComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
