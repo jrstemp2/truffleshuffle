@@ -250,3 +250,26 @@ footer h4 {
   border-bottom: solid 1px;
   padding-bottom: 5px;
 }
+
+/************ Nav ****************/
+nav#main-nav {
+  margin-bottom: 0px !important;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  z-index: 999;
+  top: 0px;
+}
+.container.main-container {
+  margin-top: 110px;
+}
+#main-nav a.nav-link {
+  color: #004d89 !important;
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+
+
+
