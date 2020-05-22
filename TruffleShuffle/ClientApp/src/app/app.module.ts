@@ -21,6 +21,7 @@ import { UserService } from './services/user.service';
 import { WeightService } from './services/weight.service';
 import { RecipeService } from './services/recipe.service';
 import { RecipeFavoriteService } from './services/recipe-favorite.service';
+import { UserFavoriteComponent } from './user-favorite/user-favorite.component';
 
 
 
@@ -38,6 +39,7 @@ import { RecipeFavoriteService } from './services/recipe-favorite.service';
     RecipeDetailsComponent,
     RecipeFavoriteComponent,
     AddUserComponent,
+    UserFavoriteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
