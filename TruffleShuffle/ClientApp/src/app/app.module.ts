@@ -45,6 +45,7 @@ import { UserFavoriteComponent } from './user-favorite/user-favorite.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: UserComponent, pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
       { path: 'recipe', component: RecipeComponent },
       { path: 'recipe/:id', component: RecipeDetailsComponent },
       { path: 'recipefavorite/:id', component: RecipeFavoriteComponent },

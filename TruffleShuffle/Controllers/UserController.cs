@@ -44,13 +44,17 @@ namespace TruffleShuffle.Controllers
         }
 
         [HttpPost]
-        public int AddUser(User u)
+        public Object AddUser(User u)
         {
-            return userData.AddUser(u);
+            int result = userData.AddUser(u);
+
+            return new
+            {
+                result = result,
+                success = result == 1 ? true : false
+            };
         }
-
-
-
+    
         [HttpPut("updateuser/{id}")]
         public object UpdateWeightLossGoal(User u)
         {

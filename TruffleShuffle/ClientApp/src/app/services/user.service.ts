@@ -10,6 +10,10 @@ export class UserService {
     return this.http.get<User>(`/api/User/${id}`);
   }
 
+  addNewUser(user: User) {
+    
+    return this.http.post<User>('/api/User', user);
+  }
 
 
 }
