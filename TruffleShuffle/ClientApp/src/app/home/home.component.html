@@ -10,27 +10,34 @@
     </ul>
   </div>
 
+  <div >
+    <div>
+      <button class="addButton" (click)="showSignUpForm()">Sign up</button>
+      <!--username,userpassword,displayname,weightlossgoal-->
+      <div [hidden]="!showSignIn">
+        <p>Email: 
+          <input type="text" [(ngModel)]="userEmail" placeholder="what's your email?" />
+        </p>
+        <p>Password:
+        <input type="text" [(ngModel)]="userPassword" placeholder="Input password" /></p>
+        <p>Display Name: <input type="text" [(ngModel)]="displayName" placeholder="Display name" /></p>
+        <p>How much weigh tdo you have to loose: <input type="text" [(ngModel)]="weightLossGoal" placeholder="" /></p>
 
-  <div>
-    <button class="addButton" (click)="showLoginForm()">Sign up</button>
-    <!--username,userpassword,displayname,weightlossgoal-->
-    <div [hidden]="!showSignIn">
-      <input type="text" [(ngModel)]="newUserEmail" value="Input email"/>
-      <input type="text" [(ngModel)]="newUserPassword" value="Input password"/>
-      <input type="text" [(ngModel)]="displayName" value=""/>
-      <input type="text" [(ngModel)]="weightLossGoal" value=""/>
-
-      <input type="button" value="Sign Up" (click)="signup()" />
+        <input type="button" value="Submit" (click)="signup()" />
+      </div>
     </div>
+
 
     <div class="logIn">
-      <input type="text" [(ngModel)]="email" />
-      <input type="text" [(ngModel)]="password" />
-      <input type="button" value="Log In" (click)="login()" />
+      <button class="addButton" (click)="showLoginForm()">Log In</button>
+      <div [hidden]="!showLognIn">
+        <input type="text" [(ngModel)]="email" placeholder="Email" />
+        <input type="text" [(ngModel)]="password" placeholder="Password" />
+        <input type="button" value="Submit" (click)="login()" />
+      </div>
     </div>
   </div>
-
-    <div>
+  <div>
     <h2>Hottest Recipes</h2>
     <hr />
     <ul *ngFor="let r of recipes" style="list-style: none;">

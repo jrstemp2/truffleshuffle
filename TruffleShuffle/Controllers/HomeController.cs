@@ -14,10 +14,13 @@ namespace TruffleShuffle.Controllers
     public class HomeController : ControllerBase
     {
         private readonly IRecipeData recipeData;
+        private readonly IUserData userData;
 
-        public HomeController(IRecipeData recipeData)
+
+        public HomeController(IRecipeData recipeData, IUserData userData)
         {
             this.recipeData = recipeData;
+            this.userData = userData; 
         }
 
         // GET: api/Home
@@ -25,6 +28,12 @@ namespace TruffleShuffle.Controllers
         public IEnumerable<Recipe> GetAllRecipes()
         {
             return recipeData.GetAllRecipes();
+        }
+
+        [HttpPost]
+        public int AddUser(User u)
+        {
+            return userData.AddUser(u);
         }
     }
 }
