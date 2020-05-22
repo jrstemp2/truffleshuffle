@@ -53,7 +53,6 @@
     <td>
       <img src="{{recipe.foodImage}}" />
     </td>
-
     <td>
       <button class="view" [routerLink]="['/recipe', recipe.id]">
         <div class="buttonInfo">
@@ -64,7 +63,6 @@
       </button>
       
     </td>
-
     <td>
       <div class="calories">
        
@@ -73,16 +71,30 @@
         <i class="fas fa-utensils"></i>
         <br /><h2 class="info">{{recipe.totalCalories}}</h2>
       </div>
-      
     </td>
   </tr>
 </table>
 
 
+<p>--------------------------------------------------------------------</p>
 
 
+<table>
+  <tr *ngFor="let recipe of recipes">
+    <td>
+      
+      <div class="container">
+        <img src="{{recipe.foodImage}}" alt="Avatar" class="image">
 
+        <div class="overlay">
+          <div class="text">{{recipe.title}}</div>
+        </div>
 
+      </div>
+
+    </td>
+  </tr>
+</table>
 
 
 
