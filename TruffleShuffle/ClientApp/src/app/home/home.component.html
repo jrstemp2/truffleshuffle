@@ -1,45 +1,51 @@
-<a class="welcomeBanner" href="https://imgur.com/8GKWu8u"><img src="https://i.imgur.com/8GKWu8u.png" title="source: imgur.com" /></a>
+<img class="welcomeBanner" src="https://i.imgur.com/KP5actw.png" title="source: imgur.com" height="300" with="1400" />
 <div class="container">
-  <div>
+  <div class="welcomeMessage">
     <h1>All the recipes you need!</h1>
     <p>Welcome to your new go to for:</p>
     <ul>
       <li>Healthy recipes</li>
-      <li>Supportive community for your weight-loss journey</li>
+      <li>Supportive community</li>
       <li>Daily tips to keep you on track </li>
+      <li>A deep dive into your weight loss journey</li>
     </ul>
   </div>
 
   <div class="homeButtons">
     <div>
       <button class="addButton" (click)="showSignUpForm()">Sign up</button>
-       
+
       <div [hidden]="!showSignIn">
         <p>
           Username:
           <input type="text" [(ngModel)]="userName" />
         </p>
-        <p>Password:
-  <input type="text" [(ngModel)]="userPassword" /></p>
+        <p>
+          Password:
+          <input type="text" [(ngModel)]="userPassword" />
+        </p>
         <p>Display Name: <input type="text" [(ngModel)]="displayName" /></p>
         <p>Pounds to lose: <input type="text" [(ngModel)]="weightLossGoal" /></p>
 
         <input type="button" value="Submit" (click)="signup()" />
       </div>
     </div>
+  </div>
 
-
+  <div class="homeButtons">
     <div class="logIn">
       <button class="addButton" (click)="showLoginForm()">Log In</button>
       <div [hidden]="!showLognIn">
-        <p>Username: <input type="text" [(ngModel)]="email" />
+        <p>
+          Username: <input type="text" [(ngModel)]="email" />
         </p>
-        <p>Password: <input type="text" [(ngModel)]="password"  /></p>
+        <p>Password: <input type="text" [(ngModel)]="password" /></p>
         <input type="button" value="Submit" (click)="login()" />
       </div>
     </div>
   </div>
-  <div>
+
+  <div class="recipeBox">
     <h2>Hottest Recipes</h2>
     <hr />
     <ul *ngFor="let r of recipes" style="list-style: none;">

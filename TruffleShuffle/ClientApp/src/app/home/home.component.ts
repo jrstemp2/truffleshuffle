@@ -44,7 +44,7 @@ export class HomeComponent {
       id: 0,
       userName: this.userName,
       displayName: this.displayName,
-      userPassword:this.userPassword,
+      userPassword: this.userPassword,
       weightLossGoal: this.weightLossGoal
     }).subscribe(
       (data: User) => console.log(data), error => console.error(error));

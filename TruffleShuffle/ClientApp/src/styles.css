@@ -16,6 +16,18 @@ code {
 }
 
 
+.welcomeMessage {
+  display: inline;
+}
+
+.addButton {
+  display: inline;
+}
+
+.welcomeMessage {
+  font-display: fallback
+}
+
 
 
 .widget-container.center {
