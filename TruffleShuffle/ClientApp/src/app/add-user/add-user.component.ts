@@ -31,7 +31,7 @@ export class AddUserComponent {
       userPassword: this.userPassword,
       weightLossGoal: this.weightLossGoal
     }).subscribe(
-      (data: User) => console.log(data),
+      (data: any) => console.log(data),
       error => console.error(error));
     
   }
