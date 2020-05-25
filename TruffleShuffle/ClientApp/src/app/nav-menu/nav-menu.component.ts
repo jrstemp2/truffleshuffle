@@ -15,4 +15,24 @@ export class NavMenuComponent {
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
+  showSignIn: boolean = false;
+  showLognIn: boolean = false;
+
+  showLoginForm() {
+    if (this.showLognIn === false) {
+      this.showLognIn = true;
+    }
+    else {
+      this.showLognIn = false;
+    }
+  }
+
+  showSignUpForm() {
+    if (this.showSignIn === false) {
+      this.showSignIn = true;
+    }
+    else {
+      this.showSignIn = false;
+    }
+  }
 }

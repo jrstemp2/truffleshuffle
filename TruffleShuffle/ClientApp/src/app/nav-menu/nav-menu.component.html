@@ -1,24 +1,19 @@
 <header>
   <nav id="main-nav"
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-  >
+       class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/home']"><img src="assets\Images\logo.png"/></a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target=".navbar-collapse"
-        aria-label="Toggle navigation"
-        [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
+      <a class="navbar-brand" [routerLink]="['/home']"><img src="assets\Images\logo.png" /></a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-        [ngClass]="{ show: isExpanded }"
-      >
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+           [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
           <li class="nav-item"
               [routerLinkActive]="['link-active']"
@@ -31,10 +26,34 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/recipefavorites/1']">Favorites</a>
           </li>
-          
+
         </ul>
       </div>
     </div>
-    
+
   </nav>
+  <div class="sidenav">
+    <br /><br /><br />
+    <a class="nav-link" [routerLink]="['/']">Profile</a>
+    <a class="nav-link " [routerLink]="['/recipe']">Recipes</a>
+    <a class="nav-link " [routerLink]="['/recipefavorites/1']">Favorites</a>
+    <hr />
+    <div class="homeButtons">
+      <div class="signIn">
+        <a class="nav-link " (click)="showSignUpForm()">Sign up</a>
+        <div [hidden]="!showSignIn">
+          <app-add-user></app-add-user>
+        </div>
+      </div>
+    </div>
+
+    <div class="homeButtons">
+      <div class="logIn">
+        <a class="nav-link " (click)="showLoginForm()">Log In</a>
+        <div [hidden]="!showLognIn">
+          <app-login></app-login>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
