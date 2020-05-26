@@ -19,19 +19,13 @@ export class WeightRecordsListComponent {
   constructor(private weightData: WeightService, private userData: UserService) { }
 
   ngOnInit() {
-    this.weightData.getWeightsOfUserByID(1).subscribe(
+    this.user = this.userData.getUser();
+    this.weightData.getWeightsOfUserByID(this.user.id).subscribe(
       (data: WeightRecord[]) => {
         this.weightRecords = data;
       },
       error => console.error(error)
     );
-    this.userData.getUserByID(1).subscribe(
-      (data: User) => {
-        this.user = { ...data };
-      },
-      error => console.error(error)
-    );
-
   }
 
   displayDate(record: WeightRecord): string {

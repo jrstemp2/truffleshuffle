@@ -41,9 +41,11 @@ export class UserComponent  {
 
         this.weight = [];
         this.month = [];
+        this.weightGoal = [];
 
         for (let w of this.weightRecords) {
           this.weight.push(w.currentWeight);
+          this.weightGoal.push(this.user.weightLossGoal);
         }
         this.weight.reverse();
         for (let w of this.weightRecords) {
@@ -52,6 +54,9 @@ export class UserComponent  {
           this.month.push(monthAdd.toString() + "/" + date.getDate().toString() + "/" + date.getFullYear().toString());
         }
         this.month.reverse();
+
+        
+
         this.loadGraph();
       },
       error => console.error(error)
@@ -99,8 +104,6 @@ export class UserComponent  {
   }
 
   loadGraph() {
-
-    this.weightGoal = [this.user.weightLossGoal];
 
     this.canvas = document.getElementById('myChart');
     this.ctx = this.canvas.getContext('2d');
