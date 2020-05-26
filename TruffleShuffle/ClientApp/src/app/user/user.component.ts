@@ -32,9 +32,6 @@ export class UserComponent  {
   weight: number[];
   weightGoal: number[];
 
-
-
-
   ngOnInit() {
     this.user = this.userData.getUser();
 
