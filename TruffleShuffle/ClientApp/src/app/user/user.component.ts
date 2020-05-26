@@ -36,16 +36,9 @@ export class UserComponent  {
 
 
   ngOnInit() {
-   
+    this.user = this.userData.getUser();
 
-    this.userData.getUserByID(1).subscribe(
-      (data: User) => {
-        this.user = { ...data };
-      },
-      error => console.error(error)
-    );
-
-    this.weightData.getWeightsOfUserByID(1).subscribe(
+    this.weightData.getWeightsOfUserByID(this.user.id).subscribe(
       (data: WeightRecord[]) => {
         this.weightRecords = data;
 
@@ -67,14 +60,14 @@ export class UserComponent  {
       error => console.error(error)
     );
 
-    this.weightData.getNewestWeightOfUserByID(1).subscribe(
+    this.weightData.getNewestWeightOfUserByID(this.user.id).subscribe(
       (data: WeightRecord) => {
         this.currentWeight = data.currentWeight;
     },
       error => console.error(error)
     );
 
-    this.weightData.GetOldestWeightRecord(1).subscribe(
+    this.weightData.GetOldestWeightRecord(this.user.id).subscribe(
       (data: WeightRecord) => {
         this.startWeight = data.currentWeight;
       },
