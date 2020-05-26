@@ -28,7 +28,7 @@ namespace TruffleShuffle.Controllers
             return result;
         }
 
-        // GET: api/User
+        // GET: api/User/${id}
         [HttpGet("{id}")]
         public User GetUserByID(int id)
         {
@@ -49,17 +49,20 @@ namespace TruffleShuffle.Controllers
         }
 
         [HttpPost]
-        public Object AddUser(User u)
+        public Object AddToFavorites(User u)
         {
             int result = userData.AddUser(u);
-
-            return new
+            
+            if (result == 1)
             {
-                result = result,
-                success = result == 1 ? true : false
-            };
+                return new { Success = true, Message = "User updated" };
+            }
+            else
+            {
+                return new { Success = false, Message = "Something went wrong, user did not update" };
+            }
         }
-    
+
         [HttpPut("updateuser/{id}")]
         public object UpdateWeightLossGoal(User u)
         {

@@ -5,9 +5,9 @@ import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
 /** login component*/
 export class LoginComponent {
@@ -18,7 +18,9 @@ export class LoginComponent {
     userName: this.user.userName;
     userPassword: this.user.userName
   }
-    constructor() {
+  constructor() {
 
-    }
+  }
+
+
 }

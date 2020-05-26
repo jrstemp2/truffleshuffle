@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { RecipeService } from '../services/recipe.service';
-import { Recipe } from '../interfaces/recipe';
 import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
 
@@ -31,7 +29,7 @@ export class AddUserComponent {
       userPassword: this.userPassword,
       weightLossGoal: this.weightLossGoal
     }).subscribe(
-      (data: any) => console.log(data),
+      (data: object) => console.log(data),
       error => console.error(error));
     
   }

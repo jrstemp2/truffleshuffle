@@ -18,15 +18,15 @@ namespace TruffleShuffle.Services
             connstring = config.GetConnectionString("default");
         }
 
-        public int AddUser(User user)
+        public Object AddUser(User user)
         {
-            int result = 0;
+            User result = null;
             using (var conn = new SqlConnection(connstring))
             {
                 string queryString = "INSERT INTO Users(UserName, UserPassword, DisplayName, WeightLossGoal) ";
                 queryString += "VAlUES(@UserName, @UserPassword, @Displayname, @WeightLossGoal)";
 
-                result = conn.Execute(queryString, user);
+                result = conn.ExecuteScalar<User>(queryString, user);
             }
             return result;
         }
