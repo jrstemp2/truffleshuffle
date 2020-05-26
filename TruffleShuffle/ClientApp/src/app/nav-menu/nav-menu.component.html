@@ -38,7 +38,9 @@
     <a class="nav-link " [routerLink]="['/recipe']">Recipes</a>
     <a class="nav-link " [routerLink]="['/recipefavorites/1']">Favorites</a>
     <hr />
-    <div class="homeButtons">
+
+
+    <div class="homeButtons" *ngIf="!isLoggedIn()">
       <div class="signIn">
         <a class="nav-link " (click)="showSignUpForm()">
           Sign up
@@ -48,9 +50,7 @@
           <app-signup></app-signup>
         </div>
       </div>
-    </div>
-
-    <div class="homeButtons">
+   
       <div class="logIn">
         <a class="nav-link " (click)="showLoginForm()">
         Log In
@@ -59,6 +59,11 @@
           <app-login></app-login>
         </div>
       </div>
+    </div>
+
+
+    <div *ngIf="isLoggedIn()">
+      <a (click)="logout()">Logout</a>
     </div>
   </div>
 </header>
