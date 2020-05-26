@@ -1,5 +1,7 @@
+<div class="text-alert" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
 <div>
-
   <p>
     Username:
     <input type="text" [(ngModel)]="userName" />
