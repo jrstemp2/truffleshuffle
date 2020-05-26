@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { RecipeFavorite } from '../interfaces/recipefavorite';
 import { RecipeFavoriteService } from '../services/recipe-favorite.service';
+import { JoinedRF } from '../interfaces/joinedRF';
+import { User } from '../interfaces/user';
+
 
 import { Recipe } from '../interfaces/recipe';
 import { ActivatedRoute } from '@angular/router';
@@ -20,15 +23,26 @@ export class RecipeDetailsComponent {
   recipe: Recipe;
   id: number;
 
+  favRecipes: JoinedRF[];
 
   loadPage() {
+    this.addFav = false;
+    this.includes = false;
 
     this.route.params.subscribe(params => {
       this.id = +params['id'];
-
-
       this.recipeData.getRecipeByID(this.id).subscribe(
         (data: Recipe) => this.recipe = { ...data },
+        error => console.error(error)
+      );
+    })
+    //---------------Favorites-------------------------------
+    this.route.params.subscribe(params => {
+      this.id = 1;
+
+      console.log("Attempting to retrieve data")
+      this.recipeFavoriteData.getFavoritesByUserID(this.id).subscribe(
+        (data: JoinedRF[]) => this.favRecipes = data,
         error => console.error(error)
       );
     })
@@ -38,21 +52,57 @@ export class RecipeDetailsComponent {
     this.loadPage();
   }
 
-  addToFavorite(id:number) {
-    this.recipeFavoriteData.addToFavorite(id).subscribe(
-      (data: any) => console.log('success! ' + id), //TODO: change the button
-      error => console.error(error)
-    )
+  //Add Fav
+  addFav: boolean = false;
+
+  addToFavorite(id: number) {
+    this.putFavInArray(id);
+    this.addFav = true;
   }
 
+  includes: boolean = false;
+  addtoFav: boolean = true;
+
+  checkDups(id: number) {
+    console.log(this.favRecipes)
+    for (let i = 0; i < this.favRecipes.length; i++) {
+      console.log('recipeID' + this.favRecipes[i].recipeID);
+      if (this.favRecipes[i].recipeID === id) {
+          this.includes = true;
+          this.addtoFav = false;
+          break;
+      }
+    }
+
+    if (this.addtoFav === true) {
+      this.addToFavorite(id);
+      
+    }
+  }
+  
+
+  putFavInArray(id:number) {
+    this.recipeFavoriteData.addToFavorite(id).subscribe(
+      (data: any) => {
+        console.log('success! ' + id)
+        this.recipeFavoriteData.getFavoritesByUserID(this.id).subscribe(
+          (data: JoinedRF[]) => this.favRecipes = data,
+          error => console.error(error)
+        );
+
+      },
+      error => console.error(error)
+    );
+  }
+
+
+  hideFav() {
+    this.myVar = this.addFav = false;
+  }
+  myVar: any;
+
   //----------------------EDIT-------------------------------------
-  //newRecipe: Recipe;
-  //newTitle: string = "";
-  //newIngredients: string = "";
-  //newCookingInstructions: string = "";
-  //newTotalCalories: number = 0;
-  //newCategory: string = "";
-  //newFoodImage: string = "";
+
   showFoodImage: string = "";
 
   showUpdateForm: boolean = false;
@@ -65,7 +115,6 @@ export class RecipeDetailsComponent {
     else {
       this.showUpdateForm = false;
     }
-    
   }
 
   updateRecipeByID() {
