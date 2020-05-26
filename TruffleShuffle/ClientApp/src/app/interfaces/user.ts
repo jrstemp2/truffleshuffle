@@ -6,3 +6,9 @@ export interface User
   userPassword: string;
   weightLossGoal: number;
 }
+
+export interface UserLogin {
+  success: boolean;
+  errorMessage: string;
+  user: User;
+}

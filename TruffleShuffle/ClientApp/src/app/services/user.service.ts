@@ -1,33 +1,29 @@
 import { Injectable } from '@angular/core';
-import { User } from '../interfaces/user';
+import { User, UserLogin } from '../interfaces/user';
 import { HttpClient } from '@angular/common/http';
+import { Local } from 'protractor/built/driverProviders';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {
   constructor(private http: HttpClient) { }
 
-  getUserByID(id: number) {
-    return this.http.get<User>(`/api/User/${id}`);
+  // todo: Custome Interface for signup/login
+  signupUser(user: User): Observable<UserLogin> {
+    return this.http.post<UserLogin>('/api/User/signup', user);
   }
 
-  addNewUser(user: User) {
-    return this.http.post<User>('/api/User', user);
+  loginUser(user: User): Observable<UserLogin> {
+    return this.http.post<UserLogin>('/api/User/login', user);
   }
 
-  // todo: better impliment this!
-  signupNewUser(user: User) {
-    return this.http.post<User>('/api/User/signup', user);
-  }
-
-  // todo: implment this
-  loginUser(user: User) {
-    this.http.post<User>('/api/User/login', user).subscribe();
-    return false;
-  }
-
-  // todo: implment this
-  getCurrentUserID() {
-    return 1;
+  getCurrentUserID(): number {
+    const user: User = JSON.parse(localStorage.user);
+    if (user) {
+      return user.id;
+    } else {
+      return -1;
+    }
   }
 
 }
