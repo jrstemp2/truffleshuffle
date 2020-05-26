@@ -49,9 +49,9 @@ namespace TruffleShuffle.Controllers
             string errorMessage = "";
 
             //TODO: better validation
-            if (u.UserName.Length > 2 &&
-                u.UserPassword.Length > 8 &&
-                u.DisplayName.Length > 2)
+            if (u.UserName.Length >= 2 &&
+                u.UserPassword.Length >= 8 &&
+                u.DisplayName.Length >= 2)
             {
                 User isDuplicate = userData.GetUserByUserName(u.UserName);
                 if (isDuplicate is null)
@@ -84,7 +84,7 @@ namespace TruffleShuffle.Controllers
             User userInDB = null;
 
             //TODO: better validation
-            if (u.UserName.Length > 2)
+            if (u.UserName.Length >= 2)
             {
                 userInDB = userData.GetUserByUserName(u.UserName);
             }

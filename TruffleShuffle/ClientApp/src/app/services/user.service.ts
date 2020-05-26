@@ -17,6 +17,14 @@ export class UserService {
     return this.http.post<UserLogin>('/api/User/login', user);
   }
 
+  logoutUser() {
+    localStorage.removeItem('user');
+  }
+
+  getUser():User {
+    return JSON.parse(localStorage.user);
+  }
+
   getCurrentUserID(): number {
     const user: User = JSON.parse(localStorage.user);
     if (user) {

@@ -40,18 +40,14 @@ export class LoginComponent {
     }
   }
   validUser(): boolean {
-      if (this.user.userName.length >= 2) {
+    if (this.user.userName.length < 2) {
+      console.log('user.userName: ' + this.user.userName)
         this.errorMessage = 'Name must be more than 2 characters';
         return false;
       }
 
-      if (this.user.userPassword.length >= 8) {
+    if (this.user.userPassword.length < 8) {
         this.errorMessage = 'Password must be more than 8 characters';
-        return false;
-      }
-
-      if (this.user.displayName.length >= 2) {
-        this.errorMessage = 'Display name must be more than 2 characters';
         return false;
       }
 
