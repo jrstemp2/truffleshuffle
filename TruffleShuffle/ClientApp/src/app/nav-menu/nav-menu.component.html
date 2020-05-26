@@ -40,16 +40,21 @@
     <hr />
     <div class="homeButtons">
       <div class="signIn">
-        <a class="nav-link " (click)="showSignUpForm()">Sign up</a>
+        <a class="nav-link " (click)="showSignUpForm()">
+          Sign up
+          <i class="fa fa-caret-down"></i>
+        </a>
         <div [hidden]="!showSignIn">
-          <app-add-user></app-add-user>
+          <app-signup></app-signup>
         </div>
       </div>
     </div>
 
     <div class="homeButtons">
       <div class="logIn">
-        <a class="nav-link " (click)="showLoginForm()">Log In</a>
+        <a class="nav-link " (click)="showLoginForm()">
+        Log In
+          <i class="fa fa-caret-down"></i></a>
         <div [hidden]="!showLognIn">
           <app-login></app-login>
         </div>

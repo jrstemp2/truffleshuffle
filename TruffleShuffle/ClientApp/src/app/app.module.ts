@@ -14,7 +14,7 @@ import { WeightRecordsListComponent } from './weight-records-list/weight-records
 import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RecipeFavoriteComponent } from './recipe-favorite/recipe-favorite.component';
-import { AddUserComponent } from './add-user/add-user.component';
+import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 
 
@@ -39,7 +39,7 @@ import { UserFavoriteComponent } from './user-favorite/user-favorite.component';
     RecipeComponent,
     RecipeDetailsComponent,
     RecipeFavoriteComponent,
-    AddUserComponent,
+    SignupComponent,
     UserFavoriteComponent,
     LoginComponent
   ],

@@ -68,6 +68,8 @@ namespace TruffleShuffle.Controllers
                 errorMessage = "Invalid user format";
             }
 
+
+            u.UserPassword = "********";
             return new
             {
                 success = result == 1 ? true : false,
@@ -109,6 +111,8 @@ namespace TruffleShuffle.Controllers
                 }
             }
 
+            u.UserPassword = "********";
+            userInDB.UserPassword = u.UserPassword;
             return new
             {
                 success,
