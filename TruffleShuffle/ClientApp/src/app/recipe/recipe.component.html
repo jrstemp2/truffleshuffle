@@ -12,10 +12,10 @@
     <br />
     <br />
     <div [hidden]="!showAddRecipeButton" class="form">
-      <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" />
+      <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" minlength="2" required/>
       <br />
       <label>Category: </label><br />
-      <select [(ngModel)]="newCategory">
+      <select [(ngModel)]="newCategory" required>
         <option>
           Breakfast
         </option>
@@ -36,15 +36,15 @@
         </option>
       </select>
       <br />
-      <label>Ingredients: </label><br /><textarea [(ngModel)]="newIngredients"></textarea>
+      <label>Ingredients: </label><br /><textarea [(ngModel)]="newIngredients" required></textarea>
       <br />
-      <label>Cooking Instructions: </label><br /><textarea [(ngModel)]="newCookingInstructions"></textarea>
+      <label>Cooking Instructions: </label><br /><textarea [(ngModel)]="newCookingInstructions" required></textarea>
       <br />
-      <label>Total Calories</label><br /><input type="number" [(ngModel)]="newTotalCalories" />
+      <label>Total Calories</label><br /><input type="number" [(ngModel)]="newTotalCalories" required/>
       <br />
 
       <label>Do You Have a URL to a Photo</label><br />
-      <select [(ngModel)]="showFoodImage">
+      <select [(ngModel)]="showFoodImage" required>
         <option>No</option>
         <option>Yes</option>
       </select>
