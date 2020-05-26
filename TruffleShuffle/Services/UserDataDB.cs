@@ -61,7 +61,7 @@ namespace TruffleShuffle.Services
 
         public User GetUserByID(int id)
         {
-            string queryString = "Select DisplayName, WeightLossGoal FROM Users WHERE ID=@id";
+            string queryString = "Select * FROM Users WHERE ID=@id";
 
             User result = null;
 
@@ -75,7 +75,7 @@ namespace TruffleShuffle.Services
 
         public User GetUserByUserName(string username)
         {
-            string queryString = "Select DisplayName, WeightLossGoal FROM Users WHERE UserName Like @username";
+            string queryString = "Select * FROM Users WHERE UserName Like @username";
 
             User result = null;
 

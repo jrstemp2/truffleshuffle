@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using TruffleShuffle.Models;
@@ -21,15 +22,15 @@ namespace TruffleShuffle.Controllers
             this.userData = userData;
         }
 
-        [HttpGet]
+        [HttpGet("all/")]
         public IEnumerable<User> GetAllUsers()
         {
             IEnumerable<User> result = userData.GetAllUsers();
             return result;
         }
 
-        // GET: api/User/${id}
-        [HttpGet("{id}")]
+        // GET: api/User
+        [HttpGet("userid/{id}")]
         public User GetUserByID(int id)
         {
             return userData.GetUserByID(id);
@@ -41,27 +42,82 @@ namespace TruffleShuffle.Controllers
             return userData.GetUserByUserName(userName);
         }
 
-        //Delete
-        [HttpDelete("{id}")]
-        public int DeleteUserByID(int id)
+        [HttpPost("signup/")]
+        public Object AddUser(User u)
         {
-            return userData.DeleteUserByID(id);
-        }
+            int result = 0;
+            string errorMessage = "";
 
-        [HttpPost]
-        public Object AddToFavorites(User u)
-        {
-            int result = userData.AddUser(u);
-            
-            if (result == 1)
+            //TODO: better validation
+            if (u.UserName.Length > 2 &&
+                u.UserPassword.Length > 8 &&
+                u.DisplayName.Length > 2)
             {
-                return new { Success = true, Message = "User updated" };
+                User isDuplicate = userData.GetUserByUserName(u.UserName);
+                if (isDuplicate is null)
+                {
+                    result = userData.AddUser(u);
+                }
+                else
+                {
+                    errorMessage = "User already exists";
+                }
             }
             else
             {
-                return new { Success = false, Message = "Something went wrong, user did not update" };
+                errorMessage = "Invalid user format";
             }
+
+            return new
+            {
+                success = result == 1 ? true : false,
+                errorMessage,
+                user = u
+            };
         }
+
+        [HttpPost("login/")]
+        public Object Login(User u)
+        {
+            bool success = false;
+            string errorMessage = "";
+            User userInDB = null;
+
+            //TODO: better validation
+            if (u.UserName.Length > 2)
+            {
+                userInDB = userData.GetUserByUserName(u.UserName);
+            }
+            else
+            {
+                errorMessage = "invalid username submitted";
+            }
+
+            if (userInDB is null || u is null)
+            {
+                errorMessage = "incorrect username";
+            }
+            else
+            {
+                if (userInDB.UserPassword.Equals(u.UserPassword))
+                {
+                    success = true;
+                }
+                else
+                {
+                    errorMessage = "incorrect password";
+                }
+            }
+
+            return new
+            {
+                success,
+                errorMessage,
+                user = success ? userInDB : u,
+            };
+        }
+
+
 
         [HttpPut("updateuser/{id}")]
         public object UpdateWeightLossGoal(User u)
