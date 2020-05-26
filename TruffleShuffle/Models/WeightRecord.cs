@@ -7,7 +7,6 @@ namespace TruffleShuffle.Models
 {
     public class WeightRecord
     {
-
         public int ID { get; set; }
         public int UserID { get; set; }
         public DateTime WeightInDate { get; set; }

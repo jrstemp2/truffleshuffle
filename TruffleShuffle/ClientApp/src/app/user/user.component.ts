@@ -38,12 +38,7 @@ export class UserComponent  {
   ngOnInit() {
    
 
-    this.userData.getUserByID(1).subscribe(
-      (data: User) => {
-        this.user = { ...data };
-      },
-      error => console.error(error)
-    );
+    this.user = this.userData.getUser();
 
     this.weightData.getWeightsOfUserByID(1).subscribe(
       (data: WeightRecord[]) => {
@@ -107,14 +102,6 @@ export class UserComponent  {
   getWeightPercentCSS() {
     return (360 * this.getWeightPercent()) / 100;
   }
-
-    
-
-
-
-
-
-
 
   loadGraph() {
 

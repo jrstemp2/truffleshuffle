@@ -1,7 +1,8 @@
-import { Component, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { WeightRecord } from '../interfaces/weight-record';
 import { WeightService } from '../services/weight.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-new-weight',
@@ -28,6 +29,6 @@ export class NewWeightComponent {
 
     }).subscribe(
       (data: object) => console.log(data), error => console.error(error));
-    this.router.navigate(['/']);
+    //this.router.navigate(['/user/']);
   }
 }
