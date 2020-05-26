@@ -116,6 +116,7 @@ namespace TruffleShuffle.Services
             command += "set ";
             command += "WeightInDate = @WeightInDate, ";
             command += "CurrentWeight = @CurrentWeight ";
+            command += "Where UserID = @UserID and WeightInDate = @WeightInDate";
 
             int result;
             using (var conn = new SqlConnection(connString))

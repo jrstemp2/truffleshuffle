@@ -41,7 +41,7 @@ code {
 h3.user-weight-head {
   font-size: 38px;
   font-weight: bold;
-  color: #0017bd;
+  color: #004a85;
 }
 
 
@@ -64,7 +64,7 @@ i.fas {
   box-shadow: 8px 6px 10px #000;
 }
 h1.user-title {
-  background: #0017bd;
+  background: #004a85;
   color: #fff;
   padding: 15px 15px;
   border-top-left-radius: 15px;
@@ -74,7 +74,7 @@ h1.user-title {
 h3.user-title {
   font-size: 24px;
   font-weight: bold;
-  background: #0017bd;
+  background: #004a85;
   color: #fff;
   padding: 15px 15px;
   border-top-left-radius: 15px;
@@ -82,7 +82,7 @@ h3.user-title {
 }
 
 h4.user-title {
-  background: #0017bd;
+  background: #004a85;
   color: #fff;
   padding: 15px 15px;
   border-top-left-radius: 15px;
@@ -95,7 +95,7 @@ h4.user-title {
   text-align: center;
 }
   .add-weight-form input.button {
-    background: #0017bd;
+    background: #004a85;
     color: #fff;
     font-size: 24px;
     font-weight: bold;
@@ -103,12 +103,12 @@ h4.user-title {
   }
     .add-weight-form input.button:hover {
       background: #001082;
-      border: solid 3px #0017bd;
+      border: solid 3px #004a85;
     }
 
 
 .user-container h2.table-title {
-  background: #0017bd;
+  background: #004a85;
   color: #fff;
   text-align: center;
   padding: 15px 10px;
@@ -124,7 +124,7 @@ h4.user-title {
   border-right: none;
 }
 .table-head {
-  background: #0017bd7d;
+  background: #004a85;
   color: #fff;
   font-weight: bold;
   font-size: 18px;
@@ -137,7 +137,8 @@ h4.user-title {
     padding-left: 0px;
 }
 .user-table {
-  border: solid 3px #0017bd;
+  border: solid 3px #004a85;
+  border-top: solid 1px #fff;
 }
 .user-table .row {
     margin-left: 0px;
@@ -162,7 +163,7 @@ h2.sep-heading {
 }
 
 h2.sep-heading {
-  background: #0017bd;
+  background: #004a85;
   color: #fff;
   padding: 15px 0;
 }
@@ -186,23 +187,23 @@ a.dark-button {
   text-align: center;
   border-radius: 5px;
   text-transform: uppercase;
-  background: #0017bd;
+  background: #004a85;
   color: #fff;
   font-size: 24px;
   font-weight: bold;
-  border: solid 3px #001082;
+  border: solid 3px #000a54;
 }
 
   a.dark-button:hover {
     background: #001082;
-    border: solid 3px #0017bd;
+    border: solid 3px #004a85;
     text-decoration: none;
   }
 
 .user-fav-container h3 {
   font-size: 30px;
   font-weight: bold;
-  color: #0017bd;
+  color: #004a85;
   margin-top: 5px;
 }
 .user-fav-container p {
@@ -231,8 +232,10 @@ footer {
   background: #7a7a7a;
   border-top: solid 3px #4682b4;
   margin-top: 60px;
-box-shadow: 0 1px 21px #000;
-color: #fff;
+  box-shadow: 0 1px 21px #000;
+  color: #fff;
+  z-index: 999;
+  position: relative;
 }
 footer i.fas {
   font-size: 28px;
@@ -283,5 +286,26 @@ nav#main-nav {
   font-size: 20px;
   margin-left: 10px;
 }
+.user-fav-container {
+  margin-bottom: 40px;
+  border: solid 3px #004a85;
+  padding-bottom: 30px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 12px #000;
+}
+h1.main-title {
+  color: #004a85;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
 
 

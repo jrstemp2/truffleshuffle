@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from './user.service';
 
 import { JoinedRF } from '../interfaces/joinedRF';
 import { RecipeFavorite } from '../interfaces/recipefavorite';
@@ -8,7 +9,7 @@ import { RecipeFavorite } from '../interfaces/recipefavorite';
 export class RecipeFavoriteService {
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService:UserService) {}
 
   getFavoritesByUserID(id:number) {
     return this.http.get<JoinedRF[]>(`/api/favorites/${id}`);
@@ -18,7 +19,7 @@ export class RecipeFavoriteService {
 
     let favRecipe: RecipeFavorite = {
       id: 0,
-      userID: 1,
+      userID: this.userService.getCurrentUserID(),
       recipeID: recipeID
     };
     return this.http.post<RecipeFavorite>('/api/favorites', favRecipe);
