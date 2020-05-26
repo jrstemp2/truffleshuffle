@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../interfaces/recipe';
 import { User } from '../interfaces/user';
-import { UserService } from '../services/user.service';
+//import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +12,7 @@ export class HomeComponent {
   recipes: Recipe[];
   user: User;
 
-  constructor(private recipeData: RecipeService,
-    private userData: UserService) { }
+  constructor(private recipeData: RecipeService) { }
 
   ngOnInit() {
     this.getAllRecipes();
