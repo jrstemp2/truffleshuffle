@@ -108,14 +108,6 @@ export class UserComponent  {
     return (360 * this.getWeightPercent()) / 100;
   }
 
-    
-
-
-
-
-
-
-
   loadGraph() {
 
     this.weightGoal = [this.user.weightLossGoal];

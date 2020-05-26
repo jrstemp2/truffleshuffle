@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -47,12 +47,14 @@ import { UserFavoriteComponent } from './user-favorite/user-favorite.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: UserComponent, pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'user', component: UserComponent },
       { path: 'recipe', component: RecipeComponent },
+      { path: 'favorite', component: RecipeFavoriteComponent },
       { path: 'recipe/:id', component: RecipeDetailsComponent },
-      { path: 'recipefavorite/:id', component: RecipeFavoriteComponent },
+      { path: 'favorites/:id', component: RecipeFavoriteComponent },
       
     ])
   ],
