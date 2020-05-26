@@ -12,6 +12,19 @@ export class NavMenuComponent {
     this.isExpanded = false;
   }
 
+  isLoggedIn() {
+    if (localStorage['user']) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  logout() {
+    localStorage.removeItem('user');
+  }
+
   toggle() {
     this.isExpanded = !this.isExpanded;
   }

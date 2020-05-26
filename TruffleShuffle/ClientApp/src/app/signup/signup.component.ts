@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '../interfaces/user';
+import { User, UserLogin } from '../interfaces/user';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -20,9 +20,8 @@ export class SignupComponent {
 
   constructor(private userData: UserService) { }
 
-
-
   signUp() {
+    this.errorMessage = '';
     if (this.validUser()) {
       this.userData.signupUser({
         id: 0,
@@ -31,8 +30,19 @@ export class SignupComponent {
         userPassword: this.userPassword,
         weightLossGoal: this.weightLossGoal
       }).subscribe(
-        (data: object) => console.log(data),
+        (data: UserLogin) => {
+          console.log(data);
+          if (data.success) {
+            localStorage.user = data.user;
+          }
+          else {
+            this.errorMessage = data.errorMessage;
+          }
+        },
         error => console.error(error));
+    }
+    else {
+      console.log('invalid user');
     }
   }
 
