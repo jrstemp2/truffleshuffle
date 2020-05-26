@@ -14,7 +14,7 @@ export class UserService {
     return this.http.post<User>('/api/User', user);
   }
 
-  
+  // todo: better impliment this!
   signupNewUser(user: User) {
     return this.http.post<User>('/api/User/signup', user);
   }
