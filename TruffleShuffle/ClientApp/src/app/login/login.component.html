@@ -1,11 +1,13 @@
 <div class="text-alert" *ngIf="errorMessage">
-  {{ errorMessage }}
+  <p style="text-align:right"> {{ errorMessage }}</p>
 </div>
-<p>
+<p style="text-align:right">
   Username: <input type="text" [(ngModel)]="user.userName" />
 </p>
-<p>
+<p style="text-align:right">
   Password: <input type="password" [(ngModel)]="user.userPassword" />
 </p>
+<p style="text-align:right">
 <input type="button" value="Submit" (click)="login()" />
+  </p>
 
