@@ -34,7 +34,7 @@ export class SignupComponent {
         (data: UserLogin) => {
           console.log(data);
           if (data.success) {
-            localStorage.user = data.user;
+            localStorage.user = JSON.stringify(data.user);
             window.location.href = '/user';
           }
           else {
