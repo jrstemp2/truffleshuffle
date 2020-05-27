@@ -222,6 +222,12 @@ border: solid 3px #000a54;
   border: solid 3px #000a54;
 }
 
+.dark-button:hover {
+  background: #001082;
+  border: solid 3px #004a85;
+  text-decoration: none;
+}
+
 a.dark-button:hover {
   background: #001082;
   border: solid 3px #004a85;

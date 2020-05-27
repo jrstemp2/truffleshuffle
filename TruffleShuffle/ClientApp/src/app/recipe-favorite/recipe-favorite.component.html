@@ -6,7 +6,7 @@
   <hr />
   <div class="row">
 
-<<<<<<< HEAD
+
     <div *ngFor="let fav of favRecipes" class="col-md-4">
 
       <div class="user-fav-container">
@@ -16,20 +16,10 @@
         <h3>{{fav.title}}</h3>
         <p>Calories: {{fav.totalCalories}}</p>
         <a href="/recipe/{{fav.id}}" class="dark-button">View Recipe</a>
+        <br />
+        <button class="dark-button" (click)="deleteFavorite(fav.id)">Remove Favorite</button>
       </div>
-=======
-  <div *ngFor="let fav of favRecipes" class="col-md-4">
-    <div class="user-fav-container">
-      <div class="fav-image-container">
-        <img src="{{fav.foodImage}}" alt="favorite food" />
-      </div>
-      <h3>{{fav.title}}</h3>
-      <p>Calories: {{fav.totalCalories}}</p>
-      <a href="/recipe/{{fav.id}}" class="dark-button">View Recipe</a>
-      <br />
-      <button class="dark-button" (click)="deleteFavorite(fav.id)">Remove Favorite</button>
-    </div>
->>>>>>> a9271ad2463b115eaeb048cafa479237332f2ef8
+
 
 
     </div>
