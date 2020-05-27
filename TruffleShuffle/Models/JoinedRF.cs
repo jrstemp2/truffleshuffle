@@ -15,5 +15,6 @@ namespace TruffleShuffle.Models
         public string CookingInstructions { get; set; }
         public int TotalCalories { get; set; }
         public string FoodImage { get; set; }
+        
     }
 }

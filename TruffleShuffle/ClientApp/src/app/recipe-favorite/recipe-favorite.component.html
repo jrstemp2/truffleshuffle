@@ -6,7 +6,6 @@
 <div class="row">
 
   <div *ngFor="let fav of favRecipes" class="col-md-4">
-
     <div class="user-fav-container">
       <div class="fav-image-container">
         <img src="{{fav.foodImage}}" alt="favorite food" />
@@ -14,6 +13,8 @@
       <h3>{{fav.title}}</h3>
       <p>Calories: {{fav.totalCalories}}</p>
       <a href="/recipe/{{fav.id}}" class="dark-button">View Recipe</a>
+      <br />
+      <button class="dark-button" (click)="deleteFavorite(fav.id)">Remove Favorite</button>
     </div>
 
 
