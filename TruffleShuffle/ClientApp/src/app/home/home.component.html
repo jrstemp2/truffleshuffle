@@ -1,31 +1,46 @@
 <img class="container" src="https://i.imgur.com/CrTtvYY.png" title="source: imgur.com" height="300" with="1400" />
 
-  <div class="welcomeMessage ">
-    <div class="col" width="500">
-      <h1>All the recipes you need!</h1>
-      <p>Welcome to your new go to for:</p>
-      <ul>
-        <li>Healthy recipes</li>
-        <li>Supportive community</li>
-        <li>Daily tips to keep you on track </li>
-        <li>A deep dive into your weight loss journey</li>
-      </ul>
+<div class="row home-content">
+  <div class="col-md-6">
+    <div class="welcomeMessage ">
+      <div class="col" width="500">
+        <h1>All the recipes you need!</h1>
+        <h4>Welcome to your new go to for:</h4>
+        <ul>
+          <li>Healthy recipes</li>
+          <li>Supportive community</li>
+          <li>Daily tips to keep you on track </li>
+          <li>A deep dive into your weight loss journey</li>
+        </ul>
+      </div>
     </div>
   </div>
 
+  <div class="col-md-6">
+    <div class="welcomeMessage ">
+
+
+
+
+    </div>
+  </div>
+</div>
 
 
 
 
 <div class="container">
-  <h2>Hottest Recipes</h2>
+  <h2 class="sep-heading">Hottest Recipes</h2>
   <hr />
   <div class="recipeBox row">
-    <div *ngFor="let r of recipes">
+    <div *ngFor="let r of ( recipes| slice:recipes.length - 3);">
 
-      <marquee behavior="scroll" direction="left">
-        <img src="{{r.foodImage}}" height="300" width="300" alt="{{r.title}}" />
-      </marquee>
+      <a href="/recipe/{{r.id}}">
+        <marquee behavior="scroll" direction="left">
+          <img src="{{r.foodImage}}" height="300" width="300" alt="{{r.title}}" />
+          <h3>{{r.title}}</h3>
+        </marquee>
+      </a>
 
     </div>
   </div>

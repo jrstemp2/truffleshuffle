@@ -84,6 +84,7 @@ color: #fff;
 padding: 15px 15px;
 border-top-left-radius: 15px;
 border-top-right-radius: 15px;
+width: 100%;
 }
 
 h3.user-title {
@@ -367,7 +368,37 @@ h3.form-title {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+h1.user-title.active:hover {
+  cursor: pointer;
+}
+marquee {
+  border: solid 2px #004d89;
+  text-align: center;
+  display: grid;
+  background-size: cover;
+  /*background-image: url("https://i.pinimg.com/originals/eb/a7/15/eba71551384e643f83b619a329b5d0f8.jpg");
+  background-size: cover;*/
 
+
+  background-image: url("https://i.pinimg.com/originals/50/af/bf/50afbfbdb10afba8a44219442d235199.jpg");
+  background-size: 100%, auto;
+  background-position-y: -100px;
+}
+  marquee h3 {
+    background: #004d89;
+    margin-bottom: 0px;
+    color: #fff;
+    padding: 6px 3px;
+  }
+.recipeBox.row > div {
+  margin-right: auto;
+  margin-left: auto;
+}
+.recipeBox.row > div {
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 7px 7px 20px #000;
+}
 
 
 /******************* Media Queries ***********************/
@@ -375,6 +406,9 @@ h3.form-title {
 @media screen and (max-width: 1199px) {
   h3.user-weight-head {
     font-size: 32px;
+  }
+  .recipe-form.sidebar {
+    border: none;
   }
 }
 
@@ -456,6 +490,43 @@ h3.form-title {
     font-size: 15px;
     margin-left: 0px;
   }
+  body .container.main-container table.recipe-table td {
+    width: 100%;
+    display: block;
+    border: none;
+    text-align: center;
+  }
+  body .container.main-container table.recipe-table {
+    width: 100%;
+  }
+  table.recipe-table .reccontainer {
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+  table.recipe-table .image {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  table.recipe-table .overlay {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  table.recipe-table tr {
+    display: block;
+    border-bottom: solid 2px #007dc5;
+    padding: 30px 0px 45px 0px;
+  }
+  table.recipe-table tr:nth-child(even) {
+    background: radial-gradient(#8c8c8c, transparent);
+  }
+  .rec-rows .col-md-8 {
+    padding: 0px;
+  }
+  .recipe-form.sidebar {
+    padding-top: 50px;
+  }
+
 }
 
 

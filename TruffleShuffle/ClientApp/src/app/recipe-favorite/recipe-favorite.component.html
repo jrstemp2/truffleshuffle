@@ -1,22 +1,24 @@
-<div class="row">
-  <h1 class="main-title">Recipe Favorites</h1>
-  
-</div>
-<hr />
-<div class="row">
-
-  <div *ngFor="let fav of favRecipes" class="col-md-4">
-
-    <div class="user-fav-container">
-      <div class="fav-image-container">
-        <img src="{{fav.foodImage}}" alt="favorite food" />
-      </div>
-      <h3>{{fav.title}}</h3>
-      <p>Calories: {{fav.totalCalories}}</p>
-      <a href="/recipe/{{fav.id}}" class="dark-button">View Recipe</a>
-    </div>
-
+<div class="container">
+  <div class="row">
+    <h1 class="user-title">Recipe Favorites</h1>
 
   </div>
+  <hr />
+  <div class="row">
 
+    <div *ngFor="let fav of favRecipes" class="col-md-4">
+
+      <div class="user-fav-container">
+        <div class="fav-image-container">
+          <img src="{{fav.foodImage}}" alt="favorite food" />
+        </div>
+        <h3>{{fav.title}}</h3>
+        <p>Calories: {{fav.totalCalories}}</p>
+        <a href="/recipe/{{fav.id}}" class="dark-button">View Recipe</a>
+      </div>
+
+
+    </div>
+
+  </div>
 </div>
