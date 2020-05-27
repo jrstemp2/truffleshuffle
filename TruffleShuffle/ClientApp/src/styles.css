@@ -302,6 +302,12 @@ h1.main-title {
   font-weight: bold;
 }
 
+
+h1:hover {
+  background-color: #fff;
+  color: #004a85
+}
+
 .form input, .form select, .form textarea {
   width: 100%;
   border: solid 2px #004a85;
