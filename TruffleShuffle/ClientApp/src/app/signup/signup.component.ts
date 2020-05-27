@@ -45,7 +45,7 @@ export class SignupComponent {
     else {
       console.log('invalid user');
     }
-    this.router.navigate(['user']);
+    this.router.navigate(['']);
   }
 
   validUser(): boolean {
@@ -69,6 +69,17 @@ export class SignupComponent {
     return true;
   }
 
-
+  showPassword() {
+    let showpass = document.getElementById("password");
+    if (this.showpass === "password") {
+      this.showSignIn = true;
+      this.showLognIn = false;
+      this.showMessage = false;
+    }
+    else {
+      this.showSignIn = false;
+      this.showMessage = true;
+    }
+  }
 
 }

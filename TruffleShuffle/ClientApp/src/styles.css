@@ -303,7 +303,7 @@ h1.main-title {
 }
 
 
-h1:hover {
+.user-title.active:hover {
   background-color: #fff;
   color: #004a85
 }

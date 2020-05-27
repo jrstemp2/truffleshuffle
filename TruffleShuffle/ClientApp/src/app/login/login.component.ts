@@ -37,7 +37,7 @@ export class LoginComponent {
           }
         }, error => console.error(error)
       );
-      this.router.navigate(['user']);
+      this.router.navigate(['']);
     }
 
   }

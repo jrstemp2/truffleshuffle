@@ -8,18 +8,29 @@
   </p>
   <p>
     Password:
-    <input type="password" id="password" [(ngModel)]="userPassword" />
+    <input type="password" id="pw" [(ngModel)]="userPassword" />
     <br />
-    <input type="checkbox" onclick="showPassword()">Show Password
+    <input type="checkbox" (click)="showPassword()">Show Password
   </p>
   <p>
     Display Name: <input type="text" [(ngModel)]="displayName" />
   </p>
   <p>
-    Pounds to lose: <input type="number" [(ngModel)]="weightLossGoal" />
+    Ideal Weight: <input type="number" [(ngModel)]="weightLossGoal" />
   </p>
 
   <input type="button" value="Submit" (click)="signUp()" />
 
 </div>
 
+
+<!--<script>
+  function myFunction() {
+    var x = document.getElementById("pw");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>-->
