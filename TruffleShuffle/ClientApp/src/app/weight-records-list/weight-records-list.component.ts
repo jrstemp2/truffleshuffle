@@ -32,9 +32,9 @@ export class WeightRecordsListComponent {
     let output: string = '';
     output += new Date(record.weightInDate).getMonth() + 1;
     output += '/';
-    output += new Date(record.weightInDate).getDate() + 1;
+    output += new Date(record.weightInDate).getDate();
     output += '/';
-    output += new Date(record.weightInDate).getFullYear() + 1;
+    output += new Date(record.weightInDate).getFullYear();
 
     return output;
   }

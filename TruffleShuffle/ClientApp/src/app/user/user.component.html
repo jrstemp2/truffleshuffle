@@ -58,16 +58,23 @@
             <h3 class="user-weight-head">% To Goal</h3>
             <div class="pie-container">
               <div class="pieWrapper">
-                <div class="pie rightPie"></div>
-                <div class="pie leftPie" style="transform:rotate(219deg);"></div>
+
+                <div *ngIf="getWeightPercentCSS() > 180">
+                  <div class="pie rightPie"></div>
+                  <div class="pie leftPie" [ngStyle]="{'-webkit-transform': 'rotate(' + getWeightPercentCSS() + 'deg)'}"></div>
+                </div>
+                <div *ngIf="getWeightPercentCSS() <= 180">
+                  <div class="pie rightPie" style="background: #f6f5ff"></div>
+                  <div class="pie leftPie" [ngStyle]="{'-webkit-transform': 'rotate(' + getWeightPercentCSS() + 'deg)'}"></div>
+                </div>
+
                 <div class="percentOverlay">{{ getWeightPercent() }}%</div>
               </div>
-            </div>
+              </div>
           </div>
         </div>
       </div>
       <hr />
-
       <h2 class="sep-heading">Favorite Recipes</h2>
       <app-user-favorite></app-user-favorite>
 

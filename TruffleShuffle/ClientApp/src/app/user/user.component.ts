@@ -97,7 +97,7 @@ export class UserComponent  {
   }
 
   getWeightPercent() {
-    return Math.round((this.getGoalProgress() / this.startingGoal()*100));
+    return ((Math.round((this.getGoalProgress() / this.startingGoal()*100))) - 100) * -1;
   }
   getWeightPercentCSS() {
     return (360 * this.getWeightPercent()) / 100;
@@ -111,7 +111,7 @@ export class UserComponent  {
     let chart = new Chart(this.ctx, {
       type: 'line',
       data: {
-        labels: this.month,
+        labels: this.month, 
         datasets: [
           {
             label: 'Weight',
@@ -128,15 +128,28 @@ export class UserComponent  {
         ]
       },
       options: {
+        responsive: true,
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
         legend: {
           display: false
         },
         scales: {
           xAxes: [{
-            display: true
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Weigh in Date'
+            }
           }],
           yAxes: [{
-            display: true
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Weight  LBS'
+            }
           }],
 
         }
