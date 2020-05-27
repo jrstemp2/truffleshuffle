@@ -58,5 +58,17 @@ namespace TruffleShuffle.Services
 
             return result;
         }
+
+        public RecipeFavorite GetFavoriteByUserAndRecipe(int userId, int recipeId)
+        {
+            string queryString = "SELECT * FROM RecipeFavorites WHERE UserID = @userId and RecipeID = @recipeId";
+
+            RecipeFavorite result = null;
+            using (var conn = new SqlConnection(connstring))
+            {
+                result = conn.QueryFirst<RecipeFavorite>(queryString, new { userId = userId, recipeId = recipeId });
+            }
+            return result;
+        }
     }
 }

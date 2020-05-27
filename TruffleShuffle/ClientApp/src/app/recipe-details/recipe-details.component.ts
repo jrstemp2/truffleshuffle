@@ -65,7 +65,6 @@ export class RecipeDetailsComponent {
   }
 
   checkDups(id: number) {
-
     console.log(this.favRecipes)
     for (let i = 0; i < this.favRecipes.length; i++) {
       console.log('recipeID' + this.favRecipes[i].recipeID);

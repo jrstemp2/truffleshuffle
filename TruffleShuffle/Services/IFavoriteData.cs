@@ -14,6 +14,6 @@ namespace TruffleShuffle.Services
 
         public int DeleteFavorite(int id);
 
-        //public RecipeFavorite GetFavoriteByUserAndRecipe(int userId, int recipeId);
+        public RecipeFavorite GetFavoriteByUserAndRecipe(int userId, int recipeId);
     }
 }
