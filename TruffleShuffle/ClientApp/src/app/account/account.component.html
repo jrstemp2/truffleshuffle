@@ -1,10 +1,15 @@
 <div class="container">
 
   <div class="row">
-    <h1 class="user-title user-container" style="width:50%" (click)="showSignUpForm()">Sign Up</h1>
-    <h1 class="user-title user-container" style="width:50%" (click)="showLoginForm()">Log In</h1>
+    <h1 class="user-title active" style="width:50%" (click)="showSignUpForm()">Sign Up</h1>
+    <h1 class="user-title active" style="width:50%" (click)="showLoginForm()">Log In</h1>
   </div>
   <hr />
+
+  <div class="user-title" [hidden]="!showMessage">
+    <h1>Join us!</h1>
+    <p>Whether you're just getting started or well on your way, we're here to help get you there!</p>
+  </div>
 
 
   <div [hidden]="!showSignIn">

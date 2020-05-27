@@ -315,6 +315,12 @@ text-transform: uppercase;
 font-weight: bold;
 }
 
+
+.user-title.active:hover {
+  background-color: #fff;
+  color: #004a85
+}
+
 .form input, .form select, .form textarea {
 width: 100%;
 border: solid 2px #004a85;

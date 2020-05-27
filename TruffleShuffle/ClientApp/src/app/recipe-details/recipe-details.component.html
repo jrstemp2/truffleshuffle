@@ -20,7 +20,7 @@
               <div class="user-container">
                 <h4 class="user-title">The More You Know!</h4>
                 <hr />
-                <p><strong>Prep Time: </strong></p>
+                <!--<p><strong>Prep Time: </strong></p>-->
                 <p><strong>{{recipe.totalCalories}} Total Calories</strong></p>
               </div>
               <hr />
@@ -93,6 +93,9 @@
 
     <div class="update">
       <div class="updateForm">
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{errorMessage}}
+        </div>
         <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="recipe.title" />
         <br />
         <label>Category: </label><br />

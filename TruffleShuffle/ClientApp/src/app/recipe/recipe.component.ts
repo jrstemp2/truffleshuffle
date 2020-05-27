@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../interfaces/recipe';
@@ -31,25 +32,57 @@ export class RecipeComponent {
   newCategory: string = "";
   newFoodImage: string = "";
   showFoodImage: string = "";
+  errorMessage: string = "";
 
 
   addNewRecipe() {
-    this.recipeData.addRecipe({
-      id: 0,
-      title: this.newTitle,
-      ingredients: this.newIngredients,
-      cookingInstructions: this.newCookingInstructions,
-      totalCalories: this.newTotalCalories,
-      category: this.newCategory,
-      foodImage: this.newFoodImage
-    } as Recipe)
-      .subscribe(
-        data => this.loadPage(),
-        error => console.error(error)
-      );
-    this.clearForm();
-    this.showAddRecipeButton = false;
 
+    if (this.isValid()) {
+      this.recipeData.addRecipe({
+        id: 0,
+        title: this.newTitle,
+        ingredients: this.newIngredients,
+        cookingInstructions: this.newCookingInstructions,
+        totalCalories: this.newTotalCalories,
+        category: this.newCategory,
+        foodImage: this.newFoodImage
+      } as Recipe)
+        .subscribe(
+          data => {
+            this.loadPage();
+            this.clearForm();
+            this.showAddRecipeButton = false;
+          },
+          error => console.error(error)
+        );
+    }
+  }
+
+
+  isValid():boolean {
+    this.errorMessage = "";
+    if (this.newTitle.length >= 45 || this.newTitle.length <= 2) {
+      this.errorMessage = "Invalid Title Length";
+      return false;
+    }
+    if (this.newIngredients.length >= 300 || this.newIngredients.length <= 5) {
+      this.errorMessage = "Invalid Ingredients Length";
+      return false;
+    }
+    if (this.newCookingInstructions.length >= 350 || this.newCookingInstructions.length <= 5) {
+      this.errorMessage = "Invalid Cooking Instructions Length";
+      return false;
+    }
+    if (this.newTotalCalories <= 0) {
+      this.errorMessage = "Invalid Amount of Calories";
+      return false;
+    }
+    if (this.newCategory.length >= 45 || this.newCategory.length <= 5) {
+      this.errorMessage = "Invalid Category Length";
+      return false;
+    }
+      
+    return true;
   }
 
             // ADD RECIPE FORM 
