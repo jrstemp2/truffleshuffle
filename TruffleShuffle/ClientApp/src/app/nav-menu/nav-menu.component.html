@@ -24,10 +24,10 @@
             <a class="nav-link text-dark" *ngIf="!isLoggedIn()" [routerLink]="['/auth']">Signup/Login</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/recipe']">Recipes</a>
+            <a class="nav-link text-dark" *ngIf="isLoggedIn()" [routerLink]="['/recipe']">Recipes</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/favorites/1']">Favorites</a>
+            <a class="nav-link text-dark" *ngIf="isLoggedIn()" [routerLink]="['/favorites/1']">Favorites</a>
           </li>
           <li>
             <a class="nav-link text-dark" *ngIf="isLoggedIn()" (click)="logout()">Logout</a>

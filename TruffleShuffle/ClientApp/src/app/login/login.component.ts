@@ -23,7 +23,6 @@ export class LoginComponent {
 
   errorMessage: string = '';
 
-
   login() {
     this.errorMessage = '';
     if (this.validUser()) {
@@ -32,12 +31,12 @@ export class LoginComponent {
           if (data.success) {
             this.user = data.user;
             localStorage.user = JSON.stringify(this.user);
+            window.location.href = '/user';
           } else {
             this.errorMessage = data.errorMessage;
           }
         }, error => console.error(error)
       );
-      this.router.navigate(['']);
     }
 
   }

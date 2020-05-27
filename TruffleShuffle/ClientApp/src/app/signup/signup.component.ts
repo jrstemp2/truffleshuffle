@@ -35,6 +35,7 @@ export class SignupComponent {
           console.log(data);
           if (data.success) {
             localStorage.user = data.user;
+            window.location.href = '/user';
           }
           else {
             this.errorMessage = data.errorMessage;
@@ -45,7 +46,6 @@ export class SignupComponent {
     else {
       console.log('invalid user');
     }
-    this.router.navigate(['']);
   }
 
   validUser(): boolean {
