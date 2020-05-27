@@ -17,15 +17,18 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./recipe-details.component.scss']
 })
 /** recipeDetails component*/
+/** recipeDetails component*/
 export class RecipeDetailsComponent {
     /** recipeDetails ctor */
   constructor(private recipeData: RecipeService, private recipeFavoriteData: RecipeFavoriteService, private userData: UserService, private route: ActivatedRoute) { }
   @Input() ref: string;
   recipe: Recipe;
   recipeID: number;
-
+  addFav: boolean = false;
+  includes: boolean = false;
+  addtoFav: boolean = true;
+  errorMessage: string = "";
   user: User;
-
   favRecipes: JoinedRF[];
 
   loadPage() {
@@ -44,23 +47,10 @@ export class RecipeDetailsComponent {
     })
 
     //---------------Favorites-------------------------------
-
-    //this.route.params.subscribe(params => {
-    //  this.id = +params['id']       ???this.user.id;
-
-    //  console.log("Attempting to retrieve data")
-    //  this.recipeFavoriteData.getFavoritesByUserID(this.user.id).subscribe(
-    //    (data: JoinedRF[]) => this.favRecipes = data,
-    //    error => console.error(error)
-    //  );
-    //})
-
     this.recipeFavoriteData.getFavoritesByUserID(this.user.id).subscribe(
       (data: JoinedRF[]) => this.favRecipes = data,
       error => console.error(error)
     );
-   
-
   }
 
   ngOnInit() {
@@ -68,10 +58,6 @@ export class RecipeDetailsComponent {
   }
 
   //Add Fav
-
-  addFav: boolean = false;
-  includes: boolean = false;
-  addtoFav: boolean = true;
 
   addToFavorite(id: number) {
     this.putFavInArray(id);
@@ -113,27 +99,50 @@ export class RecipeDetailsComponent {
   //----------------------EDIT-------------------------------------
 
   showFoodImage: string = "";
+
   showUpdateForm: boolean = false;
+
   updateForm() {
-    if (this.showUpdateForm === false) {
-      this.showUpdateForm = true;
-    }
-    else {
+    this.showUpdateForm = !this.showUpdateForm;
+  }
+
+
+  updateRecipeByID() {
+    if (this.isValid()) {
+      this.recipeData.editRecipe(this.recipe).subscribe(
+        data => { this.loadPage(); console.log(data) },
+        error => console.error(error)
+      );
       this.showUpdateForm = false;
     }
-  }
-  updateRecipeByID() {
-    this.recipeData.editRecipe(this.recipe).subscribe(
-      data => { this.loadPage(); console.log(data)},
-      error => console.error(error)
-    );
-    this.showUpdateForm = false;
-  }
 
-
- 
     
+  }
 
+  isValid(): boolean {
+    this.errorMessage = "";
+    if (this.recipe.title.length >= 45 || this.recipe.title.length <= 2) {
+      this.errorMessage = "Invalid Title Length";
+      return false;
+    }
+    if (this.recipe.ingredients.length >= 300 || this.recipe.ingredients.length <= 5) {
+      this.errorMessage = "Invalid Ingredients Length";
+      return false;
+    }
+    if (this.recipe.cookingInstructions.length >= 350 || this.recipe.cookingInstructions.length <= 5) {
+      this.errorMessage = "Invalid Cooking Instructions Length";
+      return false;
+    }
+    if (this.recipe.totalCalories <= 0) {
+      this.errorMessage = "Invalid Amount of Calories";
+      return false;
+    }
+    if (this.recipe.category.length >= 45 || this.recipe.category.length <= 5) {
+      this.errorMessage = "Invalid Category Length";
+      return false;
+    }
 
+    return true;
+  }
 
 }

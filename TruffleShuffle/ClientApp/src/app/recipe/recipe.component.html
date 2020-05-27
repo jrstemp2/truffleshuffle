@@ -7,13 +7,24 @@
 
   
 
+
   <div class="stay">
     <button class="addButton" (click)="showAddRecipeForm()">Add a Recipe</button>
     <br />
     <br />
+
+    
+    <!--FORM-->
     <div [hidden]="!showAddRecipeButton" class="form">
-      <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" minlength="2" required/>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+
+      <label>Recipe Title: </label><br /><input required minlength="4" [(ngModel)]="newTitle" id="title" />
+
       <br />
+
       <label>Category: </label><br />
       <select [(ngModel)]="newCategory" required>
         <option>
@@ -36,11 +47,15 @@
         </option>
       </select>
       <br />
-      <label>Ingredients: </label><br /><textarea [(ngModel)]="newIngredients" required></textarea>
+
+      <label>Ingredients: </label><br /><textarea required minlength="4" [(ngModel)]="newIngredients" #title="ngModel"></textarea>
+
       <br />
+
       <label>Cooking Instructions: </label><br /><textarea [(ngModel)]="newCookingInstructions" required></textarea>
       <br />
-      <label>Total Calories</label><br /><input type="number" [(ngModel)]="newTotalCalories" required/>
+
+      <label>Total Calories</label><br /><input type="number" [(ngModel)]="newTotalCalories" required />
       <br />
 
       <label>Do You Have a URL to a Photo</label><br />
