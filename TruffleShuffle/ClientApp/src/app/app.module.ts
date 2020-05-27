@@ -18,11 +18,13 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 
 
+
 import { UserService } from './services/user.service';
 import { WeightService } from './services/weight.service';
 import { RecipeService } from './services/recipe.service';
 import { RecipeFavoriteService } from './services/recipe-favorite.service';
 import { UserFavoriteComponent } from './user-favorite/user-favorite.component';
+import { AccountComponent } from './account/account.component';
 
 
 
@@ -41,7 +43,8 @@ import { UserFavoriteComponent } from './user-favorite/user-favorite.component';
     RecipeFavoriteComponent,
     SignupComponent,
     UserFavoriteComponent,
-    LoginComponent
+    LoginComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -50,6 +53,7 @@ import { UserFavoriteComponent } from './user-favorite/user-favorite.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'auth', component: AccountComponent },
       { path: 'user', component: UserComponent },
       { path: 'recipe', component: RecipeComponent },
       { path: 'favorite', component: RecipeFavoriteComponent },

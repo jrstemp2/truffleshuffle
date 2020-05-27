@@ -18,7 +18,10 @@
           <li class="nav-item"
               [routerLinkActive]="['link-active']"
               [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-dark" [routerLink]="['/user']">Profile</a>
+            <a class="nav-link text-dark" *ngIf="isLoggedIn()" [routerLink]="['/user']">Profile</a>
+          </li>
+          <li>
+            <a class="nav-link text-dark" *ngIf="!isLoggedIn()" [routerLink]="['/auth']">Signup/Login</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/recipe']">Recipes</a>
@@ -26,44 +29,14 @@
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/favorites/1']">Favorites</a>
           </li>
+          <li>
+            <a class="nav-link text-dark" *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+          </li>
 
         </ul>
       </div>
     </div>
 
   </nav>
-  <div class="sidenav">
-    <br /><br /><br />
-    <a class="nav-link" [routerLink]="['/']">Profile</a>
-    <a class="nav-link " [routerLink]="['/recipe']">Recipes</a>
-    <a class="nav-link " [routerLink]="['/recipefavorites/1']">Favorites</a>
-    <hr />
-
-
-    <div class="homeButtons" *ngIf="!isLoggedIn()">
-      <div class="signIn">
-        <a class="nav-link " (click)="showSignUpForm()">
-          Sign up
-          <i class="fa fa-caret-down"></i>
-        </a>
-        <div [hidden]="!showSignIn">
-          <app-signup></app-signup>
-        </div>
-      </div>
-   
-      <div class="logIn">
-        <a class="nav-link " (click)="showLoginForm()">
-        Log In
-          <i class="fa fa-caret-down"></i></a>
-        <div [hidden]="!showLognIn">
-          <app-login></app-login>
-        </div>
-      </div>
-    </div>
-
-
-    <div *ngIf="isLoggedIn()">
-      <a (click)="logout()">Logout</a>
-    </div>
-  </div>
+  
 </header>
