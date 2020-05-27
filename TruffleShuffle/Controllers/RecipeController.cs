@@ -101,9 +101,9 @@ namespace TruffleShuffle.Controllers
 
             if (recipe.Title.Length < 45 && recipe.Title.Length > 2)
             {
-                if (recipe.Ingredients.Length < 300 && recipe.Ingredients.Length > 5)
+                if (recipe.Ingredients.Length < 1000 && recipe.Ingredients.Length > 5)
                 {
-                    if (recipe.CookingInstructions.Length < 350 && recipe.CookingInstructions.Length > 5)
+                    if (recipe.CookingInstructions.Length < 1000 && recipe.CookingInstructions.Length > 5)
                     {
                         if (recipe.TotalCalories > 0)
                         {

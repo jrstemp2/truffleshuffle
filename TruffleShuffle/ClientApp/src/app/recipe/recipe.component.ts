@@ -65,11 +65,11 @@ export class RecipeComponent {
       this.errorMessage = "Invalid Title Length";
       return false;
     }
-    if (this.newIngredients.length >= 300 || this.newIngredients.length <= 5) {
+    if (this.newIngredients.length >= 1000 || this.newIngredients.length <= 5) {
       this.errorMessage = "Invalid Ingredients Length";
       return false;
     }
-    if (this.newCookingInstructions.length >= 350 || this.newCookingInstructions.length <= 5) {
+    if (this.newCookingInstructions.length >= 1000 || this.newCookingInstructions.length <= 5) {
       this.errorMessage = "Invalid Cooking Instructions Length";
       return false;
     }
@@ -77,7 +77,7 @@ export class RecipeComponent {
       this.errorMessage = "Invalid Amount of Calories";
       return false;
     }
-    if (this.newCategory.length >= 45 || this.newCategory.length <= 5) {
+    if (this.newCategory.length >= 45 || this.newCategory.length <= 2) {
       this.errorMessage = "Invalid Category Length";
       return false;
     }

@@ -124,11 +124,11 @@ export class RecipeDetailsComponent {
       this.errorMessage = "Invalid Title Length";
       return false;
     }
-    if (this.recipe.ingredients.length >= 300 || this.recipe.ingredients.length <= 5) {
+    if (this.recipe.ingredients.length >= 1000 || this.recipe.ingredients.length <= 5) {
       this.errorMessage = "Invalid Ingredients Length";
       return false;
     }
-    if (this.recipe.cookingInstructions.length >= 350 || this.recipe.cookingInstructions.length <= 5) {
+    if (this.recipe.cookingInstructions.length >= 1000 || this.recipe.cookingInstructions.length <= 5) {
       this.errorMessage = "Invalid Cooking Instructions Length";
       return false;
     }
@@ -136,7 +136,7 @@ export class RecipeDetailsComponent {
       this.errorMessage = "Invalid Amount of Calories";
       return false;
     }
-    if (this.recipe.category.length >= 45 || this.recipe.category.length <= 5) {
+    if (this.recipe.category.length >= 45 || this.recipe.category.length <= 2) {
       this.errorMessage = "Invalid Category Length";
       return false;
     }
