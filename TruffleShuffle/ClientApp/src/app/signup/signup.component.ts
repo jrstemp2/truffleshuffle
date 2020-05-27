@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User, UserLogin } from '../interfaces/user';
+import { Router } from "@angular/router";
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class SignupComponent {
   errorMessage: string = '';
 
 
-  constructor(private userData: UserService) { }
+  constructor(private userData: UserService, private router: Router) { }
 
   signUp() {
     this.errorMessage = '';
@@ -44,6 +45,7 @@ export class SignupComponent {
     else {
       console.log('invalid user');
     }
+    this.router.navigate(['user']);
   }
 
   validUser(): boolean {

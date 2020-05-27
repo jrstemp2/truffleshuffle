@@ -10,8 +10,8 @@ import { UserService } from '../services/user.service';
 })
 /** login component*/
 export class LoginComponent {
-    router: any;
-  constructor(private userService: UserService) { }
+    
+  constructor(private userService: UserService, private router: Router) { }
 
   user: User = {
     id: 0,
@@ -37,7 +37,7 @@ export class LoginComponent {
           }
         }, error => console.error(error)
       );
-     
+      this.router.navigate(['user']);
     }
 
   }
