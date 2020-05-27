@@ -244,6 +244,32 @@ margin-top: 5px;
 font-weight: bold;
 }
 
+h2.home-title {
+  background: #004a85;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 10px 15px;
+  margin-top: 30px;
+  color: #fff;
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.home-content li {
+  font-size: 18px;
+  font-weight: bold;
+}
+.home-content {
+  margin-bottom: 40px;
+}
+
+.content-container {
+  background: #fff;
+  box-shadow: 5px 5px 20px #000;
+  padding: 10px 15px;
+  padding-top: 20px;
+}
+
 /**************** Footer ********************/
 .right {
 text-align: right;
@@ -416,8 +442,14 @@ marquee {
   margin-right: auto;
   margin-left: auto;
   box-shadow: 7px 7px 20px #000;
+  margin-bottom: 30px;
+  max-width: 100%;
 }
 
+img.banner {
+  width: 100%;
+  height: auto;
+}
 
 /******************* Media Queries ***********************/
 
@@ -428,9 +460,21 @@ marquee {
   .recipe-form.sidebar {
     border: none;
   }
+  h2.home-title {
+      font-size: 25px;
+  }
 }
 
 @media screen and (max-width: 991px) {
+  h2.home-title {
+    font-size: 20px;
+    padding: 10px 5px;
+  }
+  .home-content li {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
   h3.user-weight-head {
     font-size: 38px;
   }

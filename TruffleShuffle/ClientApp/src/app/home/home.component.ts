@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../interfaces/recipe';
 import { User } from '../interfaces/user';
+import { UserService } from '../services/user.service';
+import { WeightService } from '../services/weight.service';
+import { WeightRecord } from '../interfaces/weight-record';
 //import { UserService } from '../services/user.service';
 
 @Component({
@@ -11,8 +14,10 @@ import { User } from '../interfaces/user';
 export class HomeComponent {
   recipes: Recipe[];
   user: User;
+  users: User[];
+  weightRecords: WeightRecord[];
 
-  constructor(private recipeData: RecipeService) { }
+  constructor(private recipeData: RecipeService, private userData: UserService, private weightData: WeightService) { }
 
   ngOnInit() {
     this.getAllRecipes();
@@ -26,6 +31,7 @@ export class HomeComponent {
       error => console.error(error)
     );
   }
+
 
   
 }
