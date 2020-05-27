@@ -62,13 +62,16 @@
                 <div *ngIf="getWeightPercentCSS() > 180">
                   <div class="pie rightPie"></div>
                   <div class="pie leftPie" [ngStyle]="{'-webkit-transform': 'rotate(' + getWeightPercentCSS() + 'deg)'}"></div>
+                  <div class="percentOverlay">{{ getWeightPercent() }}%</div>
                 </div>
                 <div *ngIf="getWeightPercentCSS() <= 180">
-                  <div class="pie rightPie" style="background: #f6f5ff"></div>
-                  <div class="pie leftPie" [ngStyle]="{'-webkit-transform': 'rotate(' + getWeightPercentCSS() + 'deg)'}"></div>
+                  <div class="pie rightPie"></div>
+                  <div class="pie leftPie" style="background: #f6f5ff" [ngStyle]="{'-webkit-transform': 'rotate(' + (getWeightPercentCSS() - 180) + 'deg)'}"></div>
+                  <div class="percentOverlay">{{ getWeightPercent() }}%</div>
                 </div>
 
-                <div class="percentOverlay">{{ getWeightPercent() }}%</div>
+
+                
               </div>
               </div>
           </div>

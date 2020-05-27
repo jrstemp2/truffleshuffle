@@ -97,7 +97,15 @@ export class UserComponent  {
   }
 
   getWeightPercent() {
-    return ((Math.round((this.getGoalProgress() / this.startingGoal()*100))) - 100) * -1;
+    var percent = ((Math.round((this.getGoalProgress() / this.startingGoal() * 100))) - 100) * -1;
+    if (percent > 100) {
+      percent = 100;
+    }
+    else if (percent < 0)
+    {
+      percent = 0;
+    }
+    return percent;
   }
   getWeightPercentCSS() {
     return (360 * this.getWeightPercent()) / 100;
