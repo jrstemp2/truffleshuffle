@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { RecipeService } from '../services/recipe.service';
-import { Recipe } from '../interfaces/recipe';
+import {  Router } from "@angular/router";
 import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
 
@@ -11,6 +10,7 @@ import { UserService } from '../services/user.service';
 })
 /** login component*/
 export class LoginComponent {
+    router: any;
   constructor(private userService: UserService) { }
 
   user: User = {
@@ -37,7 +37,9 @@ export class LoginComponent {
           }
         }, error => console.error(error)
       );
+     
     }
+
   }
   validUser(): boolean {
     if (this.user.userName.length < 2) {

@@ -1,27 +1,21 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 <div class="container">
-  <h2>Sign up or sign in</h2>
 
-  <ul class="nav nav-tabs">
-    <li><a data-toggle="tab" href="#menu1">Sign Up</a></li>
-    <li><a data-toggle="tab" href="#menu2">Log In</a></li>
-  </ul>
-
-
-
-  <div class="tab-content">
-    <div id="menu1" class="tab-pane fade in active">
-      <h3>Sign Up</h3>
-      <app-signup></app-signup>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Log In</h3>
-      <app-login></app-login>
-    </div>
+  <div class="row">
+    <h1 class="user-title user-container" style="width:50%" (click)="showSignUpForm()">Sign Up</h1>
+    <h1 class="user-title user-container" style="width:50%" (click)="showLoginForm()">Log In</h1>
   </div>
+  <hr />
+
+
+  <div [hidden]="!showSignIn">
+    <app-signup></app-signup>
+  </div>
+
+
+
+  <div [hidden]="!showLognIn">
+    <app-login></app-login>
+  </div>
+
+
 </div>
-
-
-
