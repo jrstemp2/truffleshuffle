@@ -8,7 +8,7 @@ export class RecipeService {
 
   //Create
   addRecipe(newRecipe: Recipe) {
-    return this.http.post<Recipe>('api/recipe', newRecipe);
+    return this.http.post('api/recipe', newRecipe);
   }
 
   //Read
@@ -23,7 +23,7 @@ export class RecipeService {
 
   //update
   editRecipe(recipe: Recipe) {
-    return this.http.put<Recipe>('/api/recipe', recipe);
+    return this.http.put('/api/recipe', recipe);
   }
 
   //Delete --to use this we will need an additional query to delete any recipe used in a favorotes list first.

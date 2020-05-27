@@ -93,6 +93,9 @@
 
     <div class="update">
       <div class="updateForm">
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{errorMessage}}
+        </div>
         <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="recipe.title" />
         <br />
         <label>Category: </label><br />
