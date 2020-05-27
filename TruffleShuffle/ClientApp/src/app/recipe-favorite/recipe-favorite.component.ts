@@ -4,6 +4,9 @@ import { Recipe } from '../interfaces/recipe';
 import { RecipeFavorite } from '../interfaces/recipefavorite';
 import { JoinedRF } from '../interfaces/joinedRF'
 import { ActivatedRoute } from '@angular/router';
+
+import { User } from '../interfaces/user';
+import { UserService } from '../services/user.service';
 //joined import needed here
 
 @Component({
@@ -14,24 +17,34 @@ import { ActivatedRoute } from '@angular/router';
 /** recipeFavorite component*/
 export class RecipeFavoriteComponent {
     /** recipeFavorite ctor */
-  constructor(private recipeFavoriteData: RecipeFavoriteService, private route: ActivatedRoute) { }
+  constructor(private recipeFavoriteData: RecipeFavoriteService, private userData: UserService, private route: ActivatedRoute) { }
 
   favRecipes: JoinedRF[];
   @Input() ref: string;
   id: number;
+  userID: number;
+  recipeID: number;
+  user: User;
 
 
   loadPage() {
 
-    this.route.params.subscribe(params => {
-      this.id = + params['id'];
+    //this.route.params.subscribe(params => {
+    //  this.id = + params['id'];
 
-      console.log("Attempting to retrieve data")
-      this.recipeFavoriteData.getFavoritesByUserID(this.id).subscribe(
-        (data: JoinedRF[]) => this.favRecipes = data,
-        error => console.error(error)
-      );
-    })
+    //  console.log("Attempting to retrieve data")
+    //  this.recipeFavoriteData.getFavoritesByUserID(this.id).subscribe(
+    //    (data: JoinedRF[]) => this.favRecipes = data,
+    //    error => console.error(error)
+    //  );
+    //})
+
+    this.user = this.userData.getUser();
+
+    this.recipeFavoriteData.getFavoritesByUserID(this.user.id).subscribe(
+      (data: JoinedRF[]) => this.favRecipes = data,
+      error => console.error(error)
+    );
   }
 
 
@@ -40,7 +53,7 @@ export class RecipeFavoriteComponent {
   }
 
   deleteFavorite(id: number) {
-    //replace with name of delete cart item from service
+    
     this.recipeFavoriteData.deleteRecipe(id).subscribe(
       (data: any) => {
         console.log(data);

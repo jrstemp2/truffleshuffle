@@ -30,15 +30,19 @@ namespace TruffleShuffle.Controllers
         [HttpPost]
         public int AddToFavorites(RecipeFavorite recipeFavorite)
         {
-            var result = favoriteData.GetFavoriteByUserAndRecipe(recipeFavorite.UserID, recipeFavorite.RecipeID);
-            int rowsAdded = 0;
-            if (result == null)
-            {
-                rowsAdded = favoriteData.AddToFavorites(recipeFavorite);
-            }
-           
-            return rowsAdded;
+            //var result = favoriteData.GetFavoriteByUserAndRecipe(recipeFavorite.UserID, recipeFavorite.RecipeID);
+            //int rowsAdded = 0;
+
             
+            //if (result == null)
+            //{
+            //    rowsAdded = favoriteData.AddToFavorites(recipeFavorite);
+            //}
+            //return rowsAdded;
+
+            int result = favoriteData.AddToFavorites(recipeFavorite);
+            return result;
+
         }
 
         [HttpDelete("{id}")]
