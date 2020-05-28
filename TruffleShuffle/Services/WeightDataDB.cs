@@ -89,9 +89,7 @@ namespace TruffleShuffle.Services
 
         public IEnumerable<WeightRecord> GetWeightRecordsByUserID(int UserID)
         {
-            string command = "Select * from Weights ";
-            command += "where UserID = @UserID ";
-            command += "order by WeightInDate DESC";
+            string command = "EXECUTE dbo.AllWeightsForUserID @UserID";
 
             IEnumerable<WeightRecord> result = null;
             using (var conn = new SqlConnection(connString))

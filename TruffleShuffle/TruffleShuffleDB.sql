@@ -279,3 +279,22 @@ AS
     where UserID = @UserID
     order by WeightInDate ASC
 GO
+
+-- Create a new stored procedure called 'AllWeightsForUserID' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'AllWeightsForUserID'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.AllWeightsForUserID
+GO
+CREATE PROCEDURE dbo.AllWeightsForUserID
+    @UserID INT
+AS
+    Select * from Weights
+    where UserID = @UserID
+    order by WeightInDate DESC
+GO
