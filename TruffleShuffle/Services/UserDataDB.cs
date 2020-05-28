@@ -47,7 +47,7 @@ namespace TruffleShuffle.Services
         public IEnumerable<User> GetAllUsers()
         {
 
-            string queryString = "SELECT * FROM Users";
+            string queryString = "EXECUTE dbo.SelectAllUsers";
 
             IEnumerable<User> result;
             using (var conn = new SqlConnection(connstring))
@@ -60,7 +60,7 @@ namespace TruffleShuffle.Services
 
         public User GetUserByID(int id)
         {
-            string queryString = " EXECUTE dbo.SelectUserByID @id";
+            string queryString = "EXECUTE dbo.SelectUserByID @id";
 
             User result = null;
 
