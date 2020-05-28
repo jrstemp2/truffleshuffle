@@ -401,3 +401,21 @@ AS
     VALUES 
     (@Title, @Ingredients, @CookingInstructions, @TotalCalories, @Category, @FoodImage)
 GO
+
+-- Create a new stored procedure called 'DeleteRecipeByID' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'DeleteRecipeByID'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.DeleteRecipeByID
+GO
+CREATE PROCEDURE dbo.DeleteRecipeByID
+    @ID INT
+AS
+    DELETE FROM RecipeFavorites Where RecipeID = @ID
+    DELETE FROM Recipes WHERE ID = @ID
+GO
