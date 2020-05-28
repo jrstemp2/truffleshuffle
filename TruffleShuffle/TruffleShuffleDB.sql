@@ -535,3 +535,27 @@ GO
 -- example to execute the stored procedure we just created
 EXECUTE dbo.DeleteRecipeFavorite 10
 GO
+
+-- Create a new stored procedure called 'GetUsersFavoriteRecipes' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'GetUsersFavoriteRecipes'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.GetUsersFavoriteRecipes
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.GetUsersFavoriteRecipes
+    @UserID INT
+AS
+    SELECT RecipeFavorites.ID, UserID, title, RecipeID, Ingredients, CookingInstructions, TotalCalories, Category, FoodIMage 
+    FROM RecipeFavorites 
+        JOIN Recipes 
+        ON RecipeFavorites.RecipeId = Recipes.Id 
+    WHERE RecipeFavorites.UserId = @userId
+GO
+EXECUTE dbo.GetUsersFavoriteRecipes 1
+GO

@@ -39,7 +39,7 @@ namespace TruffleShuffle.Services
 
             using (var conn = new SqlConnection(connstring))
             {
-                result = conn.Execute(command, new { id = id });
+                result = conn.Execute(command, new { id });
             }
 
             return result;
@@ -47,12 +47,12 @@ namespace TruffleShuffle.Services
 
         public IEnumerable<JoinedRF> ShowFavoritesById(int userId)
         {
-            string queryString = "SELECT RecipeFavorites.ID, UserID, title, RecipeID, Ingredients, CookingInstructions, TotalCalories, Category, FoodIMage FROM RecipeFavorites JOIN Recipes ON RecipeFavorites.RecipeId = Recipes.Id WHERE RecipeFavorites.UserId = @userId";
+            string queryString = "EXECUTE dbo.GetUsersFavoriteRecipes @userID";
 
             IEnumerable<JoinedRF> result = null;
             using (var conn = new SqlConnection(connstring))
             {
-                result = conn.Query<JoinedRF>(queryString, new { userId = userId });
+                result = conn.Query<JoinedRF>(queryString, new { userId });
             }
 
             return result;
