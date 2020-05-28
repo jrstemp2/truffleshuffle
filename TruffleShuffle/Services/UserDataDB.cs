@@ -33,13 +33,13 @@ namespace TruffleShuffle.Services
 
         public int DeleteUserByID(int id)
         {
-            string queryString = "DELETE FROM Users WHERE ID = @id";
+            string queryString = "EXECUTE dbo.DeleteUserByID @id";
 
             int result = 0;
 
             using (var conn = new SqlConnection(connstring))
             {
-                result = conn.Execute(queryString, new { id = id });
+                result = conn.Execute(queryString, new { id });
             }
 
             return result;

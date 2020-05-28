@@ -165,3 +165,20 @@ CREATE PROCEDURE dbo.SelectUserByID
 AS
     Select * FROM Users WHERE ID=@id
 GO
+
+-- Create a new stored procedure called 'DeleteUserByID' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'DeleteUserByID'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.DeleteUserByID
+GO
+CREATE PROCEDURE dbo.DeleteUserByID
+    @ID int
+AS
+    DELETE FROM Users WHERE ID = @id
+GO
