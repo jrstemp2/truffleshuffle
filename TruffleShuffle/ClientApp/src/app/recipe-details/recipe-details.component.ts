@@ -158,7 +158,8 @@ export class RecipeDetailsComponent {
   md = new MarkdownIt();
 
   renderAsMarkdown(text: string): string {
-    return this.md.render(text);
+    const regex = /([^>])\n/gi;
+    return this.md.render(text).replace(regex, '$1<br />');
   }
 
 
