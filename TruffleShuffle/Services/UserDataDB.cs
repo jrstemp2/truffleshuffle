@@ -23,14 +23,13 @@ namespace TruffleShuffle.Services
             int result = 0;
             using (var conn = new SqlConnection(connstring))
             {
-                string queryString = "INSERT INTO Users(UserName, UserPassword, DisplayName, WeightLossGoal) ";
-                queryString += "VAlUES(@UserName, @UserPassword, @Displayname, @WeightLossGoal)";
+                string queryString = "EXECUTE dbo.AddUser @UserName, @UserPassword, @Displayname, @WeightLossGoal";
 
                 result = conn.Execute(queryString, user);
             }
             return result;
         }
-
+        
 
         public int DeleteUserByID(int id)
         {
@@ -75,7 +74,7 @@ namespace TruffleShuffle.Services
 
         public User GetUserByUserName(string username)
         {
-            string queryString = "Select * FROM Users WHERE UserName Like @username";
+            string queryString = "EXECUTE dbo.GetUserByUserName @username";
 
             User result = null;
 
@@ -90,9 +89,7 @@ namespace TruffleShuffle.Services
         public int UpdateUser(User u)
         {
 
-            string queryString = "UPDATE Users " +
-                "SET UserName = @UserName, UserPassword = @UserPassword, DisplayName = @DisplayName, WeightLossGoal = @WeightLossGoal " +
-                "Where ID=@id";
+            string queryString = "EXECUTE dbo.UpdateUser @ID @UserName, @UserPassword, @DisplayName, @WeightLossGoal";
 
             int result = 0;
 
