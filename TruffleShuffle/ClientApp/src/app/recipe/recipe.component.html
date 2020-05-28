@@ -12,7 +12,7 @@
       <td>
         <a>
           <div class="reccontainer" [routerLink]="['/recipe', recipe.id]">
-            <img src="{{recipe.foodImage}}" alt="Avatar" class="image">
+            <img src="{{imageDisplay(recipe.foodImage)}}" alt="Avatar" class="image">
             <div class="overlay">
               <div class="text">{{displayTitle(recipe.title)}}<br /><i class="fas fa-book-open"></i><br />{{recipe.totalCalories}} Total Calories</div>
             </div>

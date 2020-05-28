@@ -147,5 +147,14 @@ export class RecipeComponent {
       return title;
     }
   }
+
+
+  imageDisplay(imageURL): string {
+    if (imageURL.length < 10) {
+      return "assets/Images/no-food-image.png";
+    } else {
+      return imageURL;
+    }
+  }
   
 }
