@@ -54,7 +54,7 @@ export class RecipeComponent {
         .subscribe(
           data => {
             this.loadPage();
-            this.clearForm();
+            
             this.showAddRecipeButton = false;
           },
           error => console.error(error)
@@ -116,6 +116,7 @@ export class RecipeComponent {
     this.recipeData.getAllRecipes().subscribe(
       (data: Recipe[]) => {
         this.recipes = data;
+        this.clearForm();
       },
       error => console.error(error)
     );
