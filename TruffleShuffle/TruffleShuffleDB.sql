@@ -375,3 +375,29 @@ CREATE PROCEDURE dbo.SelectRecipeByID
 AS
     SELECT * FROM Recipes WHERE ID = @id
 GO
+
+-- Create a new stored procedure called 'AddRecipe' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'AddRecipe'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.AddRecipe
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.AddRecipe
+    @Title nvarchar(45),
+    @Ingredients nvarchar(max),
+    @CookingInstructions nvarchar(max),
+    @TotalCalories int,
+    @Category nvarchar(45),
+    @FoodImage nvarchar(max)
+AS
+    INSERT INTO Recipes 
+    (Title, Ingredients, CookingInstructions, TotalCalories, Category, FoodImage)
+    VALUES 
+    (@Title, @Ingredients, @CookingInstructions, @TotalCalories, @Category, @FoodImage)
+GO

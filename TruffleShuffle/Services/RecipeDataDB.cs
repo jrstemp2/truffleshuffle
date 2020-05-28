@@ -70,8 +70,7 @@ namespace TruffleShuffle.Services
             int result = 0;
             using (var conn = new SqlConnection(connstring))
             {
-                string command = "INSERT INTO Recipes (Title, Ingredients, CookingInstructions, TotalCalories, Category, FoodImage) ";
-                command += "VALUES (@Title, @Ingredients, @CookingInstructions, @TotalCalories, @Category, @FoodImage)";
+                string command = "EXECUTE dbo.AddRecipe @Title, @Ingredients, @CookingInstructions, @TotalCalories, @Category, @FoodImage";
 
                 result = conn.Execute(command, recipe);
             }
