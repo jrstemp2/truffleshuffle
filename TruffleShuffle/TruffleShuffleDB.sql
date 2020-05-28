@@ -223,3 +223,40 @@ AS
     Delete from Weights where ID = @ID
 GO
 
+-- Create a new stored procedure called 'SelectRecordByUserIDAndDate' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'SelectRecordByUserIDAndDate'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.SelectRecordByUserIDAndDate
+GO
+CREATE PROCEDURE dbo.SelectRecordByUserIDAndDate
+    @UserID int,
+    @WeightInDate DATE
+AS
+    select top(1) * from Weights
+    where UserID = @UserID and WeightInDate = @WeightInDate
+GO
+
+-- Create a new stored procedure called 'NewestWeightForUserID' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'NewestWeightForUserID'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.NewestWeightForUserID
+GO
+CREATE PROCEDURE dbo.NewestWeightForUserID
+    @UserID INT
+AS
+    select top(1) * from Weights
+    where UserID = @UserID
+    order by WeightInDate DESC
+GO

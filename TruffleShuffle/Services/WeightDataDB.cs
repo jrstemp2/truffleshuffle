@@ -49,9 +49,7 @@ namespace TruffleShuffle.Services
 
         public bool WeightRecordExistsforDate(WeightRecord weightRec)
         {
-            string command = "select top(1) * from Weights ";
-            command += "where UserID = @UserID and WeightInDate = @WeightInDate";
-
+            string command = "EXECUTE dbo.SelectRecordByUserIDAndDate @UserID @WeightInDate";
 
             WeightRecord result = null;
 
@@ -65,9 +63,7 @@ namespace TruffleShuffle.Services
 
         public WeightRecord GetNewestWeightRecord(int UserID)
         {
-            string command = "select top(1) * from Weights ";
-            command += "where UserID = @UserID ";
-            command += "order by WeightInDate DESC";
+            string command = "EXECUTE dbo.NewestWeightForUserID @UserID ";
 
             WeightRecord result = null;
             using (var conn = new SqlConnection(connString))
