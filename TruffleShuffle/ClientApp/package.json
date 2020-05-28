@@ -26,7 +26,7 @@
     "bootstrap": "^4.3.1",
     "chart.js": "^2.9.3",
     "core-js": "^3.3.3",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "markdown-it": "^11.0.0",
     "markdown-it-emoji": "^1.4.0",
     "oidc-client": "^1.9.1",
