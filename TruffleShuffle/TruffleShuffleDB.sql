@@ -105,3 +105,27 @@ CREATE PROCEDURE dbo.GetUserByUserName
 AS
     Select * FROM Users WHERE UserName Like @username
 GO
+
+-- Create a new stored procedure called 'UpdateUser' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'UpdateUser'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.UpdateUser
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.UpdateUser
+    @id INT,
+    @UserName nvarchar (45),
+    @UserPassword nvarchar (45),
+    @DisplayName nvarchar (100),
+    @WeightLossGoal int
+AS
+    UPDATE Users
+    SET UserName = @UserName, UserPassword = @UserPassword, DisplayName = @DisplayName, WeightLossGoal = @WeightLossGoal
+    Where ID=@id
+GO

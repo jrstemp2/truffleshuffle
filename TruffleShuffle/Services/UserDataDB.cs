@@ -89,9 +89,7 @@ namespace TruffleShuffle.Services
         public int UpdateUser(User u)
         {
 
-            string queryString = "UPDATE Users " +
-                "SET UserName = @UserName, UserPassword = @UserPassword, DisplayName = @DisplayName, WeightLossGoal = @WeightLossGoal " +
-                "Where ID=@id";
+            string queryString = "EXECUTE dbo.UpdateUser @ID @UserName, @UserPassword, @DisplayName, @WeightLossGoal";
 
             int result = 0;
 
