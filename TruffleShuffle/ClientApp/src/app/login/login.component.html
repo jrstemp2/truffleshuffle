@@ -1,13 +1,18 @@
-<div class="text-alert" *ngIf="errorMessage">
-  <p style="text-align:right"> {{ errorMessage }}</p>
-</div>
-<p style="text-align:right">
-  Username: <input type="text" [(ngModel)]="user.userName" />
-</p>
-<p style="text-align:right">
-  Password: <input type="password" [(ngModel)]="user.userPassword" />
-</p>
-<p style="text-align:right">
-<input type="button" value="Submit" (click)="login()" />
+<div class="col-md-6 login" style="text-align:left" padding="15px 0px">
+  <h1>Back to the Shuffle</h1>
+  <div class="text-alert" *ngIf="errorMessage">
+    <p> {{ errorMessage }}</p>
+  </div>
+  <p >
+    Username: <input type="text" [(ngModel)]="user.userName" />
+  </p>
+  <p >
+    Password: <input type="password" [(ngModel)]="user.userPassword" />
+  </p>
+  <p>
+    <br />
+    <br />
+    <input type="button" class="sidebar-button" style="width:50%" value="Submit" (click)="login()" />
   </p>
 
+</div>

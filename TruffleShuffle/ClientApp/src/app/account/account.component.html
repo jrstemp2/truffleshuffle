@@ -6,21 +6,21 @@
   </div>
   <hr />
 
-  <div class="user-title" [hidden]="!showMessage">
-    <h1>Join us!</h1>
-    <p>Whether you're just getting started or well on your way, we're here to help get you there!</p>
+  <div class="card card-body">
+    <div class="user-title" [hidden]="!showMessage">
+      <h1>Join us!</h1>
+      <p>Whether you're just getting started or well on your way, we're here to help get you there!</p>
+    </div>
+
+    
+    <div [hidden]="!showSignIn">
+      <app-signup></app-signup>
+    </div>
+
+    <div [hidden]="!showLognIn">
+      <app-login></app-login>
+    </div>
+
+
   </div>
-
-
-  <div [hidden]="!showSignIn">
-    <app-signup></app-signup>
-  </div>
-
-
-
-  <div [hidden]="!showLognIn">
-    <app-login></app-login>
-  </div>
-
-
 </div>
