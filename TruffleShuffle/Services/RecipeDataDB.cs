@@ -52,7 +52,7 @@ namespace TruffleShuffle.Services
         //Get Recipe By ID
         public Recipe GetRecipeByID(int id)
         {
-            string queryString = "SELECT * FROM Recipes WHERE ID = @id";
+            string queryString = "EXECUTE dbo.SelectRecipeByID  @id";
 
             Recipe result = null;
             using (var conn = new SqlConnection(connstring))
