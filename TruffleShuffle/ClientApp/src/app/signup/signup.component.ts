@@ -32,10 +32,19 @@ export class SignupComponent {
         weightLossGoal: this.weightLossGoal
       }).subscribe(
         (data: UserLogin) => {
-          console.log(data);
           if (data.success) {
-            localStorage.user = JSON.stringify(data.user);
-            window.location.href = '/user';
+            let newUser = data.user;
+            newUser.userPassword = this.userPassword;
+            this.userData.loginUser(newUser).subscribe(
+              data => {
+                if (data.success) {
+                  localStorage.user = JSON.stringify(data.user);
+                  window.location.href = '/user';
+                } else {
+                  this.errorMessage = data.errorMessage;
+                }
+              }, error => console.error(error)
+            );
           }
           else {
             this.errorMessage = data.errorMessage;

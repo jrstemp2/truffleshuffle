@@ -29,8 +29,7 @@ export class LoginComponent {
       this.userService.loginUser(this.user).subscribe(
         data => {
           if (data.success) {
-            this.user = data.user;
-            localStorage.user = JSON.stringify(this.user);
+            localStorage.user = JSON.stringify(data.user);
             window.location.href = '/user';
           } else {
             this.errorMessage = data.errorMessage;
