@@ -37,11 +37,11 @@ GO
 CREATE TABLE Recipes(
     ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
     Title nvarchar(45) NOT NULL,
-    Ingredients nvarchar(300) NOT NULL,
-    CookingInstructions nvarchar(350) NOT NULL,
+    Ingredients nvarchar(max) NOT NULL,
+    CookingInstructions nvarchar(max) NOT NULL,
     TotalCalories int NOT NULL,
     Category nvarchar(45) NOT NULL,
-    FoodImage nvarchar(100)
+    FoodImage nvarchar(max)
 );
 GO
 INSERT INTO Recipes (Title, Ingredients, CookingInstructions, TotalCalories, Category)
