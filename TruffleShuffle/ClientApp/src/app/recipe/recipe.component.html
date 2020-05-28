@@ -7,101 +7,104 @@
 
 <div class="row rec-rows">
   <div class="col-md-8 rec-rows">
-  <table class="recipe-table"> 
-    <tr *ngFor="let recipe of recipes">
-      <td>
-        <a>
-          <div class="reccontainer" [routerLink]="['/recipe', recipe.id]">
-            <img src="{{imageDisplay(recipe.foodImage)}}" alt="Avatar" class="image">
-            <div class="overlay">
-              <div class="text">{{displayTitle(recipe.title)}}<br /><i class="fas fa-book-open"></i><br />{{recipe.totalCalories}} Total Calories</div>
+    <input type="text" placeholder="filter recipes by title..." [(ngModel)]="searchFilter" />
+  </div>
+  <div class="col-md-8 rec-rows">
+    <table class="recipe-table">
+      <tr *ngFor="let recipe of filterRecipes(recipes)">
+        <td>
+          <a>
+            <div class="reccontainer" [routerLink]="['/recipe', recipe.id]">
+              <img src="{{imageDisplay(recipe.foodImage)}}" alt="Avatar" class="image">
+              <div class="overlay">
+                <div class="text">{{displayTitle(recipe.title)}}<br /><i class="fas fa-book-open"></i><br />{{recipe.totalCalories}} Total Calories</div>
+              </div>
             </div>
+          </a>
+        </td>
+        <td>
+          <button class="view" [routerLink]="['/recipe', recipe.id]">
+            <div class="buttonInfo">
+              {{displayTitle(recipe.title)}}
+            </div><br />
+            <i class="fas fa-book-open"></i><br />
+            <div class="buttonInfo">View Recipe</div>
+          </button>
+        </td>
+        <!--<td>
+          <div class="calories">
+            <br /><h2 class="info">Total Calories</h2>
+            <br />
+            <i class="fas fa-utensils"></i>
+            <br /><h2 class="info">{{recipe.totalCalories}}</h2>
           </div>
-        </a>
-      </td>
-      <td>
-        <button class="view" [routerLink]="['/recipe', recipe.id]">
-          <div class="buttonInfo">
-            {{displayTitle(recipe.title)}}
-          </div><br />
-          <i class="fas fa-book-open"></i><br />
-          <div class="buttonInfo">View Recipe</div>
-        </button>
-      </td>
-      <!--<td>
-        <div class="calories">
-          <br /><h2 class="info">Total Calories</h2>
-          <br />
-          <i class="fas fa-utensils"></i>
-          <br /><h2 class="info">{{recipe.totalCalories}}</h2>
+        </td>-->
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-md-4 recipe-form sidebar">
+    <div class="stay">
+      <!--<button class="addButton" (click)="showAddRecipeForm()">Add Recipe Form</button>-->
+      <!--<div [hidden]="!showAddRecipeButton" class="form">-->
+      <div class="form">
+
+        <h3 class="form-title">Add Recipe</h3>
+        <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" minlength="2" required />
+
+        <br />
+
+        <label>Category: </label><br />
+        <select [(ngModel)]="newCategory" required>
+          <option>
+            Breakfast
+          </option>
+          <option>
+            Lunch
+          </option>
+          <option>
+            Dinner
+          </option>
+          <option>
+            Desert
+          </option>
+          <option>
+            Beverage
+          </option>
+          <option>
+            Snack
+          </option>
+        </select>
+        <br />
+
+        <label>Ingredients: </label><br /><textarea required minlength="4" [(ngModel)]="newIngredients" #title="ngModel"></textarea>
+
+        <br />
+
+        <label>Cooking Instructions: </label><br /><textarea [(ngModel)]="newCookingInstructions" required></textarea>
+        <br />
+        <label>Total Calories</label><br /><input type="number" [(ngModel)]="newTotalCalories" required />
+        <br />
+
+        <label>Do You Have a URL to a Photo</label><br />
+        <select [(ngModel)]="showFoodImage" required>
+          <option>No</option>
+          <option>Yes</option>
+        </select>
+        <br />
+
+        <div *ngIf="showFoodImage === 'Yes'">
+          <label>URL to Photo: </label><br /><input type="text" [(ngModel)]="newFoodImage" />
         </div>
-      </td>-->
-    </tr>
-  </table>
-    </div>
 
-<div class="col-md-4 recipe-form sidebar">
-  <div class="stay">
-    <!--<button class="addButton" (click)="showAddRecipeForm()">Add Recipe Form</button>-->
-    <!--<div [hidden]="!showAddRecipeButton" class="form">-->
-    <div class="form">
-
-      <h3 class="form-title">Add Recipe</h3>
-      <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" minlength="2" required />
-
-      <br />
-
-      <label>Category: </label><br />
-      <select [(ngModel)]="newCategory" required>
-        <option>
-          Breakfast
-        </option>
-        <option>
-          Lunch
-        </option>
-        <option>
-          Dinner
-        </option>
-        <option>
-          Desert
-        </option>
-        <option>
-          Beverage
-        </option>
-        <option>
-          Snack
-        </option>
-      </select>
-      <br />
-
-      <label>Ingredients: </label><br /><textarea required minlength="4" [(ngModel)]="newIngredients" #title="ngModel"></textarea>
-
-      <br />
-
-      <label>Cooking Instructions: </label><br /><textarea [(ngModel)]="newCookingInstructions" required></textarea>
-      <br />
-      <label>Total Calories</label><br /><input type="number" [(ngModel)]="newTotalCalories" required />
-      <br />
-
-      <label>Do You Have a URL to a Photo</label><br />
-      <select [(ngModel)]="showFoodImage" required>
-        <option>No</option>
-        <option>Yes</option>
-      </select>
-      <br />
-
-      <div *ngIf="showFoodImage === 'Yes'">
-        <label>URL to Photo: </label><br /><input type="text" [(ngModel)]="newFoodImage" />
+        <br />
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{errorMessage}}
+        </div>
+        <button (click)="addNewRecipe()" class="sidebar-button">Add Recipe</button>
       </div>
 
-      <br />
-      <div *ngIf="errorMessage" class="alert alert-danger">
-        {{errorMessage}}
-      </div>
-      <button (click)="addNewRecipe()" class="sidebar-button">Add Recipe</button>
     </div>
-
-      </div>
-    </div>
+  </div>
 </div>
 

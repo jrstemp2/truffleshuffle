@@ -156,5 +156,10 @@ export class RecipeComponent {
       return imageURL;
     }
   }
-  
+
+  searchFilter: string = '';
+
+  filterRecipes(recipes:Recipe[]):Recipe[] {
+    return recipes.filter(r => r.title.toLowerCase().includes(this.searchFilter.toLowerCase()));
+  }
 }
