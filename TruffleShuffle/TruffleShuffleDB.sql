@@ -419,3 +419,35 @@ AS
     DELETE FROM RecipeFavorites Where RecipeID = @ID
     DELETE FROM Recipes WHERE ID = @ID
 GO
+
+-- Create a new stored procedure called 'UpdateRecipe' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'UpdateRecipe'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.UpdateRecipe
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.UpdateRecipe
+    @ID int,
+    @Title nvarchar(45),
+    @Ingredients nvarchar(max),
+    @CookingInstructions nvarchar(max),
+    @TotalCalories int,
+    @Category nvarchar(45),
+    @FoodImage nvarchar(max)
+AS
+    Update Recipes
+    set
+    Title = @Title,
+    Ingredients = @Ingredients,
+    CookingInstructions = @CookingInstructions,
+    TotalCalories = @TotalCalories,
+    Category = @Category,
+    FoodImage = @FoodImage
+    WHERE ID = @ID
+GO

@@ -97,15 +97,7 @@ namespace TruffleShuffle.Services
 
         public int UpdateRecipe(Recipe recipe)
         {
-            string command = "Update Recipes ";
-            command += "set ";
-            command += "Title = @Title, ";
-            command += "Ingredients = @Ingredients, ";
-            command += "CookingInstructions = @CookingInstructions, ";
-            command += "TotalCalories = @TotalCalories, ";
-            command += "Category = @Category, ";
-            command += "FoodImage = @FoodImage ";
-            command += "WHERE ID = @ID ";
+            string command = "EXECUTE dbo.UpdateRecipe @ID, @Title, @Ingredients, @CookingInstructions, @TotalCalories, @Category, @FoodImage";
 
             int result;
             using (var conn = new SqlConnection(connstring))
