@@ -515,3 +515,23 @@ AS
     END
 GO
 
+-- Create a new stored procedure called 'DeleteRecipeFavorite' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'DeleteRecipeFavorite'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.DeleteRecipeFavorite
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.DeleteRecipeFavorite
+    @ID INT
+AS
+    DELETE FROM RecipeFavorites WHERE ID = @ID
+GO
+-- example to execute the stored procedure we just created
+EXECUTE dbo.DeleteRecipeFavorite 10
+GO
