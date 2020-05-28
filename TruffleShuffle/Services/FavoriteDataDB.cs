@@ -48,7 +48,7 @@ namespace TruffleShuffle.Services
 
         public IEnumerable<JoinedRF> ShowFavoritesById(int userId)
         {
-            string queryString = "SELECT RecipeFavorites.ID, UserID, RecipeID, Ingredients, CookingInstructions, TotalCalories, Category, FoodIMage FROM RecipeFavorites JOIN Recipes ON RecipeFavorites.RecipeId = Recipes.Id WHERE RecipeFavorites.UserId = @userId";
+            string queryString = "SELECT RecipeFavorites.ID, UserID, title, RecipeID, Ingredients, CookingInstructions, TotalCalories, Category, FoodIMage FROM RecipeFavorites JOIN Recipes ON RecipeFavorites.RecipeId = Recipes.Id WHERE RecipeFavorites.UserId = @userId";
 
             IEnumerable<JoinedRF> result = null;
             using (var conn = new SqlConnection(connstring))
