@@ -260,3 +260,22 @@ AS
     where UserID = @UserID
     order by WeightInDate DESC
 GO
+
+-- Create a new stored procedure called 'OldestWeightForUserID' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'OldestWeightForUserID'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.OldestWeightForUserID
+GO
+CREATE PROCEDURE dbo.OldestWeightForUserID
+    @UserID INT
+AS
+    select top(1) * from Weights
+    where UserID = @UserID
+    order by WeightInDate ASC
+GO
