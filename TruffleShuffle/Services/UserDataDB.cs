@@ -60,13 +60,13 @@ namespace TruffleShuffle.Services
 
         public User GetUserByID(int id)
         {
-            string queryString = "Select * FROM Users WHERE ID=@id";
+            string queryString = " EXECUTE dbo.SelectUserByID @id";
 
             User result = null;
 
             using (var conn = new SqlConnection(connstring))
             {
-                result = conn.QueryFirstOrDefault<User>(queryString, new { id = id });
+                result = conn.QueryFirstOrDefault<User>(queryString, new { id });
             }
 
             return result;
