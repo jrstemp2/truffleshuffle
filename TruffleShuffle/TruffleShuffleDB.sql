@@ -89,8 +89,19 @@ AS
     VAlUES
         (@UserName, @UserPassword, @Displayname, @WeightLossGoal)
 GO
--- example to execute the stored procedure we just created
-EXECUTE dbo.AddUser "Thor", "HammersAreCool", "Lord of Thunder", 220
+-- Create a new stored procedure called 'GetUserByUserName' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'GetUserByUserName'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.GetUserByUserName
 GO
-select * from users
+CREATE PROCEDURE dbo.GetUserByUserName
+    @UserName nvarchar (45)
+AS
+    Select * FROM Users WHERE UserName Like @username
 GO

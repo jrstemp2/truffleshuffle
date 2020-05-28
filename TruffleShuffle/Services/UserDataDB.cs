@@ -29,7 +29,7 @@ namespace TruffleShuffle.Services
             }
             return result;
         }
-
+        
 
         public int DeleteUserByID(int id)
         {
@@ -74,7 +74,7 @@ namespace TruffleShuffle.Services
 
         public User GetUserByUserName(string username)
         {
-            string queryString = "Select * FROM Users WHERE UserName Like @username";
+            string queryString = "EXECUTE dbo.GetUserByUserName @username";
 
             User result = null;
 
