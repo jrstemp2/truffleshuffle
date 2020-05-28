@@ -23,9 +23,7 @@ namespace TruffleShuffle.Services
 
         public WeightRecord AddWeightRecord(WeightRecord weightRecord)
         {
-            string command = "Insert Into Weights (UserID, WeightInDate, CurrentWeight) ";
-            command += "Output Inserted.ID, Inserted.UserID, Inserted.WeightInDate, Inserted.CurrentWeight ";
-            command += "values (@UserID, @WeightInDate, @CurrentWeight) ";
+            string command = "EXECUTE dbo.AddWeightRecord @UserID, @WeightInDate, @CurrentWeight";
 
             WeightRecord result = null;
             using (var conn = new SqlConnection(connString))
