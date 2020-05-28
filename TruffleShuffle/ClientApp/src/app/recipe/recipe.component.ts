@@ -140,6 +140,12 @@ export class RecipeComponent {
   //  );
   //}
 
-
+  displayTitle(title): string {
+    if (title.length >= 18) {
+      return title.substring(0, 15) + "...";
+    } else {
+      return title;
+    }
+  }
   
 }

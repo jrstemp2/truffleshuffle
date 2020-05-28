@@ -10,18 +10,18 @@
   <table class="recipe-table"> 
     <tr *ngFor="let recipe of recipes">
       <td>
-        <div class="reccontainer">
+        <button class="reccontainer" [routerLink]="['/recipe', recipe.id]">
           <img src="{{recipe.foodImage}}" alt="Avatar" class="image">
           <div class="overlay">
-            <div class="text">{{recipe.title}}<br /><i class="fas fa-book-open"></i><br />{{recipe.totalCalories}} Total Calories</div>
+            <div class="text">{{displayTitle(recipe.title)}}<br /><i class="fas fa-book-open"></i><br />{{recipe.totalCalories}} Total Calories</div>
           </div>
 
-        </div>
+        </button>
       </td>
       <td>
         <button class="view" [routerLink]="['/recipe', recipe.id]">
           <div class="buttonInfo">
-            {{recipe.title}}
+            {{displayTitle(recipe.title)}}
           </div><br />
           <i class="fas fa-book-open"></i><br />
           <div class="buttonInfo">View Recipe</div>
