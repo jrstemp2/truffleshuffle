@@ -61,7 +61,7 @@
                 <h4 class="user-title">What You Need</h4>
 
                 <hr />
-                <div *ngFor="let line of recipe.ingredients.split('\n')">{{line}}<br /></div>
+                <div [innerHTML]="renderAsMarkdown(recipe.ingredients)"></div>
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@
                 <h4 class="user-title">How To Make It</h4>
 
                 <hr />
-                <div *ngFor="let line of recipe.cookingInstructions.split('\n')">{{line}}<br /></div>
+                <div [innerHTML]="renderAsMarkdown(recipe.cookingInstructions)"></div>
               </div>
             </div>
           </div>

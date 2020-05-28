@@ -3,6 +3,8 @@ import { RecipeService } from '../services/recipe.service';
 import { RecipeFavorite } from '../interfaces/recipefavorite';
 import { RecipeFavoriteService } from '../services/recipe-favorite.service';
 import { JoinedRF } from '../interfaces/joinedRF';
+const MarkdownIt = require('markdown-it');
+const emoji = require('markdown-it-emoji');
 
 import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
@@ -12,17 +14,25 @@ import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-    selector: 'app-recipe-details',
-    templateUrl: './recipe-details.component.html',
-    styleUrls: ['./recipe-details.component.scss']
+  selector: 'app-recipe-details',
+  templateUrl: './recipe-details.component.html',
+  styleUrls: ['./recipe-details.component.scss']
 })
 /** recipeDetails component*/
 /** recipeDetails component*/
 export class RecipeDetailsComponent {
-    /** recipeDetails ctor */
+  /** recipeDetails ctor */
   constructor(private recipeData: RecipeService, private recipeFavoriteData: RecipeFavoriteService, private userData: UserService, private route: ActivatedRoute) { }
   @Input() ref: string;
-  recipe: Recipe;
+  recipe: Recipe = {
+    id: 0,
+    title: '',
+    ingredients: '',
+    cookingInstructions: '',
+    totalCalories: 0,
+    category: '',
+    foodImage: '',
+  };
   recipeID: number;
   addFav: boolean = false;
   includes: boolean = false;
@@ -54,6 +64,7 @@ export class RecipeDetailsComponent {
   }
 
   ngOnInit() {
+    this.md.use(emoji);
     this.loadPage();
   }
 
@@ -70,16 +81,16 @@ export class RecipeDetailsComponent {
       console.log('recipeID' + this.favRecipes[i].recipeID);
 
       if (this.favRecipes[i].recipeID === id) {
-          this.includes = true;
-          this.addtoFav = false;
-          break;
+        this.includes = true;
+        this.addtoFav = false;
+        break;
       }
     }
     if (this.addtoFav === true) {
       this.addToFavorite(id);
     }
   }
-  
+
 
   putFavInArray(id: number) {
     this.recipeFavoriteData.addToFavorite(id, this.user.id).subscribe(
@@ -115,7 +126,7 @@ export class RecipeDetailsComponent {
       this.showUpdateForm = false;
     }
 
-    
+
   }
 
   isValid(): boolean {
@@ -143,5 +154,12 @@ export class RecipeDetailsComponent {
 
     return true;
   }
+
+  md = new MarkdownIt();
+
+  renderAsMarkdown(text: string): string {
+    return this.md.render(text);
+  }
+
 
 }
