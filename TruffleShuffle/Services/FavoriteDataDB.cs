@@ -33,7 +33,7 @@ namespace TruffleShuffle.Services
 
         public int DeleteFavorite(int id)
         {
-            string command = "DELETE FROM RecipeFavorites WHERE ID = @id";
+            string command = "EXECUTE dbo.DeleteRecipeFavorite @id";
 
             int result = 0;
 
