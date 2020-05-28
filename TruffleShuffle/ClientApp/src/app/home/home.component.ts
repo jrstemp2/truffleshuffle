@@ -32,6 +32,12 @@ export class HomeComponent {
     );
   }
 
-
+  displayTitle(title): string {
+    if (title.length >= 15) {
+      return title.substring(0, 15) + "...";
+    } else {
+      return title;
+    }
+  }
   
 }
