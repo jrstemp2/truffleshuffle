@@ -45,7 +45,7 @@
 
       <a href="/recipe/{{r.id}}">
         <marquee behavior="scroll" direction="left">
-          <img src="{{r.foodImage}}" height="300" width="300" alt="{{r.title}}" />
+          <img src="{{imageDisplay(r.foodImage)}}" height="300" width="300" alt="{{r.title}}" />
           <h3>{{displayTitle(r.title)}}</h3>
         </marquee>
       </a>
