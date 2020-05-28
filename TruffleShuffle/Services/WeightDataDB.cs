@@ -36,7 +36,7 @@ namespace TruffleShuffle.Services
 
         public int DeleteWeightRecordByID(int weightRecordID)
         {
-            string command = "Delete from Weights where ID = @ID";
+            string command = "EXECUTE dbo.DeleteWeightRecordByID @ID";
 
             int result = 0;
             using (var conn = new SqlConnection(connString))
