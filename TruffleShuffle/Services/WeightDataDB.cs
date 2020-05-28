@@ -49,7 +49,7 @@ namespace TruffleShuffle.Services
 
         public bool WeightRecordExistsforDate(WeightRecord weightRec)
         {
-            string command = "EXECUTE dbo.SelectRecordByUserIDAndDate @UserID @WeightInDate";
+            string command = "EXECUTE dbo.SelectRecordByUserIDAndDate @UserID, @WeightInDate";
 
             WeightRecord result = null;
 
@@ -102,12 +102,8 @@ namespace TruffleShuffle.Services
 
         public int UpdateWeightRecord(WeightRecord weightRecord)
         {
-            string command = "Update Weights ";
-            command += "set ";
-            command += "WeightInDate = @WeightInDate, ";
-            command += "CurrentWeight = @CurrentWeight ";
-            command += "Where UserID = @UserID and WeightInDate = @WeightInDate";
-
+            string command = "EXECUTE dbo.UpdateExistingWeightRecord @UserID, @WeightInDate, @CurrentWeight";
+            
             int result;
             using (var conn = new SqlConnection(connString))
             {

@@ -298,3 +298,26 @@ AS
     where UserID = @UserID
     order by WeightInDate DESC
 GO
+
+-- Create a new stored procedure called 'UpdateExistingWeightRecord' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'UpdateExistingWeightRecord'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.UpdateExistingWeightRecord
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.UpdateExistingWeightRecord
+    @UserID int,
+    @WeightInDate DATE,
+    @CurrentWeight INT
+AS
+    Update Weights SET
+    WeightInDate = @WeightInDate,
+    CurrentWeight = @CurrentWeight
+    Where UserID = @UserID and WeightInDate = @WeightInDate
+GO
