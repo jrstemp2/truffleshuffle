@@ -61,12 +61,12 @@ namespace TruffleShuffle.Services
 
         public RecipeFavorite GetFavoriteByUserAndRecipe(int userId, int recipeId)
         {
-            string queryString = "SELECT * FROM RecipeFavorites WHERE UserID = @userId and RecipeID = @recipeId";
+            string queryString = "EXECUTE dbo.GetFavoriteByUserAndRecipe @userId, @recipeId";
 
             RecipeFavorite result = null;
             using (var conn = new SqlConnection(connstring))
             {
-                result = conn.QueryFirst<RecipeFavorite>(queryString, new { userId = userId, recipeId = recipeId });
+                result = conn.QueryFirst<RecipeFavorite>(queryString, new { userId, recipeId });
             }
             return result;
         }
