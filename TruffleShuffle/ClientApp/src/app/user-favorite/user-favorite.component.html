@@ -3,7 +3,12 @@
 
       <div class="user-fav-container">
         <div class="fav-image-container">
-          <img src="{{fav.foodImage}}" alt="favorite food" />
+          <div *ngIf="!fav.foodImage">
+            <img src="assets\Images\no-food-image.png" alt="recipe" class="image">
+          </div>
+          <div *ngIf="fav.foodImage">
+            <img src="{{fav.foodImage}}" alt="Avatar" class="image">
+          </div>
         </div>
         <h3>{{fav.title}}</h3>
         <p>Calories: {{fav.totalCalories}}</p>

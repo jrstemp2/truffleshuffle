@@ -38,6 +38,10 @@ export class RecipeComponent {
   addNewRecipe() {
 
     if (this.isValid()) {
+      if (this.showFoodImage !== 'Yes') {
+        this.newFoodImage = 'assets/Images/no-food-image.png';
+      }
+
       this.recipeData.addRecipe({
         id: 0,
         title: this.newTitle,
