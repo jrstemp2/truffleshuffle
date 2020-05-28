@@ -23,8 +23,7 @@ namespace TruffleShuffle.Services
             int result = 0;
             using (var conn = new SqlConnection(connstring))
             {
-                string queryString = "INSERT INTO Users(UserName, UserPassword, DisplayName, WeightLossGoal) ";
-                queryString += "VAlUES(@UserName, @UserPassword, @Displayname, @WeightLossGoal)";
+                string queryString = "EXECUTE dbo.AddUser @UserName, @UserPassword, @Displayname, @WeightLossGoal";
 
                 result = conn.Execute(queryString, user);
             }
