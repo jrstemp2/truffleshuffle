@@ -43,7 +43,7 @@ namespace TruffleShuffle.Services
             IEnumerable<Recipe> result = null;
             using (var conn = new SqlConnection(connstring))
             {
-                result = conn.Query<Recipe>(queryString, new { category = category});
+                result = conn.Query<Recipe>(queryString, new { category });
             }
 
             return result;
@@ -57,7 +57,7 @@ namespace TruffleShuffle.Services
             Recipe result = null;
             using (var conn = new SqlConnection(connstring))
             {
-                result = conn.QueryFirst<Recipe>(queryString, new { id = id });
+                result = conn.QueryFirst<Recipe>(queryString, new { id });
             }
 
             return result;
@@ -82,7 +82,7 @@ namespace TruffleShuffle.Services
         public int DeleteRecipeByID(int id)
         {
 
-            string command = "DELETE FROM Recipes WHERE ID = @id";
+            string command = "EXECUTE dbo.DeleteRecipeByID @id";
 
             int result = 0;
 
