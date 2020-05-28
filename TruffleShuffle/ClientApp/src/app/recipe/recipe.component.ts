@@ -157,9 +157,16 @@ export class RecipeComponent {
     }
   }
 
-  searchFilter: string = '';
+  titleFilter: string = '';
+  ingredientFilter: string = '';
+  minCalFilter: number = 0;
+  maxCalFilter: number = 5000;
 
   filterRecipes(recipes:Recipe[]):Recipe[] {
-    return recipes.filter(r => r.title.toLowerCase().includes(this.searchFilter.toLowerCase()));
+    return recipes.filter(r => r.title.toLowerCase().includes(this.titleFilter.toLowerCase()))
+      .filter(r => r.ingredients.toLowerCase().includes(this.ingredientFilter.toLowerCase()))
+      .filter(r => r.totalCalories >= this.minCalFilter)
+      .filter(r => r.totalCalories <= this.maxCalFilter)
   }
 }
+

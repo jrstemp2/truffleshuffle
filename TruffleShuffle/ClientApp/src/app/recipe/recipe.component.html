@@ -7,9 +7,6 @@
 
 <div class="row rec-rows">
   <div class="col-md-8 rec-rows">
-    <input type="text" placeholder="filter recipes by title..." [(ngModel)]="searchFilter" />
-  </div>
-  <div class="col-md-8 rec-rows">
     <table class="recipe-table">
       <tr *ngFor="let recipe of filterRecipes(recipes)">
         <td>
@@ -48,7 +45,13 @@
       <!--<button class="addButton" (click)="showAddRecipeForm()">Add Recipe Form</button>-->
       <!--<div [hidden]="!showAddRecipeButton" class="form">-->
       <div class="form">
+        <h3 class="form-title">Search</h3>
+        <label>Recipe Title: </label><br /><input type="text" placeholder="filter recipes by title..." [(ngModel)]="titleFilter" /> <br />
+        <label>Ingredient: </label><br /><input type="text" placeholder="filter recipes by ingredient..." [(ngModel)]="ingredientFilter" /> <br />
+        <label>Min Calories</label><br /><input type="number" [(ngModel)]="minCalFilter" /><br />
+        <label>Max Calories</label><br /><input type="number" [(ngModel)]="maxCalFilter" /><br />
 
+        <br />
         <h3 class="form-title">Add Recipe</h3>
         <label>Recipe Title: </label><br /><input type="text" [(ngModel)]="newTitle" minlength="2" required />
 
@@ -107,4 +110,5 @@
     </div>
   </div>
 </div>
+
 
