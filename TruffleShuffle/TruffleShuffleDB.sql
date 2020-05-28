@@ -338,3 +338,22 @@ CREATE PROCEDURE dbo.AllRecipes
 AS
     SELECT * from Recipes
 GO
+
+-- Create a new stored procedure called 'RecipesInCategory' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'RecipesInCategory'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.RecipesInCategory
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.RecipesInCategory
+    @Category nvarchar(45)
+-- add more stored procedure parameters here
+AS
+    SELECT * FROM Recipes WHERE Category like @Category
+GO

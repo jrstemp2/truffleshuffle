@@ -38,7 +38,7 @@ namespace TruffleShuffle.Services
         //Get All Recipes By Category
         public IEnumerable<Recipe> GetAllRecipesByCategory(string category)
         {
-            string queryString = "SELECT * FROM Recipes WHERE Category = @Category";
+            string queryString = "EXECUTE dbo.RecipesInCategory @Category";
 
             IEnumerable<Recipe> result = null;
             using (var conn = new SqlConnection(connstring))
