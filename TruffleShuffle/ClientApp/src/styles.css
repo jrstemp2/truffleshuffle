@@ -148,6 +148,16 @@ font-size: 18px;
 .head-cols {
 padding: 5px 5px;
 }
+.col-md-6.login {
+  padding-right: 0px;
+  padding-left: 15px;
+  left:50%;
+}
+/*.col-md-6.signup {
+  padding-right: 0px;
+  padding-left: 15px;
+  right: 50%;
+}*/
 .table-col.row .col-md-3 {
   padding-right: 0px;
   padding-left: 0px;
