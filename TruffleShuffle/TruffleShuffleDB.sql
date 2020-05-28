@@ -8,9 +8,9 @@ USE TruffleShuffleDB;
 GO
 CREATE TABLE Users (
     ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
-    UserName varchar (45) NOT NULL,
-    UserPassword varchar (45) NOT NULL,
-    DisplayName varchar (100) NOT NULL,
+    UserName nvarchar (45) NOT NULL,
+    UserPassword nvarchar (45) NOT NULL,
+    DisplayName nvarchar (100) NOT NULL,
     WeightLossGoal int NOT NULL,
     
 );
@@ -66,3 +66,119 @@ VALUES
 ('Healthy Vegetable Chicken Soup', '2 tablespoons vegetable oil, 2 cloves garlic minced, 2 cups chopped onion, 1 red bell pepper chopped, 1 green bell pepper chopped, 1 1/2 cups chopped celery, 1 cup julienned carrots (or diced), 5 cups chicken stock (I always use Better Than Bouillon paste), salt and pepper to taste (I use about 1 1/2 teaspoons coarse salt and 1/2 teaspoon black pepper), 1/4 teaspoon hot pepper sauce, 1/4 teaspoon soy sauce, 6 ounces spinach, 1 cup egg noodles, 2 cups shredded chicken (rotisserie chicken works well here)', 'Heat oil in a large soup pot over medium heat. Add garlic, onion, red bell pepper, green bell pepper, celery, and carrots. Saute until onions are translucent and the veggies have been tossed through with hot oil. Add stock and season with salt and pepper to taste. Add the soy sauce and hot sauce. Bring soup to a simmer and allow to simmer over low heat for about 40 minutes or until veggies are tender. Add the spinach and cover pot. The spinach will reduce quickly. Stir soup and add the noodles. Cook about five minutes or until tender. Stir in the chicken and simmer until chicken is heated through. You can add more broth if you want it thinner. Serve!', 285, 'Lunch','https://www.the-girl-who-ate-everything.com/wp-content/uploads/2017/03/healthy-vegetable-soup-3-768x1075.jpg'),
 ('Salsa', '4 ripe tomatoes, cored and quartered, 1 red onion, peeled and quartered, 3 garlic cloves, peeled, 3 jalapenos, stemmed and seeded (you can substitute 1-2 habanero or serrano peppers.), 1/3 cup fresh cilantro, 3 tablespoons fresh lime juice, 2-3 teaspoons ground cumin, 2-3 teaspoons sugar, 1 1/2 teaspoons salt, 15 ounces crushed San Marzano tomatoes (1 can), 4.5 ounces diced green chiles, mild, medium, or hot (1 can)', 'Place the fresh tomatoes, onion, garlic, peppers, cilantro, lime juice, 2 teaspoons cumin, 2 teaspoons sugar, and salt in a food processor. Pulse until the contents are fine and well blended. Pour in the crushed tomatoes and green chiles. Puree until mostly smooth. Taste, then add more cumin and sugar if desired. Refrigerate until ready to serve.', 19, 'Snack','https://nitrocdn.com/wNaVTMyblCPjzAPXbeDDfFKcpvICVOVU/assets/static/optimized/rev-cfee412/wp-content/uploads/2019/02/the-best-homemade-salsa-recipe-10.jpg');
 
+-- Create a new stored procedure called 'AddUser' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'AddUser'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.AddUser
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.AddUser
+    @UserName nvarchar (45),
+    @UserPassword nvarchar (45),
+    @DisplayName nvarchar (100),
+    @WeightLossGoal int
+AS
+    INSERT INTO Users
+        (UserName, UserPassword, DisplayName, WeightLossGoal)
+    VAlUES
+        (@UserName, @UserPassword, @Displayname, @WeightLossGoal)
+GO
+-- Create a new stored procedure called 'GetUserByUserName' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'GetUserByUserName'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.GetUserByUserName
+GO
+CREATE PROCEDURE dbo.GetUserByUserName
+    @UserName nvarchar (45)
+AS
+    Select * FROM Users WHERE UserName Like @username
+GO
+
+-- Create a new stored procedure called 'UpdateUser' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'UpdateUser'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.UpdateUser
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.UpdateUser
+    @id INT,
+    @UserName nvarchar (45),
+    @UserPassword nvarchar (45),
+    @DisplayName nvarchar (100),
+    @WeightLossGoal int
+AS
+    UPDATE Users
+    SET UserName = @UserName, UserPassword = @UserPassword, DisplayName = @DisplayName, WeightLossGoal = @WeightLossGoal
+    Where ID=@id
+GO
+
+-- Create a new stored procedure called 'SelectUserByID' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'SelectUserByID'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.SelectUserByID
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.SelectUserByID
+    @id int
+AS
+    Select * FROM Users WHERE ID=@id
+GO
+
+-- Create a new stored procedure called 'SelectUserByID' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'SelectUserByID'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.SelectUserByID
+GO
+-- Create the stored procedure in the specified schema
+CREATE PROCEDURE dbo.SelectUserByID
+    @id int
+AS
+    Select * FROM Users WHERE ID=@id
+GO
+
+-- Create a new stored procedure called 'DeleteUserByID' in schema 'dbo'
+-- Drop the stored procedure if it already exists
+IF EXISTS (
+SELECT *
+    FROM INFORMATION_SCHEMA.ROUTINES
+WHERE SPECIFIC_SCHEMA = N'dbo'
+    AND SPECIFIC_NAME = N'DeleteUserByID'
+    AND ROUTINE_TYPE = N'PROCEDURE'
+)
+DROP PROCEDURE dbo.DeleteUserByID
+GO
+CREATE PROCEDURE dbo.DeleteUserByID
+    @ID int
+AS
+    DELETE FROM Users WHERE ID = @id
+GO

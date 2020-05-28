@@ -108,6 +108,7 @@ export class RecipeComponent {
     this.newTotalCalories = null;
     this.newCategory = "";
     this.newFoodImage = "";
+    this.showFoodImage = "";
   }
   //---------------------------------------------------------
   //------------------------READ-----------------------------

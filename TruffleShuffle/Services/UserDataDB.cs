@@ -23,24 +23,23 @@ namespace TruffleShuffle.Services
             int result = 0;
             using (var conn = new SqlConnection(connstring))
             {
-                string queryString = "INSERT INTO Users(UserName, UserPassword, DisplayName, WeightLossGoal) ";
-                queryString += "VAlUES(@UserName, @UserPassword, @Displayname, @WeightLossGoal)";
+                string queryString = "EXECUTE dbo.AddUser @UserName, @UserPassword, @Displayname, @WeightLossGoal";
 
                 result = conn.Execute(queryString, user);
             }
             return result;
         }
-
+        
 
         public int DeleteUserByID(int id)
         {
-            string queryString = "DELETE FROM Users WHERE ID = @id";
+            string queryString = "EXECUTE dbo.DeleteUserByID @id";
 
             int result = 0;
 
             using (var conn = new SqlConnection(connstring))
             {
-                result = conn.Execute(queryString, new { id = id });
+                result = conn.Execute(queryString, new { id });
             }
 
             return result;
@@ -48,7 +47,7 @@ namespace TruffleShuffle.Services
         public IEnumerable<User> GetAllUsers()
         {
 
-            string queryString = "SELECT * FROM Users";
+            string queryString = "EXECUTE dbo.SelectAllUsers";
 
             IEnumerable<User> result;
             using (var conn = new SqlConnection(connstring))
@@ -61,13 +60,13 @@ namespace TruffleShuffle.Services
 
         public User GetUserByID(int id)
         {
-            string queryString = "Select * FROM Users WHERE ID=@id";
+            string queryString = "EXECUTE dbo.SelectUserByID @id";
 
             User result = null;
 
             using (var conn = new SqlConnection(connstring))
             {
-                result = conn.QueryFirstOrDefault<User>(queryString, new { id = id });
+                result = conn.QueryFirstOrDefault<User>(queryString, new { id });
             }
 
             return result;
@@ -75,7 +74,7 @@ namespace TruffleShuffle.Services
 
         public User GetUserByUserName(string username)
         {
-            string queryString = "Select * FROM Users WHERE UserName Like @username";
+            string queryString = "EXECUTE dbo.GetUserByUserName @username";
 
             User result = null;
 
@@ -90,9 +89,7 @@ namespace TruffleShuffle.Services
         public int UpdateUser(User u)
         {
 
-            string queryString = "UPDATE Users " +
-                "SET UserName = @UserName, UserPassword = @UserPassword, DisplayName = @DisplayName, WeightLossGoal = @WeightLossGoal " +
-                "Where ID=@id";
+            string queryString = "EXECUTE dbo.UpdateUser @ID @UserName, @UserPassword, @DisplayName, @WeightLossGoal";
 
             int result = 0;
 
