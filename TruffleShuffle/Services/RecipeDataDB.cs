@@ -24,7 +24,7 @@ namespace TruffleShuffle.Services
         public IEnumerable<Recipe> GetAllRecipes()
         {
 
-            string queryString = "SELECT * FROM Recipes";
+            string queryString = "EXECUTE dbo.AllRecipes";
             IEnumerable<Recipe> result = null;
             using (var conn = new SqlConnection(connstring))
             {
